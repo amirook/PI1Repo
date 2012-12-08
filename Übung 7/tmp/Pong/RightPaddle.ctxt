@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=RightPaddle()
+comment0.text=\n\ Der\ Konstruktor\ dreht\ das\ Paddle\ nach\ unten.\n
+comment1.params=keyboardManager
+comment1.target=void\ setKeyboardManager(Ball)
+comment1.text=\ \n\ Setzt\ den\ den\ Manager\ f\u00FCr\ die\ Tastatursteuerung.\n\ @param\ keyboardManager\ Das\ Objekt,\ das\ ab\ jetzt\ die\ Tastatursteuerung\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ f\u00FCr\ dieses\ Paddle\ \u00FCbernimmt.\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\n\ Diese\ Methode\ wird\ aufgerufen,\ wenn\ die\ 'Act'-\ oder\ 'Run'-Kn\u00F6pfe\n\ in\ der\ Umgebung\ gedr\u00FCckt\ werden.\ Sie\ nutzt\ den\ Tastaturmanager,\n\ um\ das\ Paddle\ zu\ bewegen.\n
+numComments=3

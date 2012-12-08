@@ -1,0 +1,41 @@
+Hallo,
+
+hier ist mein Greenfoot Vorschlag für Aufgabe2
+
+
+Änderungen:
+
+-verschieben der "doIt" Methode in die Klasse Ball
+-verschieben der Methode zum setzen des Ball-bildes aus Weltklasse Pong in die Klassenmethode Ball und entfernen dieses Abschnittes in der doIt-Methode der Klasse Ball
+-löschen von RightPaddle und umbenennen der Klasse LeftPaddle zu Paddle
+    (nutzung einer Klasse für beide Paddles)
+-entfernen der Bewegungsmethoden aus der Klasse Ball( einsetzen in Klasse Paddle)
+    (Die Steuerung wird ab jetzt über die Weltklasse übergeben)
+-ändern der Klassenmethode von Paddle (setzt jetzt das Paddle-Bild )
+-entfernen jeglicher Referenzen auf Klasse Ball, RightPaddle und LeftPaddle
+    (die Klassen besitzen jetzt eine lose Kopplung untereinander)
+-privatisieren von Methoden in Paddle.class (z.B setCrushed(),doIt())
+-entfernen unnötiger Methodenaufrufe/setbefehle aus Pong
+
+
+Anmerkungen/
+Beobachtungen:
+
+In dem Projekt existiert beinahe gar keine Zusammenhang, der Ball und die Paddels besitzen jeweils die anderen Aufgaben und nicht ihre eigenen.
+(L.Paddel entfernt und setzt den Ball  und die Klasse Ball bewegt jeweils die Paddels).
+
+Es entsteht hierbei eine starke Kopplung durch den Fakt dass die Klassen zur Nutzung ihrer jeweils notwendigen Methoden vernetzt sind.
+dies wird deutlich, wenn man im Quelltext die Weltklasse Pong und die Klasse L.Paddel betrachtet, unter L.Paddle wird hier sogar ein Verweis auf das rechte paddel gespeichert, obwohl dieser meiner Auffassung nach überhaupt nie verwendet wird.
+
+Code Duplizierungen habe ich spezifisch an der Stelle gesehen wo das Bild für die Darstellung des ersten Balls gesetzt wird (Klasse Pong) so wie in der Klasse L.Paddle unter der Methode doIt() in dem Abschnitt wo die neuen Bälle erstellt und gesetzt werden.
+Ich habe dieses Problem in meiner  Greenfoot-Version beseitigt indem ich diese beiden Abschnitte in die Klassenmethode von Paddle verschoben habe.
+
+Zum Begriff Entwurf nach Zuständigkeit könnte man hier sagen, dass hier jemand erfolgreich alles an die falschen Klassen geschrieben hat.
+besonders was die Paddel Klassen und die Klasse Ball betrifft, welche hier jeweils die Methoden außerhalb ihres Zuständigkeitsbereichs enthalten.
+Es gibt in diesem Spiel keine einzige Klasse bei der ich sagen würde, dass sie gegenüber ihrer ErstellungsIntention ihrer Aufgabe wirklich gerecht wird.
+das Rechte Paddel ist hier fast ein Sonderfall, da es nicht die falschen Methoden enthält, sondern praktisch gar-keine.
+Es ist hier nur ein Platzhalter für das erste paddel (das ist der Grund dafür, das diese Klasse komplett entfernt wird)
+
+
+Kritikpunkt:
+es ist unrealistisch, komplett schwachsinnig und total unübersichtlich

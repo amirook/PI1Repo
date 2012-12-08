@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=image
+comment0.target=Paddle(java.lang.String)
+comment0.text=\n\ Der\ Konstruktor\ dreht\ das\ Paddle\ nach\ oben\n\ setzt\ das\ Bild\ des\ Paddels\ ein.\n\ @param("image\ file")\n
+comment1.params=up\ down
+comment1.target=void\ setKeyboardControl(java.lang.String,\ java.lang.String)
+comment1.text=\ \n\ Setzt\ die\ Tastatursteuerung.\n\ @param\ ("keyup","keydown")\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\n\ Diese\ Methode\ wird\ aufgerufen,\ wenn\ die\ 'Act'-\ oder\ 'Run'-Kn\u00F6pfe\n\ in\ der\ Umgebung\ gedr\u00FCckt\ werden.\ Sie\ nutzt\ den\ Tastaturmanager,\n\ um\ das\ Paddle\ zu\ bewegen.\n
+comment3.params=
+comment3.target=void\ paddleControl()
+numComments=4

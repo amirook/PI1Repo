@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=
+comment0.target=LeftPaddle()
+comment0.text=\n\ Der\ Konstruktor\ dreht\ das\ Paddle\ nach\ oben.\n
+comment1.params=r
+comment1.target=void\ setOtherPaddle(RightPaddle)
+comment1.text=\n\ Setzt\ das\ zweite\ Paddle.\ Wird\ ben\u00F6tigt,\ um\ den\ Tastaturmanager\n\ automatisch\ richtig\ zu\ setzen.\n\ @param\ r\ Das\ andere\ Paddle.\n
+comment2.params=b
+comment2.target=void\ setKeyboardManager(Ball)
+comment2.text=\ \n\ Setzt\ den\ den\ Manager\ f\u00FCr\ die\ Tastatursteuerung.\n\ @param\ b\ Das\ Objekt,\ das\ ab\ jetzt\ die\ Tastatursteuerung\n\ \ \ \ \ \ \ \ \ \ f\u00FCr\ dieses\ und\ das\ andere\ Paddle\ \u00FCbernimmt.\n
+comment3.params=
+comment3.target=void\ act()
+comment3.text=\n\ Diese\ Methode\ wird\ aufgerufen,\ wenn\ die\ 'Act'-\ oder\ 'Run'-Kn\u00F6pfe\n\ in\ der\ Umgebung\ gedr\u00FCckt\ werden.\ Sie\ nutzt\ den\ Tastaturmanager,\n\ um\ das\ Paddle\ zu\ bewegen.\n
+comment4.params=b
+comment4.target=void\ doIt(Ball)
+comment4.text=\n\ Zerquetsche\ den\ Ball\ und\ erzeuge\ einen\ neuen.\n\ Der\ neue\ Ball\ wird\ zum\ Tastaturmanager\ f\u00FCr\ beide\ Paddles.\n\ @param\ b\ Der\ Ball,\ der\ zerquetscht\ werden\ soll.\n
+numComments=5

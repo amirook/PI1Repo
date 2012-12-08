@@ -1,0 +1,295 @@
+% !TEX program = arara
+% arara: pdflatex
+% arara: biber
+% arara: pdflatex
+% arara: pdflatex
+\documentclass{pi1}
+\begin{document}
+% \maketitle	{Nummer}{Abgabedatum}{Tutor1-Name}{Tutor2-Name}{Gruppennummer}
+%          		{Teilnehmer 1}{Teilnehmer 2}{Teilnehmer 3}
+\maketitle{7}{09.12.2012}{Berghöfer/Senger}{8}
+		{Beate Ruffer}{Mohamadreza Khostevan}{Leopold Schulz-Hanke}
+% Beginn des eigentlichen Textes
+
+\section{Der TutorInnen Leid\ldots (70\%)}
+\textbf{Methode 1 (10\%). Ganzzahlige Wurzel} 
+\begin{lstlisting}[firstnumber=3, language=Java]
+public int method(int i)
+    {
+        int a = i;
+        int b = 1;
+        while (a - b > 1) {
+            a = (a + b) / 2;
+            b = i / a;
+        }
+        return (a + b) / 2;
+\end{lstlisting}
+
+Die Methode berechnet die Wurzel einer eingegebenen Zahl und gibt diese Zahl zurück. Berechnet wird die Wurzel hier nach dem Heron-Verfahren, welches eine Näherung der Quadratwurzel einer Zahl im ganzzahligen Bereich (da alle i, a und b als Integer deklariert werden) mit der Formel 
+
+\begin{displaymath}x_{n+1} = \frac{x_n + \frac{a}{x_n}}{2}\end{displaymath}
+
+berechnet. Auf die Methode hier angewendet wird also zunächst, wenn i-1 $>$ 1 ist, x$_0$ festgelegt:
+
+\begin{displaymath}a_0 = \frac{a + b}{2} = x_{0} = \frac{i + 1}{2} \end{displaymath}
+
+Wenn danach a - b $>$ 1 folgt
+
+\begin{displaymath} a_{1} = \frac{a_0 + \frac{i}{a_0}}{2} = x_{1} = \frac{x_0 + \frac{i}{x_0}}{2}\end{displaymath}
+
+Solange a - b $>$ 1 wird nun
+
+\begin{displaymath}a_{n+1} = \frac{a_n+b_n}{2}\end{displaymath}
+mit b = $\frac{i}{a_n}$ und $a_n = \frac{a_{n-1}+b_{n-1}}{2}$ berechnet.
+
+Wenn das Abbruchkriterium a - b $\leq$ 1 erfüllt ist, wird der Wert der letzten Berechnung von $\frac{a_n + b_n}{2}$, der der ganzzahligen Näherung der Wurzel von i entspricht, zurückgegeben.
+Da die Methode jedoch offenbar nicht weiß, dass es keine negativen Quadratzahlen gibt, berechnet sie allerdings natürlich auch Werte für eingebene negative Zahlen.
+
+
+\textbf{Methode 2 (10\%). Fakult"at } 
+
+\begin{lstlisting}[firstnumber=14, language=Java]
+public int $(int _)
+    {
+        return _ == _ + _ ? -~_ : _ * $(_ - _ / _);
+    }
+\end{lstlisting}
+Teilen wir zunächst das return Statement in verständliche Abschnitte. Der Ausdruck \texttt{\_ == \_ + \_} wird auf true oder false getestet. Da nur die 0 die Summe einer Addition mit sich selbst ist, ist dieser Ausdruck eine Abfrage ob \texttt{\_ == 0} ist.\\
+Nun wird im true Fall der Teil zwischen \texttt{?} und \texttt{:} ausgeführt und im false Fall, der Teil nach dem  \texttt{:}. Betrachten wir den true Fall: \texttt{-\~\_}. Wir wissen nun, dass unsere Zahl (der Unterstrich) in diesem Fall nur 0 sein kann. Die Tilde bildet das bitwise complement der 0, also -1. Dieses wird wiederum durch das Minus negiert, was 1 ergibt. Im true Fall wird also immer 1 zurückgegeben.\\
+Nun der false Fall: \texttt{\_ * \$(\_ - \_ / \_)} Die Methode ruft sich selber rekursiv auf und multipliziert das Ergebnis mit sich selbst vermindert um 1. Der Ausdruck des übergebenen Parameters lässt sich vereinfachen, da aufgrund der Erstausf"uhrung von Punktrechnung vor Strichrechnung die Zahl durch sich selbst geteilt 1 ergibt: \texttt{\$(\_ - 1)}\\
+\\ Nun haben wir die Methode in ihre Einzelheiten zerlegt und können sie jetzt eine leserlichere Form bringen. Dadurch ist zu erkennen, dass die Methode die Fakultät einer Zahl berechnet, denn unsere Zahl wird so lange mit sich selbst -1 multipliziert bis 0 und damit die Abbruchbedingung erreicht ist.
+
+\texttt{number == 0} eintritt.
+
+\begin{lstlisting}[caption={Methode factorial()}, firstnumber=65, language=Java]
+public int factorial(int number)
+    {
+        if (number == 0)
+        {
+            return 1;
+        }
+        else
+        {
+            return number * factorial(number - 1);
+        }
+    }
+\end{lstlisting}
+
+\textbf{Methode 3 (10\%). Maximum}
+Die Methode \texttt{max(int[] values)} bestimmt das Maximum der Werte eines Arrays, nur dann, wenn das Maximum eine positive Zahl ist. Da die 0 bereits als Maximum definiert wird, werden negative Werte ignoriert.
+
+\begin{lstlisting}[caption={Korrigierte max() Methode}, firstnumber=81, language=Java]
+public int max2(int[] values)
+    {
+        int maximum = 0;
+        if (values.length != 0){
+            maximum = values[0];
+        }
+        for (int value : values) {
+            if (value > maximum) {
+                maximum = value;
+            }
+        }
+        return maximum;
+    }
+\end{lstlisting}
+
+Da wir noch keine Exceptions implementieren können, belassen wir die Initialisierung von maximum mit 0. Dies ist der Wert, der zurückgegeben wird, wenn wir ein leeres Array übergeben. Bei einem nicht-leerem Array nutzen wir nun das erste Element als Vergleichswert. So stellen wir sicher, dass auch negative Elemente verglichen werden.
+
+\textbf{Methode 4 (15\%). Matrix transponieren}
+
+\begin{lstlisting}[firstnumber=98, language=Java]
+public int[][] transpose2(int[][] matrix)
+    {
+
+        for (int x = 0; x < matrix.length; ++x) {
+               for (int y = 0; y < matrix[x].length; ++y) {
+                   int temp = matrix[x][y]; 
+                   matrix[x][y] = matrix[y][x]; 
+                   matrix[y][x] = temp;          
+               } 
+
+            }    
+        return matrix;
+\end{lstlisting}        
+        
+
+\textbf{Methode 5 (25\%).}
+\begin{lstlisting}[caption={Korrigierte sort() Methode}, firstnumber=27, language=Java]
+public int[] sort(int[] array)
+    {
+        int i = array.length;
+        while (i > 1) {
+            int j = 1;
+            while (j < i) {
+                if (array[j - 1] > array[j]) {
+                    int temp = array[j];
+                    array[j] = array[j - 1];
+                    array[j - 1] = temp;
+                }
+                j++;
+            }
+            i--;
+        }
+        return array;
+    }
+    
+\end{lstlisting}
+Durch das Beheben von zwei groben Fehlern, lässt sich die Methode kompilieren. Sie hätte ohne weitere Korrekturen trotzdem nicht ihren eigentlichen Zweck erfüllt.
+Ein Compiler-Fehler entstand durch die Signatur der Methode (Zeile 43 - Die Zeilennummern beziehen sich in diesem Abschnitt auf die ursprüngliche, fehlerhafte Methode). Hier wurde als Übergabeparameter ein Integer namens "'array"' deklariert statt einem Array aus Integern. Diese Variable wird jedoch später im code als Array behandelt. Das zweite Hauptproblem (Zeile 45) war, dass man versucht hatte den Operator "'array.length"' wie einen Methodenaufruf auszuführen (welcher natürlich nicht existierte).\newline
+Die Klasse war jetzt kompilierbar, funktionierte dennoch nicht wie beabsichtigt.
+Bei der Testübergaben von Arrays wie z.B. \{4,2,1,3\}reagierte das Programm mit out of Bound exceptions. Der Rest des Programmabschnittes war mit scheinbaren Flüchtigkeitsfehlern durchsetzt. So startete der Index j mit der Zahl 0 (Zeile 47) wodurch direkt beim ersten Austauschverfahren ein Wert außerhalb des Arrays abgefragt wurde (-1), um dass zu beheben muss Der Wert von j bei jedem erneuten Durchlauf auf den Wert 1 gesetzt werden, das war auch die Ursache der Exception.\newline
+Nach weiterem durchlesen wurde einem klar, dass das Grundgerüst der Schleifen im grundlegenden in Ordnung war, jedoch sämtliche Parameter verwechselt wurden. Es wurde beispielsweise der falsche Wert unter dem Parameter temp gespeichert (Zeile 50), außerdem wurden die Indizes verwechselt, welche jeweils für die Verschiebung der While-Schleifen verantwortlich sind.\newline
+In der inneren While-Schleife wird der Array hierbei mit Hilfe des Index j durchlaufen (Zeile 54 (ersetzen von i++ durch j++)), bis j letztendlich größer-gleich i ist.
+Die äußere schleife definiert mit i den Bereich, welcher von j durchlaufen wird. Nach jedem Durchlauf von j verkürzt sich dieser Bereich um 1 (Zeile 56 (ersetze von j-{}- durch i-{}-)).
+Ist i kleiner als 1 so wird der Array sortiert zurückgegeben.
+
+
+
+
+\section{\ldots ist der Studierenden Spiel (30\%)}
+"Java lernen mit BlueJ"(D.J. Barnes,M.Kölling;4.Auflage;Pearson;2009)(Kapitel 7).
+
+\texttt{Kopplung}:
+Die Kopplung definiert den Grad der Verknüpfung welche Programmabschnitte untereinander besitzen. Angestrebt wird hierbei eine möglichst unabhängige Funktionsweise.\\
+Bei der Kommunikation zwischen Programmen wird somit versucht eine möglichst minimale Schnittstelle zu besitzen, über welche die Programme miteinander kommunizieren.
+Eine so genannte \texttt{lose Kopplung}.\newline
+
+Der Grad der Kopplung ist außerdem entscheidend, wenn es um mögliche Änderungen an einem Programm geht.\\
+Bei einer losen Kopplung oder einer gekapselten Klasse, können Änderungen meistens ohne größeren Aufwand durchgeführt werden.
+Starke Kopplungen hingegen erschweren diese, da sich Änderungen schnell auf die Funktion anderer Klassen auswirken können.\newline
+
+\texttt{Kohäsion}:
+Kohäsion beschreibt  den Grundgedanken, dass jede Klasse und jeder Programmabschnitt für eine fest definierte Aufgabe verantwortlich ist. Feste Definitionen von Aufgaben ermöglichen einen besseren Überblick über die Funktion des Quelltextes, sowie eine präzise Implementierung.\\
+Ein Gegenbeispiel aus dem Projekt wäre hierzu die Aufgabe der Paddel Klassen.
+Hätte man hier die Funktion der Klasse LeftPaddel spezifiziert, dann wäre es möglich gewesen diese eine Klasse für die Modellierung beider Paddels auf den jeweiligen Spielfeldseiten zu verwenden.\\
+Man hätte nicht nur eine Klasse einsparen können, sondern hätte sich auch einen Haufen unnötiger Kopplungen zwischen den Klassen verhindert und somit nur eine Klasse für beide Seiten des Spielfeldes einsetzten können.\\
+Ein weiterer Fakt, welcher hier zu diesem Stichpunkt zu nennen ist, ist die Verwendung der act() Methode in der Klasse Ball (Zeilen 66-93). Diese sollte man in kleinere Abschnitte aufteilen, da sie nicht nur eine spezifische Aufgabe übernimmt, sondern beinahe das gesamte Verhaltensspektrum der Klasse Ball. Es wäre im Punkt der Kohäsion also überlegenswert, diese Methode in ihre einzelnen Aufgabenbereiche zu unterteilen.
+
+\begin{lstlisting}[caption={act() Methode der Klasse Ball}, firstnumber=66, language=Java]
+public void act() 
+    {
+        if (!crushed) {
+            boolean collided = colliding;
+            colliding = getOneIntersectingObject( LeftPaddle.class ) != null || 
+                        getOneIntersectingObject (RightPaddle.class) != null;
+
+            if (colliding&&!collided) {
+                xSpeed = -xSpeed;
+                Greenfoot.playSound("tock.wav");
+            }
+
+            
+            
+            int width = getImage().getWidth();
+            int height = getImage().getHeight();
+
+            if (getX() <= width / 2 ||
+                    getX() >= getWorld().getWidth() - width / 2) {
+                crushManager.doIt(this);
+            } else if (getY() <= height / 2 ||
+            getY() == getWorld().getHeight() - height / 2) {
+                ySpeed = -ySpeed;
+            }
+
+            setLocation(getX() + xSpeed, getY() + ySpeed);
+        }
+    }
+\end{lstlisting}
+
+Das Problem wird einem deutlich, wenn man sich über die Kopplung und die eigentlichen Aufgaben der Paddels bewusst wird.\\
+Die Aufgabe der jeweiligen Klassen sind in jenem Fall praktisch identisch, trotzdem werden hier zwei Klassen implementiert welche voneinander in ihrer Funktion trotzdem abhängig sind.
+Es wäre hier schlau gewesen eine Klasse zu spezifizieren welche die gesammte Paddle-Funktionen übernimmt.\\
+\\
+\texttt{Code-Duplizierung}:
+Quelltext sollte im grundlegend so verfasst werden, dass jeder Abschnitt nicht öfters als einmal implementiert werden muss. Tauchen Abschnitte von Quelltexten mehrfach auf, ist dass oft nicht nur ein Hinweis auf eine schlechte Implementierung oder zu wenigen Überlegungen von Seiten des Programmierers, es ist außerdem ein Ärgernis wenn man später versucht diese Abschnitte zu modifizieren. Änderungen müssen in solchen Fällen meist an mehreren Stellen durchgeführt werden und kosten zusätzliche Zeit und mühen.
+Änderungen die an einer der zwei Stelle vergessen werden sind zumeist dann auch noch Quellen für Fehler.\\
+Bei der Original-Version des Pong-Spiels wird ein solcher Fall der Code-Duplizierung deutlich, wenn man sich die Weltklasse Pong ansieht (Zeilen 22-45)
+\begin{lstlisting}[caption={ Ausschnitt der Pong() Methode der Klasse Pong}, firstnumber=22, language=Java]
+        // Der Ball bekommt ein zufälliges Bild
+        String[] images =
+        {
+            "apple1.png",
+            "apple2.png",
+            "bananas.png",
+            "bread.png",
+            "cherries.png",
+            "chips-1.png",
+            "chips-2.png",
+            "flan.png",
+            "grapes.png",
+            "hamburger.png",
+            "lemon.png",
+            "muffin.png",
+            "orange.png",
+            "pear.png",
+            "pizza_cheese.png",
+            "plum.png",
+            "pumpkin.png",
+            "stawberry.png",
+            "strawberry2.png"
+        };
+        ball.setImage(images[Greenfoot.getRandomNumber(images.length)]);
+    
+\end{lstlisting}
+ein identischer Abschnitt lässt sich in der alten Klasse "Left Paddle" finden, welcher für das Erstellen eines neuen Balls verantwortlich ist.
+Es ist kein Unterschied zwischen diesen Quelltexten existent, sowohl von der Form her als auch in ihrem Verwendungszweck.\\
+Ein weiterer Fall ist die doppelte Implementierung der paddle Klassen.\\
+\\
+\texttt{Entwurf nach Zuständigkeit}:
+Ein großer Makel an dem Pong-Spiel besteht unter dem Kritikpunkt "'Entwurf nach Zuständigkeit"'.
+Entwurf nach Zuständigkeit heißt, dass jede Klasse  eine Verantwortung für einen bestimmten code oder Anwendungsbereich besitzt.
+Durch das Sortieren der Methoden nach ihrer Zuständigkeit,werden die Zusammenhänge zwischen Methoden und Klassen erst deutlich.
+Es lassen sich somit später auch Codesegmente schnell ausfindig machen, indem man sie in jenen Klassen sucht welche die jeweilige Zuständigkeit besitzen.
+Die Ordnung der Klassen beeinflusst außerdem Stark den Grad der gesamten Kopplung, wie es im Spiel deutlich zu erkennen ist.\\
+Fast alle Klassen enthalten Methoden für welche sie momentan nicht zuständig sind, so kümmert sich Die Klasse LeftPaddle beispielsweise um die Erstellung eines neuen Balls, so wie sich die Klasse dieses Balls um die Bewegung der Paddels kümmert (Zeilen 95-129).
+hierdurch entsteht eine unnötige Kopplung zwischen den Klassen, da diese jeweils untereinander auf die notwendigen Methoden zugreifen müssen.
+\begin{lstlisting}[caption={Klasse Ball Zeile 95-129}, firstnumber=95, language=Java]
+        /**
+     * Tastatursteuerung für das linke Paddle.
+     * Ein Druck auf die linke Pfeiltaste bewegt es nach oben, einer auf die 
+     * rechte nach unten.
+     * @param paddle Das Paddle, das gesteuert wird.
+     */
+    void handleLeftPaddle(LeftPaddle paddle)
+    {
+        if ( Greenfoot.isKeyDown("q") ) {
+            paddle.setRotation(-90);
+            paddle.move(1);
+        } else if(Greenfoot.isKeyDown("a") ) {
+            paddle.setRotation(90);
+            paddle.move(1);
+        }
+    }
+
+    /**
+     * Tastatursteuerung für das rechte Paddle.
+     * Ein Druck auf die obere Pfeiltaste bewegt es nach oben, einer auf die 
+     * untere nach unten.
+     * @param paddle Das Paddle, das gesteuert wird.
+     */
+    void handleRightPaddle(RightPaddle paddle)
+    {
+        if(Greenfoot.isKeyDown("up")) {
+            paddle.setRotation(-90);
+            paddle.move(1);
+            
+            
+        } else if ( Greenfoot.isKeyDown("down")) {
+            paddle.setRotation(90);
+            paddle.move(1);
+        }
+    }
+    
+\end{lstlisting}
+
+Werners Abgabe ist ein perfektes Beispiel dafür wie man jene Kriterien nicht erfüllt.
+Sein Entwurf funktioniert zwar einwandfrei, jedoch existieren hier massenhaft Verstöße gegen jedes einzelne der oben genannten Kriterien.\newline
+Der eigentliche Quelltext des Projektes ist im grundlegenden nicht aufwendig oder schwer zu verstehen, trotzdem bringt einen die unübersichtliche Aufstellung des Quelltextes schon beim Versuch der Analyse in Rage.\\
+Sollte seine Aufgabe darin bestanden haben einen verstoß gegen jene Kriterien zu erstellen, so hätte er diese Aufgabe vorbildlich bestanden.
+Sollte die Aufgabe jedoch darin bestehen die Kriterien zu erfüllen, so wäre es eine Scham gewesen einen derartigen Entwurf ein zu senden.
+
+\section{Bonusaufgabe: Macht es anders (5\%)}
+
+\end{document}
+

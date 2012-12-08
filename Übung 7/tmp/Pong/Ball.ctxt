@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=xSpeed
+comment0.target=void\ setXSpeed(int)
+comment0.text=\n\ Setze\ die\ Geschwindigkeit\ in\ y-Richtung.\n\ @param\ xSpeed\ Die\ neue\ Geschwindigkeit\ in\ x-Richtung.\n
+comment1.params=
+comment1.target=int\ getXSpeed()
+comment1.text=\n\ Liefert\ die\ Geschwindigkeit\ in\ x-Richtung.\n
+comment2.params=crushed
+comment2.target=void\ setCrushed(boolean)
+comment2.text=\n\ Setzt,\ ob\ der\ Ball\ zerquetscht\ wurde.\ Ein\ zerquetschter\ Ball\n\ bewegt\ sich\ nicht\ mehr.\n\ @param\ crushed\ Wurde\ er\ zerquetscht?\n
+comment3.params=crushManager
+comment3.target=void\ setCrushManager(LeftPaddle)
+comment3.text=\n\ Setzt\ den\ Manager,\ der\ das\ Zerquetschen\ von\ B\u00E4llen\ \u00FCbernimmt.\n\ @param\ crushManager\ Der\ neue\ Crush-Manager.\n
+comment4.params=
+comment4.target=void\ act()
+comment4.text=\n\ Diese\ Methode\ wird\ aufgerufen,\ wenn\ die\ 'Act'-\ oder\ 'Run'-Kn\u00F6pfe\n\ in\ der\ Umgebung\ gedr\u00FCckt\ werden.\ Sie\ implementiert\ die\ Bewegung\n\ des\ Balls.\ Kollidiert\ er\ mit\ einem\ Paddle\ oder\ mit\ dem\ oberen\ oder\n\ unteren\ Spielfeldrand,\ prallt\ er\ in\ die\ gespiegelte\ Richtung\ ab.\n\ Erreicht\ er\ den\ linken\ oder\ rechten\ Spielfeldrand,\ wird\ er\ zerquetscht.\n\ Danach\ bewegt\ er\ sich\ nicht\ mehr.\n
+comment5.params=paddle
+comment5.target=void\ handleLeftPaddle(LeftPaddle)
+comment5.text=\n\ Tastatursteuerung\ f\u00FCr\ das\ linke\ Paddle.\n\ Ein\ Druck\ auf\ die\ linke\ Pfeiltaste\ bewegt\ es\ nach\ oben,\ einer\ auf\ die\ \n\ rechte\ nach\ unten.\n\ @param\ paddle\ Das\ Paddle,\ das\ gesteuert\ wird.\n
+comment6.params=paddle
+comment6.target=void\ handleRightPaddle(RightPaddle)
+comment6.text=\n\ Tastatursteuerung\ f\u00FCr\ das\ rechte\ Paddle.\n\ Ein\ Druck\ auf\ die\ obere\ Pfeiltaste\ bewegt\ es\ nach\ oben,\ einer\ auf\ die\ \n\ untere\ nach\ unten.\n\ @param\ paddle\ Das\ Paddle,\ das\ gesteuert\ wird.\n
+numComments=7
