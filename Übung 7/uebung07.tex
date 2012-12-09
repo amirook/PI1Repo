@@ -1,0 +1,42 @@
+\documentclass{../pi-aufgabenblatt}
+
+\begin{document}
+
+\maketitle{7}{09.12.2012}
+
+\section{Der TutorInnen Leid\ldots (70\%)}
+
+TutorInnen haben es nicht leicht.\footnote{Die echten PI-1-Tutoren weisen darauf hin, dass dieser Zettel vollkommen unrealistisch ist, z.B. weil die herunter zu ladenen Dateien tatsächlich unter den angegebenen Namen auf dem Server liegen.} Oft sind Methoden nicht ganz richtig implementiert und die Fehler müssen gefunden und korrigiert\footnote{Tutoren testen ihre Korrekturen natürlich auch.} werden. Manchmal gibt es auch keine Dokumentation. Könnt ihr helfen?
+
+Ladet dazu das Archiv \emph{Quiz.zip} herunter, packt es aus und nutzt es als Ausgangspunkt für eure Bearbeitung.
+
+\textbf{Methode 1 (10\%).} Marla Mystery hat die folgende Methode abgegeben. Leider ist sie nicht dokumentiert. Was berechnet sie und wie tut sie das?
+
+\lstinputlisting[firstnumber=3,firstline=3,lastline=12]{Quiz/Quiz.java}
+
+\textbf{Methode 2 (10\%).} Man kann in Java auch \emph{\$} und \_ zum Benennen von Variablen und Methoden verwenden. Tut man aber nicht. Karl Krypto hat dennoch die nachfolgende Methode abgegeben. Was berechnet sie und wie?\footnote{Hierzu müsst ihr möglicherweise etwas über Operatoren herausfinden, die ihr noch nicht kennt.}
+
+\lstinputlisting[firstnumber=14,firstline=14,lastline=17]{Quiz/Quiz.java}
+
+\textbf{Methode 3 (10\%).} Karsten Knappdaneben hat die folgende Methode zur Bestimmung des Maximums der Werte eines Arrays geschrieben. Sie funktioniert auch oft. Wann nicht? Was muss geändert werden?
+
+\lstinputlisting[firstnumber=19,firstline=19,lastline=28]{Quiz/Quiz.java}
+
+\textbf{Methode 4 (15\%).} Die nachfolgende Methode von Maria Matrize soll eine übergebene Matrix (ein zweidimensionales Array mit gleicher Zeilen- und Spaltenzahl) transponieren, d.h. an der diagonalen Achse spiegeln. Dazu werden sich diagonal gegenüber liegende Elemente mit einem so genannten Dreieckstausch ausgetauscht. Überraschenderweise ist das Ergebnis der Methode identisch mit der Eingabe. Was ist falsch?
+
+\lstinputlisting[firstnumber=30,firstline=30,lastline=40]{Quiz/Quiz.java}
+
+\textbf{Methode 5 (25\%).} Ein Array kann man z.B.\ so sortieren: Das Array wird in zwei ineinander verschachtelten Schleifen durchlaufen. Die äußere Schleife läuft rückwärts über das Array und grenzt den noch zu sortierenden Teil von dem bereits sortierten Teil des Arrays ab. Die innere Schleife durchläuft den noch nicht sortierten Teil des Arrays und vertauscht immer zwei aufeinander folgende Einträge, wenn sie verkehrt herum geordnet sind. Wenn die innere Schleife zu Ende ist, ist an der oberen Grenze des noch nicht sortierten Teils des Arrays ein weiteres richtig einsortiertes Element entstanden, d.h. der unsortierte Teil des Arrays wird mit jedem Durchlauf der äußeren Schleifen um ein Element kleiner, bis das ganze Array sortiert ist. Claudius Chaos hat die nachfolgende Lösung vorgelegt, die aber noch zahlreiche Fehler enthält. Da man sie nicht einmal übersetzen kann, hat er sie auskommentiert. Könnt ihr sie korrigieren?
+
+\lstinputlisting[firstnumber=42,firstline=42,lastline=60]{Quiz/Quiz.java}
+
+\section{\ldots ist der Studierenden Spiel (30\%)}
+
+Werner Wirrwarr hat eine in jeder Hinsicht sehr farbige Implementierung des Spiels \emph{Pong} abgegeben. Ladet euch die Datei \emph{Pong.zip} aus Stud.IP herunter und erklärt daran die Begriffe \emph{Kopplung}, \emph{Kohäsion}, \emph{Code-Duplizierung} und \emph{Entwurf nach Zuständigkeiten}. Wie findet ihr Werners Abgabe in Bezug auf diese Kriterien? Habt ihr noch weitere Kritik an seinem Code? Was würdet ihr anders machen?
+
+\enlargethispage{5mm}
+\section{Bonusaufgabe: Macht es anders (5\%)}
+
+Stellt Werners Abgabe bei gleicher Funktionalität so um, dass sie den Kriterien gut entworfener und geschriebener Software entspricht. Nutzt \emph{Pong} zur Abgabe und kopiert auch eure Dateien \emph{Quiz.java} und \emph{QuizWorld.java} mit hinein.
+
+\end{document}

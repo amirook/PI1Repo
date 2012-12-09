@@ -45,6 +45,7 @@ mit b = $\frac{i}{a_n}$ und $a_n = \frac{a_{n-1}+b_{n-1}}{2}$ berechnet.
 Wenn das Abbruchkriterium a - b $\leq$ 1 erfüllt ist, wird der Wert der letzten Berechnung von $\frac{a_n + b_n}{2}$, der der ganzzahligen Näherung der Wurzel von i entspricht, zurückgegeben.
 Da die Methode jedoch offenbar nicht weiß, dass es keine negativen Quadratzahlen gibt, berechnet sie allerdings natürlich auch Werte für eingebene negative Zahlen.
 
+\newpage
 
 \textbf{Methode 2 (10\%). Fakult"at } 
 
@@ -57,9 +58,8 @@ public int $(int _)
 Teilen wir zunächst das return Statement in verständliche Abschnitte. Der Ausdruck \texttt{\_ == \_ + \_} wird auf true oder false getestet. Da nur die 0 die Summe einer Addition mit sich selbst ist, ist dieser Ausdruck eine Abfrage ob \texttt{\_ == 0} ist.\\
 Nun wird im true Fall der Teil zwischen \texttt{?} und \texttt{:} ausgeführt und im false Fall, der Teil nach dem  \texttt{:}. Betrachten wir den true Fall: \texttt{-\~\_}. Wir wissen nun, dass unsere Zahl (der Unterstrich) in diesem Fall nur 0 sein kann. Die Tilde bildet das bitwise complement der 0, also -1. Dieses wird wiederum durch das Minus negiert, was 1 ergibt. Im true Fall wird also immer 1 zurückgegeben.\\
 Nun der false Fall: \texttt{\_ * \$(\_ - \_ / \_)} Die Methode ruft sich selber rekursiv auf und multipliziert das Ergebnis mit sich selbst vermindert um 1. Der Ausdruck des übergebenen Parameters lässt sich vereinfachen, da aufgrund der Erstausf"uhrung von Punktrechnung vor Strichrechnung die Zahl durch sich selbst geteilt 1 ergibt: \texttt{\$(\_ - 1)}\\
-\\ Nun haben wir die Methode in ihre Einzelheiten zerlegt und können sie jetzt eine leserlichere Form bringen. Dadurch ist zu erkennen, dass die Methode die Fakultät einer Zahl berechnet, denn unsere Zahl wird so lange mit sich selbst -1 multipliziert bis 0 und damit die Abbruchbedingung erreicht ist.
+\\ Nun haben wir die Methode in ihre Einzelheiten zerlegt und können sie jetzt eine leserlichere Form bringen. Dadurch ist zu erkennen, dass die Methode die Fakultät einer Zahl berechnet, denn unsere Zahl wird so lange mit sich selbst -1 multipliziert bis die Abbruchbedingung \texttt{number == 0} erreicht ist.
 
-\texttt{number == 0} eintritt.
 
 \begin{lstlisting}[caption={Methode factorial()}, firstnumber=65, language=Java]
 public int factorial(int number)
@@ -98,25 +98,35 @@ Da wir noch keine Exceptions implementieren können, belassen wir die Initialisi
 
 \textbf{Methode 4 (15\%). Matrix transponieren}
 
-\begin{lstlisting}[firstnumber=98, language=Java]
-public int[][] transpose2(int[][] matrix)
+Im Prinzip wird das zweidimensionale Array in zwei ineinander geschachtelten for-Schleifen durchlaufen. Die Matrix hat also die Form:
+
+[0][0]  [0][1]
+
+[1][0]  [1][1]
+
+Dabei wird der aktuelle Wert des Arrayelements mit dem Index [x][y] in ''temp'' gespeichert und an das Element mit dem Index [y][x] übergeben, während das Element mit dem Index [x][y] den Wert des Elements mit dem Index [y][x] zugewiesen bekommt. Das heißt, im ersten Durchlauf bleibt das Element das gleiche, da x und y beide 0 sind ([0][0] ist das gleiche wie [0][0]). Für das Element mit dem Index [1][1], also y=1 und x=1 gilt dies analog. Da jedoch das komplette, zweidimensionale Array durchlaufen wird, werden also zunächst im zweiten Durchlauf für x=1 und y=0 die Elemente [1][0] und [0][1] vertauscht, in Bezug auf die Matrix also wie gewünscht an der Diagonale gespiegelt, jedoch werden im nächsten Durchlauf für y=1 und x=0 die beiden Elemente erneut getauscht, diesmal [0][1] mit [1][0], sodass die Ausgangsamtrix wiederhergestellt wird. 
+
+Um dies zu verhindern dürften die beiden Elemente [1][0] und [0][1] also nur einmal vertauscht werden, z.B. indem bei einem zweidimensionalen Array die innere for-Schleife nur x$<$1 ausgeführt wird (also einmal für y=0 und einmal für y=1).
+
+\begin{lstlisting}[caption={\emph{transpose2()}: modifizierte transpose() Methode}, firstnumber=98, language=Java]
+    public int[][] transpose2(int[][] matrix) 
     {
+        for (int y = 0; y < matrix.length; ++y) {
+            for (int x = 0; x < matrix[y].length-1; ++x) {
+                int temp = matrix[x][y]; 
+                matrix[x][y] = matrix[y][x]; 
+                matrix[y][x] = temp;
+            } 
+            
+        }
+        return matrix; 
+    } 
+\end{lstlisting}
+      
 
-        for (int x = 0; x < matrix.length; ++x) {
-               for (int y = 0; y < matrix[x].length; ++y) {
-                   int temp = matrix[x][y]; 
-                   matrix[x][y] = matrix[y][x]; 
-                   matrix[y][x] = temp;          
-               } 
-
-            }    
-        return matrix;
-\end{lstlisting}        
-        
-
-\textbf{Methode 5 (25\%).}
-\begin{lstlisting}[caption={Korrigierte sort() Methode}, firstnumber=27, language=Java]
-public int[] sort(int[] array)
+\textbf{Methode 5 (25\%). Array sortieren}
+\begin{lstlisting}[caption={\emph{sort2()}: Korrigierte sort() Methode}, firstnumber=127, language=Java]
+public int[] sort2(int[] array)
     {
         int i = array.length;
         while (i > 1) {
@@ -151,9 +161,8 @@ Ist i kleiner als 1 so wird der Array sortiert zurückgegeben.
 "Java lernen mit BlueJ"(D.J. Barnes,M.Kölling;4.Auflage;Pearson;2009)(Kapitel 7).
 
 \texttt{Kopplung}:
-Die Kopplung definiert den Grad der Verknüpfung welche Programmabschnitte untereinander besitzen. Angestrebt wird hierbei eine möglichst unabhängige Funktionsweise.\\
-Bei der Kommunikation zwischen Programmen wird somit versucht eine möglichst minimale Schnittstelle zu besitzen, über welche die Programme miteinander kommunizieren.
-Eine so genannte \texttt{lose Kopplung}.\newline
+Die Kopplung definiert den Grad der Verknüpfung, welche Programmabschnitte untereinander besitzen. Angestrebt wird hierbei eine möglichst unabhängige Funktionsweise.\\
+Bei der Kommunikation zwischen Programmen wird somit versucht möglichst minimale Schnittstellen zu erreichen, über welche die Programme miteinander kommunizieren, eine so genannte \texttt{lose Kopplung}.\newline
 
 Der Grad der Kopplung ist außerdem entscheidend, wenn es um mögliche Änderungen an einem Programm geht.\\
 Bei einer losen Kopplung oder einer gekapselten Klasse, können Änderungen meistens ohne größeren Aufwand durchgeführt werden.
@@ -161,10 +170,10 @@ Starke Kopplungen hingegen erschweren diese, da sich Änderungen schnell auf die
 
 \texttt{Kohäsion}:
 Kohäsion beschreibt  den Grundgedanken, dass jede Klasse und jeder Programmabschnitt für eine fest definierte Aufgabe verantwortlich ist. Feste Definitionen von Aufgaben ermöglichen einen besseren Überblick über die Funktion des Quelltextes, sowie eine präzise Implementierung.\\
-Ein Gegenbeispiel aus dem Projekt wäre hierzu die Aufgabe der Paddel Klassen.
-Hätte man hier die Funktion der Klasse LeftPaddel spezifiziert, dann wäre es möglich gewesen diese eine Klasse für die Modellierung beider Paddels auf den jeweiligen Spielfeldseiten zu verwenden.\\
-Man hätte nicht nur eine Klasse einsparen können, sondern hätte sich auch einen Haufen unnötiger Kopplungen zwischen den Klassen verhindert und somit nur eine Klasse für beide Seiten des Spielfeldes einsetzten können.\\
-Ein weiterer Fakt, welcher hier zu diesem Stichpunkt zu nennen ist, ist die Verwendung der act() Methode in der Klasse Ball (Zeilen 66-93). Diese sollte man in kleinere Abschnitte aufteilen, da sie nicht nur eine spezifische Aufgabe übernimmt, sondern beinahe das gesamte Verhaltensspektrum der Klasse Ball. Es wäre im Punkt der Kohäsion also überlegenswert, diese Methode in ihre einzelnen Aufgabenbereiche zu unterteilen.
+Ein Gegenbeispiel hierfür aus dem Projekt wäre die Aufgabe der Paddle-Klassen.
+Hätte man hier die Funktion der Klasse ''LeftPaddel'' spezifiziert, dann wäre es möglich gewesen diese eine Klasse für die Modellierung beider Paddles auf den jeweiligen Spielfeldseiten zu verwenden.\\
+Man hätte nicht nur eine Klasse einsparen können, sondern auch einen Haufen unnötiger Kopplungen zwischen den Klassen verhindert und somit nur eine Klasse für beide Seiten des Spielfeldes einsetzen können.\\
+Ein weiterer Fakt, welcher hier zu nennen ist, ist die Verwendung der act() Methode in der Klasse Ball (Zeilen 66-93). Diese sollte man in kleinere Abschnitte aufteilen, da sie nicht nur eine spezifische Aufgabe übernimmt, sondern beinahe das gesamte Verhaltensspektrum der Klasse Ball. Es wäre in Bezug auf die Kohäsion also überlegenswert, diese Methode in ihre einzelnen Aufgabenbereiche zu unterteilen.
 
 \begin{lstlisting}[caption={act() Methode der Klasse Ball}, firstnumber=66, language=Java]
 public void act() 
@@ -197,14 +206,14 @@ public void act()
     }
 \end{lstlisting}
 
-Das Problem wird einem deutlich, wenn man sich über die Kopplung und die eigentlichen Aufgaben der Paddels bewusst wird.\\
-Die Aufgabe der jeweiligen Klassen sind in jenem Fall praktisch identisch, trotzdem werden hier zwei Klassen implementiert welche voneinander in ihrer Funktion trotzdem abhängig sind.
-Es wäre hier schlau gewesen eine Klasse zu spezifizieren welche die gesammte Paddle-Funktionen übernimmt.\\
+Das Problem wird deutlich, wenn man sich über die Kopplung und die eigentlichen Aufgaben der Paddles bewusst wird.\\
+Die Aufgabe der jeweiligen Klassen ist in jenem Fall praktisch identisch, trotzdem werden hier zwei Klassen implementiert, welche voneinander in ihrer Funktion trotzdem abhängig sind.
+Es wäre hier klug gewesen eine Klasse zu spezifizieren, welche die gesamte Paddle-Funktionalität übernimmt.\\
 \\
 \texttt{Code-Duplizierung}:
-Quelltext sollte im grundlegend so verfasst werden, dass jeder Abschnitt nicht öfters als einmal implementiert werden muss. Tauchen Abschnitte von Quelltexten mehrfach auf, ist dass oft nicht nur ein Hinweis auf eine schlechte Implementierung oder zu wenigen Überlegungen von Seiten des Programmierers, es ist außerdem ein Ärgernis wenn man später versucht diese Abschnitte zu modifizieren. Änderungen müssen in solchen Fällen meist an mehreren Stellen durchgeführt werden und kosten zusätzliche Zeit und mühen.
-Änderungen die an einer der zwei Stelle vergessen werden sind zumeist dann auch noch Quellen für Fehler.\\
-Bei der Original-Version des Pong-Spiels wird ein solcher Fall der Code-Duplizierung deutlich, wenn man sich die Weltklasse Pong ansieht (Zeilen 22-45)
+Quelltext sollte grundlegend so verfasst werden, dass jeder Abschnitt nicht öfter als einmal implementiert werden muss. Tauchen Abschnitte von Quelltexten mehrfach auf, ist dass oft nicht nur ein Hinweis auf eine schlechte Implementierung oder zu wenig Überlegung durch den Programmierer, es ist außerdem ein Ärgernis, wenn man später versucht diese Abschnitte zu modifizieren. Änderungen müssen in solchen Fällen an mehreren Stellen durchgeführt werden und kosten zusätzliche Zeit und Mühe.
+Änderungen, die an einer der entsprechenden Stellen vergessen werden, sind zumeist auch noch zusätzliche Fehlerquellen.\\
+Bei der Original-Version des Pong-Spiels wird ein solcher Fall der Code-Duplizierung deutlich, wenn man sich die Weltklasse ''Pong'' ansieht (Zeilen 22-45):
 \begin{lstlisting}[caption={ Ausschnitt der Pong() Methode der Klasse Pong}, firstnumber=22, language=Java]
         // Der Ball bekommt ein zufälliges Bild
         String[] images =
@@ -232,18 +241,18 @@ Bei der Original-Version des Pong-Spiels wird ein solcher Fall der Code-Duplizie
         ball.setImage(images[Greenfoot.getRandomNumber(images.length)]);
     
 \end{lstlisting}
-ein identischer Abschnitt lässt sich in der alten Klasse "Left Paddle" finden, welcher für das Erstellen eines neuen Balls verantwortlich ist.
-Es ist kein Unterschied zwischen diesen Quelltexten existent, sowohl von der Form her als auch in ihrem Verwendungszweck.\\
-Ein weiterer Fall ist die doppelte Implementierung der paddle Klassen.\\
+Ein identischer Abschnitt lässt sich in der alten Klasse "LeftPaddle" finden, welcher für das Erstellen eines neuen Balls verantwortlich ist.
+Es gibt keinen Unterschied zwischen beiden Quelltexten, sowohl in Bezug auf die Form als auch hinsichtlich ihres Verwendungszwecks.\\
+Ein weiterer Fall ist die doppelte Implementierung der Paddle-Klassen.\\
 \\
 \texttt{Entwurf nach Zuständigkeit}:
-Ein großer Makel an dem Pong-Spiel besteht unter dem Kritikpunkt "'Entwurf nach Zuständigkeit"'.
-Entwurf nach Zuständigkeit heißt, dass jede Klasse  eine Verantwortung für einen bestimmten code oder Anwendungsbereich besitzt.
-Durch das Sortieren der Methoden nach ihrer Zuständigkeit,werden die Zusammenhänge zwischen Methoden und Klassen erst deutlich.
-Es lassen sich somit später auch Codesegmente schnell ausfindig machen, indem man sie in jenen Klassen sucht welche die jeweilige Zuständigkeit besitzen.
-Die Ordnung der Klassen beeinflusst außerdem Stark den Grad der gesamten Kopplung, wie es im Spiel deutlich zu erkennen ist.\\
-Fast alle Klassen enthalten Methoden für welche sie momentan nicht zuständig sind, so kümmert sich Die Klasse LeftPaddle beispielsweise um die Erstellung eines neuen Balls, so wie sich die Klasse dieses Balls um die Bewegung der Paddels kümmert (Zeilen 95-129).
-hierdurch entsteht eine unnötige Kopplung zwischen den Klassen, da diese jeweils untereinander auf die notwendigen Methoden zugreifen müssen.
+Ein großer Makel des Pong-Spiels besteht außerdem hinsichtlich des Kriteriums ''Entwurf nach Zuständigkeit''. Entwurf nach Zuständigkeit heißt, dass jede Klasse  eine Verantwortung für einen bestimmten Code oder Anwendungsbereich besitzt.
+Durch das Sortieren der Methoden nach ihrer Zuständigkeit werden die Zusammenhänge zwischen Methoden und Klassen deutlich.
+Es lassen sich so später auch schneller Codesegmente ausfindig machen, indem man sie in jenen Klassen sucht, welche die jeweilige Zuständigkeit besitzen.
+Die Ordnung der Klassen beeinflusst außerdem stark den Grad der gesamten Kopplung, wie dies hier im Spiel deutlich zu erkennen ist.\\
+Fast alle Klassen enthalten Methoden für welche sie momentan nicht zuständig sind, so kümmert sich Die Klasse ''LeftPaddle'' um die Erstellung eines neuen Balls, so wie sich die Klasse ''Ball'' um die Bewegung der Paddles kümmert (Zeilen 95-129).
+Hierdurch entsteht eine unnötige Kopplung zwischen den Klassen, da diese jeweils untereinander auf die notwendigen Methoden zugreifen müssen.
+\newpage
 \begin{lstlisting}[caption={Klasse Ball Zeile 95-129}, firstnumber=95, language=Java]
         /**
      * Tastatursteuerung für das linke Paddle.
@@ -283,24 +292,24 @@ hierdurch entsteht eine unnötige Kopplung zwischen den Klassen, da diese jeweil
     
 \end{lstlisting}
 
-Werners Abgabe ist ein perfektes Beispiel dafür wie man jene Kriterien nicht erfüllt.
-Sein Entwurf funktioniert zwar einwandfrei, jedoch existieren hier massenhaft Verstöße gegen jedes einzelne der oben genannten Kriterien.\newline
-Der eigentliche Quelltext des Projektes ist im grundlegenden nicht aufwendig oder schwer zu verstehen, trotzdem bringt einen die unübersichtliche Aufstellung des Quelltextes schon beim Versuch der Analyse in Rage.\\
-Sollte seine Aufgabe darin bestanden haben einen verstoß gegen jene Kriterien zu erstellen, so hätte er diese Aufgabe vorbildlich bestanden.
-Sollte die Aufgabe jedoch darin bestehen die Kriterien zu erfüllen, so wäre es eine Scham gewesen einen derartigen Entwurf ein zu senden.
+Insgesamt ist Werners Abgabe ein perfektes Beispiel dafür wie man jene Kriterien nicht erfüllt.
+Sein Entwurf funktioniert zwar einwandfrei, jedoch reihen sich hier massenhaft Verstöße gegen jedes einzelne der oben genannten Kriterien aneinander.\newline
+Der eigentliche Quelltext des Projektes ist im Grunde nicht aufwendig oder schwer zu verstehen, trotzdem gerät man durch die unübersichtliche Aufstellung des Quelltextes schon beim Versuch der Analyse in Rage.\\
+Wäre seine Aufgabe gewesen einen Verstoß gegen jene Kriterien zu entwerfen, so hätte er diese Aufgabe vorbildlich erfüllt.
+Hätte die Aufgabe jedoch darin bestanden die Kriterien zu erfüllen, so wäre es eine Scham gewesen einen derartigen Entwurf einzusenden.
 
 \section{Bonusaufgabe: Macht es anders (5\%)}
 
-Das Pong-Spiel, welches uns hier vorgelegt wurde, war ein wahres Grauen in Bezug auf den dazugehörigen Quelltext.\\
-Die Aufgabe war es nicht, grundlegende Funktion des Programms zu verändern, sondern Refactoring zu betreiben.
-Es geht beim Refactoring primär um das umbauen des Quelltextes zu einer leserlichen Form, so dass dieser später von jedem Menschen leicht verstanden und modifiziert werden kann.\\
+Die originale Version des Pong-Spiel war ein wahres Grauen hinsichtlich des dazugehörigen Quelltextes.\\
+Aufgabe war es nicht, die grundlegende Funktionalität des Programms zu verändern, sondern Refactoring zu betreiben.
+Es geht beim Refactoring primär um die Veränderung des Quelltextes zu einer möglichst leserlichen, übersichtlichen Form, so dass dieser später auch von anderen leicht verstanden und modifiziert werden kann.\\
 \\
-Während des Vorhabens waren Regelmäßig Tests notwendig, um die Funktionen des Programmes auf Dauer zu garantieren. Hierbei wurde überprüft ob das Programm seine Funktion beibehält, es ist wie erwähnt nicht die Intention diese zu verändern.\newline
+Während des Vorhabens waren regelmäßige Tests notwendig um zu gewährleisten, dass das Programm seine ursprüngliche Funktionalität in vollem Umfang beibehält.\newline
 
-Zum Beginn der Arbeiten konnte man das Programm durchaus mit einem großen Scherbenhaufen vergleichen, man wusste, dass die Splitter sich zu ganzen Flaschen zusammenfügen lassen, trotzdem hat es durch die Formatierung des Projekts große Mühe gekostet die Teile passend zu sortieren.\newline
+Zu Beginn der Arbeiten konnte man das Programm durchaus mit einem großen Scherbenhaufen vergleichen, von dem man zwar wusste, dass sich die Splitter zu ganzen Flaschen zusammenfügen lassen, trotzdem war es aufgrund der Formatierung des Projekts sehr mühsam die Teile passend zu sortieren.\newline
 
-Konzentrieren wir uns bei den ersten Umbauten zum Anfang hauptsächlich auf das Kriterium "Entwurf nach Zuständigkeit".\newline
-Wir verschieben die \texttt{doIt()} Methode der Klasse Leftpaddle in die Klasse Ball, für welche sie zuständig ist. Danach entfernen wir die Methode zum setzen des Bildes für den Bald aus der Weltklasse Pong und verschieben dafür den identischen zweiten Abschnitt aus der doIt() Methode in den Konstruktor von Ball.
+Konzentrieren wir uns bei den ersten Umbauten zunächst hauptsächlich auf das Kriterium ''Entwurf nach Zuständigkeit''.\newline
+Wir verschieben die \texttt{doIt()} Methode der Klasse ''Leftpaddle'' in die Klasse ''Ball'', welche eigentlich für sie zuständig ist. Danach entfernen wir die Methode zum Setzen des Bildes für den Ball aus der Weltklasse ''Pong'' und verschieben dafür den identischen zweiten Abschnitt aus der doIt() Methode in den Konstruktor von ''Ball''.
 \begin{lstlisting}[caption={Konstruktor von Ball}, firstnumber=17, language=Java]
 /**
      * Konstruktor von Ball. Das Bild des Balles wird zufällig aus dem
@@ -337,14 +346,14 @@ Wir verschieben die \texttt{doIt()} Methode der Klasse Leftpaddle in die Klasse 
 \end{lstlisting}
 
 Der Konstruktor ist für das Setzen eines zufälligen Bildes für den Ball verantwortlich.
-Als nächstes versetzten wir den Bewegungsmanager für die Paddles aus der Klasse Ball in die Klasse LeftPaddle. Spätestens hier wurde deutlich, dass die zweite Paddle Klasse am Kritikpunkt der Kohäsion überflüssig war.\\
-Somit konnten wir uns nun auf nur einer Paddle Klasse beschränken, welche jetzt zur Simulation beider Paddles verwendet werden kann.\\
+Als nächstes verschieben wir den Bewegungsmanager für die Paddles aus der Klasse ''Ball'' in die Klasse ''LeftPaddle''. Spätestens hier wird deutlich, dass die zweite Paddle-Klasse hinsichtlich des Kriteriums der Kohäsion überflüssig ist.\\
+Somit können wir uns auf nur eine Paddle-Klasse beschränken, welche jetzt zur Simulation beider Paddles verwendet werden kann.\\
 
-Da diese Klasse jetzt beide Funktionen übernahm, wurde es notwendig dessen Handlungsfähigkeit für die Funktion als unabhängige Paddles auszulegen.
+Da diese Klasse nun beide Funktionen übernimmt, ist es notwendig ihre Handlungsfähigkeit für die Funktion als unabhängige Paddles auszulegen.
 \\
-Das Bild der Klasse so wie die Steuerung mussten flexibel werden.
+Das Bild der Klasse so wie die Steuerung müssen flexibel sein.
 Wir entschlossen uns also die Bilder und Steuerung der jeweiligen Instanz über Parameter festzulegen. Diese sollten der jeweiligen Instanz direkt nach ihrer Erstellung übergeben werden.
-\begin{lstlisting}[caption={ausschnitt der Welt-Klasse Pong}, firstnumber=17, language=Java]
+\begin{lstlisting}[caption={Ausschnitt der Weltenklasse Pong}, firstnumber=17, language=Java]
 // Erzeuge die Spielobjekte
         // und setzt die Bilder und steuerung der Paddles
         Paddle leftPaddle = new Paddle("turtle2.png","w","s");
@@ -354,12 +363,11 @@ Wir entschlossen uns also die Bilder und Steuerung der jeweiligen Instanz über 
 \end{lstlisting}
 
 
-\begin{lstlisting}[caption={Konstruktor Paddle}, firstnumber=27, language=Java]
+\begin{lstlisting}[caption={Konstruktor Paddle}, firstnumber=24, language=Java]
 /**
      * Der Konstruktor dreht das Paddle nach oben
-     * setzt das Bild
-     * sowie die Steuerung des Paddles
-     * @param("image file", "keyup", "keydown")
+     * setzt das Bild des Paddels ein.
+     * @param image: Das Bild des Paddles. up: Taste für die Aufwärtsbewegung. down: Taste für die Abwärtsbewegung.
      */
     public Paddle(String image,String up,String down)
     {
@@ -368,12 +376,11 @@ Wir entschlossen uns also die Bilder und Steuerung der jeweiligen Instanz über 
         this.up  =up;
         this.down=down;
     }
-    
 \end{lstlisting}
 Der Konstruktor von Paddle sollte hierbei alle für die Instanz notwendigen Parameter für das Paddle übernehmen und für die spätere Verwendung abspeichern.
 
-Die jeweilige Steuerung der Instanzen wurde jetzt mit einem modifizierten Form des "'KeyboardManager"' durchgeführt, in diesem Fall in Form der Methode \texttt{paddleControl}.
-\begin{lstlisting}[caption={Methode \emph{paddleControl()} der Klasse Paddle}, firstnumber=58, language=Java]
+Die jeweilige Steuerung der Instanzen wird jetzt mit einer modifizierten Form des ''KeyboardManager'' durchgeführt, in diesem Fall in Form der Methode \texttt{paddleControl}.
+\begin{lstlisting}[caption={Methode \emph{paddleControl()} der Klasse Paddle}, firstnumber=47, language=Java]
 /**
      * Je nach Tastendruck werden die Paddles hoch oder runter bewegt
      */
@@ -390,16 +397,16 @@ Die jeweilige Steuerung der Instanzen wurde jetzt mit einem modifizierten Form d
         }
     }
 \end{lstlisting}
-Durch diese Modifikationen wurden nach und nach sämtliche Kopplungen unnötig, so waren jetzt beispielsweise die Klasse Paddle und Ball voneinander komplett unabhängig.
-Die einzige noch vorhandene Schnittstelle, war jene Übergabe der Bilder und Steuerung an die Klasse Paddle bei deren Erstellung durch die Weltenklasse Pong. (Zeilen 19-20 Pong).\newline
+Durch diese Modifikationen wurden nach und nach sämtliche Kopplungen unnötig, so sind jetzt beispielsweise die Klassen ''Paddle'' und ''Ball'' komplett voneinander unabhängig.
+Die einzige noch vorhandene Schnittstelle besteht in der Übergabe der Bilder und Steuerung an die Klasse ''Paddle'' bei deren Erstellung durch die Weltenklasse ''Pong''. (Zeilen 19-20 Pong).\newline
 
 Der letzte Feinschliff entstand nun durch eine Kapselung der aller unabhängigen Methoden,
 so wie einer Zerteilung einiger Abschnitte, welche zuvor mehr als nur eine Aufgabe übernahmen.\\
-In dem Fall zerteilten wir beispielsweise die Aufgabe der act() Methode in der Klasse Ball, so dass jetzt beispielsweise der Test für die Spielfeldgrenzen in der Methode \texttt{testForBorder()} aufzufinden ist.
+So zerteilen wir beispielsweise die Aufgaben der act() Methode in der Klasse ''Ball'', sodass jetzt beispielsweise der Test für die Spielfeldgrenzen in der Methode \texttt{testForBorder()} aufzufinden ist.
 
 \begin{lstlisting}[caption={\emph{testForBorder()} Methode in Ball}, firstnumber=123, language=Java]
 /**
-     * Prüft ob der Ball die Bildgrenze Berührt und zerquetscht den Ball falls dem so ist.
+     * Prüft, ob der Ball die Bildgrenze Berührt und zerquetscht den Ball falls dem so ist.
      */
     private void testForBorder(){
         int width = getImage().getWidth();  //Ballbreite
@@ -415,9 +422,7 @@ In dem Fall zerteilten wir beispielsweise die Aufgabe der act() Methode in der K
     }
 \end{lstlisting}
 
-Das Spiel verhält sich jetzt genau wie es bereits zu Anfang tat, dennoch ist der Quelltext jetzt übersichtlich und lesbarer.\newline
-
-Dies war auch das Ziel unseres Vorhabens, nämlich das Spiel nicht zu verändern. \newline
+Das Spiel verhält sich nun immernoch genauso wie es zu Beginn, jedoch ist der Quelltext jetzt wesentlich übersichtlicher und lesbarer.\newline
 
 Man kann das Refactoring folgendermaßen zusammenfassen:
 \begin{itemize}

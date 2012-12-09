@@ -13,11 +13,11 @@ public class Pong extends World {
     public Pong() {    
         // Erzeuge eine neue Welt mit 200x200 Zellen und einer Zellgröße von 10x10 Pixeln.
         super(600, 400, 1);
+        
         // Erzeuge die Spielobjekte
-        // und setzt die Bilder und steuerung der Paddles
-        Paddle leftPaddle = new Paddle("turtle2.png","w","s");
-        Paddle rightPaddle = new Paddle("lobster.png","up","down");
-        Ball ball = new Ball();
+        LeftPaddle leftPaddle = new LeftPaddle();
+        RightPaddle rightPaddle = new RightPaddle();
+       Ball ball = new Ball();
         
         // Der Ball bekommt ein zufälliges Bild
         String[] images =

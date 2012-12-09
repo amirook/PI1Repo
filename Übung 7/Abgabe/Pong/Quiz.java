@@ -95,23 +95,20 @@ public class Quiz extends greenfoot.Actor
     /**
      * Korrigierte Version der {@link transpose(int[][] matrix)} Methode zum Transponieren von Matrizen
      */
-    public int[][] transpose2(int[][] matrix)
-    {
-
-        for (int x = 0; x < matrix.length; ++x) {
-            printMatrix(matrix); //Konsolenausgabe zum Debuggen
-            for (int y = 0; y < matrix[x].length; ++y) {
-                int temp = matrix[x][y]; 
-                matrix[x][y] = matrix[y][x]; 
-                matrix[y][x] = temp;          
-            } 
-
-        }    
+    public int[][] transpose2(int[][] matrix){
+        for (int y = 0; y < matrix.length; ++y) {
+            for (int x = 0; x < matrix[y].length-1; ++x) {
+                int temp = matrix[x][y];
+                matrix[x][y] = matrix[y][x];
+                matrix[y][x] = temp;
+            }
+            
+        }
         return matrix;
     }
-
+    
     /**
-     * Methode um Matrizen auf der Konsole auszugeben. Zwechs debuggen.
+     * Methode um Matrizen auf der Konsole auszugeben. Zwecks debuggen.
      */
     public void printMatrix(int[][] matrix){
         System.out.println();

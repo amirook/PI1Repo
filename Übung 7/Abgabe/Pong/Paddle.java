@@ -19,32 +19,21 @@ public class Paddle extends Actor
     * Steuerung des Paddles für die Abwärtsbewegung
     */
     String down;
-
-    /** Der Manager für die Tastatursteuerung. */
-    private Ball b;
     
 
     /**
      * Der Konstruktor dreht das Paddle nach oben
      * setzt das Bild des Paddels ein.
-     * @param("image file")
+     * @param image: Das Bild des Paddles. up: Taste für die Aufwärtsbewegung. down: Taste für die Abwärtsbewegung.
      */
-    public Paddle(String image)
+    public Paddle(String image,String up,String down)
     {
         setRotation(-90);
         setImage(image);
-    }
-
-    /** 
-     * Setzt die Tastatursteuerung.
-     * @param ("keyup","keydown")
-     */
-    public void setKeyboardControl(String up,String down)
-    {
         this.up  =up;
         this.down=down;
     }
-    
+
     /**
      * Diese Methode wird aufgerufen, wenn die 'Act'- oder 'Run'-Knöpfe
      * in der Umgebung gedrückt werden. Sie nutzt den Tastaturmanager,
