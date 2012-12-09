@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Bush()
+comment0.text=\n\ Konstruktor\ von\ Bush.\ Die\ Sounddatei\ wird\ gesetzt,\ die\ abgespielt\ wird,\ wenn\n\ Bush\ \u00FCberwunden\ wird.\n
+comment1.params=collectable
+comment1.target=boolean\ isBeaten(greenfoot.Actor)
+comment1.text=\n\ Pr\u00FCft\ ob\ das\ sich\ im\ Inventar\ befindende\ Objekt\ eine\ Instanz\ von\ Scissor\ ist.\ Falls\ ja,\ wird\ das\ Geb\u00FCsch\ von\ der\ Schere\n\ geschlagen\ und\ die\ Heldin\ kann\ passieren.\n\ \n\ @param\ collectable\ Das\ zu\ pr\u00FCfende\ Objekt.\n\ @return\ true,\ wenn\ Bush\ \u00FCberwunden\ ist.\n
+numComments=2

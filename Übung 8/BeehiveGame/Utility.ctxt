@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=flapPosX\ flapPosY\ flapWidth\ flapHeight\ world\ actor
+comment0.target=void\ setNewPosition(int,\ int,\ int,\ int,\ greenfoot.World,\ greenfoot.Actor)
+comment0.text=\n\ Setzt\ ein\ Objekt\ auf\ eine\ Position\ au\u00DFerhalb\ der\ Reichweite\ des\ Flappers.\ \ \n\ @param\ flapPosX\ Position\ des\ Flappers\ auf\ der\ X-Achse\n\ @param\ flapPosY\ Position\ des\ Flappers\ auf\ der\ Y-Achse\n\ @param\ flapWidth\ Breite\ des\ Flappers\n\ @param\ flapHeight\ H\u00F6he\ des\ Flappers\n\ @param\ world\ Referenz\ auf\ die\ aktuelle\ Welt\n\ @param\ actor\ Referenz\ auf\ den\ Actor,\ der\ neu\ possitioniert\ werden\ soll\n
+comment1.params=flapPosX\ flapWidth\ world
+comment1.target=int\ getNiceXPosition(int,\ int,\ greenfoot.World)
+comment1.text=\n\ Gibt\ eine\ Position\ auf\ der\ X-Achse\ zur\u00FCck,\ die\ au\u00DFerhalb\ des\ Flappers\ zzgl.\ dem\ definierten\ Offset\ liegt.\ \n\ Der\ rechte\ Rand\ wird\ nicht\ verwendet\ um\ Platz\ f\u00FCr\ das\ Inventar\ zu\ haben.\n\ @param\ flapPosX\ Position\ des\ Flappers\ auf\ der\ X-Achse\n\ @param\ flapWidth\ Breite\ des\ Flappers\n\ @param\ world\ Referenz\ auf\ die\ aktuelle\ Welt\n\ @return\ die\ neue\ x-Position\n
+comment2.params=flapPosY\ flapHeight\ world
+comment2.target=int\ getNiceYPosition(int,\ int,\ greenfoot.World)
+comment2.text=\n\ Gibt\ eine\ Position\ auf\ der\ Y-Achse\ zur\u00FCck,\ die\ au\u00DFerhalb\ des\ Flappers\ zzgl.\ dem\ definierten\ Offset\ liegt.\n\ Der\ rechte\ Rand\ wird\ nicht\ verwendet\ um\ Platz\ f\u00FCr\ das\ Inventar\ zu\ haben.\n\ @param\ flapPosY\ Position\ des\ Flappers\ auf\ der\ Y-Achse\n\ @param\ flapHeight\ H\u00F6he\ des\ Flappers\n\ @param\ world\ Referenz\ auf\ die\ aktuelle\ Welt\n\ @return\ die\ neue\ y-Position\n
+numComments=3

@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=collectable
+comment0.target=boolean\ isBeaten(greenfoot.Actor)
+comment0.text=\n\ Diese\ Methode\ muss\ von\ den\ Unterklassen\ \u00FCberschrieben\ werden,\ da\ sie\ jeweils\ aufgerufen\ wird,\ ohne\ zu\ wissen\ zu\ \n\ welcher\ der\ Unterklassen\ das\ jeweilige\ Objekt\ geh\u00F6rt.\ Liefert\ standardm\u00E4\u00DFig\ false\ zur\u00FCck,\ da\ alle\ abgeleiteten\n\ Objekte\ Hindernisse\ darstellen\ sollen.\n\ \n\ @param\ collectable\ Das\ zu\ pr\u00FCfende\ Objekt.\n\ @return\ Liefert\ immer\ false.\n
+numComments=1
