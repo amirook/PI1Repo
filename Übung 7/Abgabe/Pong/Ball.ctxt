@@ -1,6 +1,7 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Ball()
+comment0.text=\n\ Konstruktor\ von\ Ball.\ Das\ Bild\ des\ Balles\ wird\ zuf\u00E4llig\ aus\ dem\n\ Array\ der\ verf\u00FCgbaren\ Bilder\ gew\u00E4hlt.\n
 comment1.params=xSpeed
 comment1.target=void\ setXSpeed(int)
 comment1.text=\n\ Setze\ die\ Geschwindigkeit\ in\ y-Richtung.\n\ @param\ xSpeed\ Die\ neue\ Geschwindigkeit\ in\ x-Richtung.\n
@@ -16,4 +17,7 @@ comment4.text=\n\ Diese\ Methode\ wird\ aufgerufen,\ wenn\ die\ 'Act'-\ oder\ 'R
 comment5.params=
 comment5.target=void\ doIt()
 comment5.text=\n\ Zerquetsche\ den\ Ball\ und\ erzeuge\ einen\ neuen.\n\ Der\ neue\ Ball\ wird\ zum\ Tastaturmanager\ f\u00FCr\ beide\ Paddles.\n\ @param\ b\ Der\ Ball,\ der\ zerquetscht\ werden\ soll.\n
-numComments=6
+comment6.params=
+comment6.target=void\ testForBorder()
+comment6.text=\n\ Pr\u00FCft\ ob\ der\ Ball\ die\ Bildgrenze\ Ber\u00FChrt\ und\ zerquetscht\ den\ Ball\ falls\ dem\ so\ ist.\n
+numComments=7

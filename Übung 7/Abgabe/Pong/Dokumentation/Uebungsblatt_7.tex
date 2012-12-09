@@ -291,5 +291,144 @@ Sollte die Aufgabe jedoch darin bestehen die Kriterien zu erfüllen, so wäre es
 
 \section{Bonusaufgabe: Macht es anders (5\%)}
 
+Das Pong-Spiel, welches uns hier vorgelegt wurde, war ein wahres Grauen in Bezug auf den dazugehörigen Quelltext.\\
+Die Aufgabe war es nicht, grundlegende Funktion des Programms zu verändern, sondern Refactoring zu betreiben.
+Es geht beim Refactoring primär um das umbauen des Quelltextes zu einer leserlichen Form, so dass dieser später von jedem Menschen leicht verstanden und modifiziert werden kann.\\
+\\
+Während des Vorhabens waren Regelmäßig Tests notwendig, um die Funktionen des Programmes auf Dauer zu garantieren. Hierbei wurde überprüft ob das Programm seine Funktion beibehält, es ist wie erwähnt nicht die Intention diese zu verändern.\newline
+
+Zum Beginn der Arbeiten konnte man das Programm durchaus mit einem großen Scherbenhaufen vergleichen, man wusste, dass die Splitter sich zu ganzen Flaschen zusammenfügen lassen, trotzdem hat es durch die Formatierung des Projekts große Mühe gekostet die Teile passend zu sortieren.\newline
+
+Konzentrieren wir uns bei den ersten Umbauten zum Anfang hauptsächlich auf das Kriterium "Entwurf nach Zuständigkeit".\newline
+Wir verschieben die \texttt{doIt()} Methode der Klasse Leftpaddle in die Klasse Ball, für welche sie zuständig ist. Danach entfernen wir die Methode zum setzen des Bildes für den Bald aus der Weltklasse Pong und verschieben dafür den identischen zweiten Abschnitt aus der doIt() Methode in den Konstruktor von Ball.
+\begin{lstlisting}[caption={Konstruktor von Ball}, firstnumber=17, language=Java]
+/**
+     * Konstruktor von Ball. Das Bild des Balles wird zufällig aus dem
+     * Array der verfügbaren Bilder gewählt.
+     */
+    public Ball()
+    {
+        // Der Ball bekommt ein zufälliges Bild
+        String[] images =
+        {
+            "apple1.png",
+            "apple2.png",
+            "bananas.png",
+            "bread.png",
+            "cherries.png",
+            "chips-1.png",
+            "chips-2.png",
+            "flan.png",
+            "grapes.png",
+            "hamburger.png",
+            "lemon.png",
+            "muffin.png",
+            "orange.png",
+            "pear.png",
+            "pizza_cheese.png",
+            "plum.png",
+            "pumpkin.png",
+            "stawberry.png",
+            "strawberry2.png"
+        };
+        setImage(images[Greenfoot.getRandomNumber(images.length)]);
+    
+    }
+\end{lstlisting}
+
+Der Konstruktor ist für das Setzen eines zufälligen Bildes für den Ball verantwortlich.
+Als nächstes versetzten wir den Bewegungsmanager für die Paddles aus der Klasse Ball in die Klasse LeftPaddle. Spätestens hier wurde deutlich, dass die zweite Paddle Klasse am Kritikpunkt der Kohäsion überflüssig war.\\
+Somit konnten wir uns nun auf nur einer Paddle Klasse beschränken, welche jetzt zur Simulation beider Paddles verwendet werden kann.\\
+
+Da diese Klasse jetzt beide Funktionen übernahm, wurde es notwendig dessen Handlungsfähigkeit für die Funktion als unabhängige Paddles auszulegen.
+\\
+Das Bild der Klasse so wie die Steuerung mussten flexibel werden.
+Wir entschlossen uns also die Bilder und Steuerung der jeweiligen Instanz über Parameter festzulegen. Diese sollten der jeweiligen Instanz direkt nach ihrer Erstellung übergeben werden.
+\begin{lstlisting}[caption={ausschnitt der Welt-Klasse Pong}, firstnumber=17, language=Java]
+// Erzeuge die Spielobjekte
+        // und setzt die Bilder und steuerung der Paddles
+        Paddle leftPaddle = new Paddle("turtle2.png","w","s");
+        Paddle rightPaddle = new Paddle("lobster.png","up","down");
+        Ball ball = new Ball();
+    
+\end{lstlisting}
+
+
+\begin{lstlisting}[caption={Konstruktor Paddle}, firstnumber=27, language=Java]
+/**
+     * Der Konstruktor dreht das Paddle nach oben
+     * setzt das Bild
+     * sowie die Steuerung des Paddles
+     * @param("image file", "keyup", "keydown")
+     */
+    public Paddle(String image,String up,String down)
+    {
+        setRotation(-90);
+        setImage(image);
+        this.up  =up;
+        this.down=down;
+    }
+    
+\end{lstlisting}
+Der Konstruktor von Paddle sollte hierbei alle für die Instanz notwendigen Parameter für das Paddle übernehmen und für die spätere Verwendung abspeichern.
+
+Die jeweilige Steuerung der Instanzen wurde jetzt mit einem modifizierten Form des "'KeyboardManager"' durchgeführt, in diesem Fall in Form der Methode \texttt{paddleControl}.
+\begin{lstlisting}[caption={Methode \emph{paddleControl()} der Klasse Paddle}, firstnumber=58, language=Java]
+/**
+     * Je nach Tastendruck werden die Paddles hoch oder runter bewegt
+     */
+    public void paddleControl() 
+    {
+        if(Greenfoot.isKeyDown(this.up)) {
+            setRotation(-90);
+            move(1);
+            
+            
+        } else if ( Greenfoot.isKeyDown(this.down)) {
+            setRotation(90);
+            move(1);
+        }
+    }
+\end{lstlisting}
+Durch diese Modifikationen wurden nach und nach sämtliche Kopplungen unnötig, so waren jetzt beispielsweise die Klasse Paddle und Ball voneinander komplett unabhängig.
+Die einzige noch vorhandene Schnittstelle, war jene Übergabe der Bilder und Steuerung an die Klasse Paddle bei deren Erstellung durch die Weltenklasse Pong. (Zeilen 19-20 Pong).\newline
+
+Der letzte Feinschliff entstand nun durch eine Kapselung der aller unabhängigen Methoden,
+so wie einer Zerteilung einiger Abschnitte, welche zuvor mehr als nur eine Aufgabe übernahmen.\\
+In dem Fall zerteilten wir beispielsweise die Aufgabe der act() Methode in der Klasse Ball, so dass jetzt beispielsweise der Test für die Spielfeldgrenzen in der Methode \texttt{testForBorder()} aufzufinden ist.
+
+\begin{lstlisting}[caption={\emph{testForBorder()} Methode in Ball}, firstnumber=123, language=Java]
+/**
+     * Prüft ob der Ball die Bildgrenze Berührt und zerquetscht den Ball falls dem so ist.
+     */
+    private void testForBorder(){
+        int width = getImage().getWidth();  //Ballbreite
+        int height = getImage().getHeight();    //Ballhöhe
+        // stellt fest ob die Darstellungen des Balls die Bildgrenze berührt
+        if (getX() <= width / 2 ||  
+        getX() >= getWorld().getWidth() - width / 2) {
+            doIt();
+        } else if (getY() <= height / 2 ||
+        getY() == getWorld().getHeight() - height / 2) {
+            ySpeed = -ySpeed;
+        }
+    }
+\end{lstlisting}
+
+Das Spiel verhält sich jetzt genau wie es bereits zu Anfang tat, dennoch ist der Quelltext jetzt übersichtlich und lesbarer.\newline
+
+Dies war auch das Ziel unseres Vorhabens, nämlich das Spiel nicht zu verändern. \newline
+
+Man kann das Refactoring folgendermaßen zusammenfassen:
+\begin{itemize}
+
+
+\item Entfernen einer Klasse (Right Paddle)
+\item Sortierung aller Methoden nach deren Klassen und Funktionen
+\item Entkopplung und Kapselung fast aller Klassen und ihrer Methoden
+\item Entfernen unnötiger Methoden, welche vorher jene Kopplung verursachten
+\item Aufteilung einiger multifunktionaler Methoden.
+\end{itemize}
+
 \end{document}
 

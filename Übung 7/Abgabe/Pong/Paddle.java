@@ -10,8 +10,14 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
  */
 public class Paddle extends Actor
 {
-    /** Steuerung des Paddles*/
+    /**
+    * Steuerung des Paddles für die Aufwärtsbewegung
+    */
     String up;
+    
+    /**
+    * Steuerung des Paddles für die Abwärtsbewegung
+    */
     String down;
 
     /** Der Manager für die Tastatursteuerung. */
@@ -49,6 +55,9 @@ public class Paddle extends Actor
         paddleControl();
     }
     
+    /**
+     * Je nach Tastendruck werden die Paddles hoch oder runter bewegt
+     */
     public void paddleControl() 
     {
         if(Greenfoot.isKeyDown(this.up)) {

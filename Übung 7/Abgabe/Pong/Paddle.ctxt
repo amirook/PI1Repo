@@ -10,4 +10,5 @@ comment2.target=void\ act()
 comment2.text=\n\ Diese\ Methode\ wird\ aufgerufen,\ wenn\ die\ 'Act'-\ oder\ 'Run'-Kn\u00F6pfe\n\ in\ der\ Umgebung\ gedr\u00FCckt\ werden.\ Sie\ nutzt\ den\ Tastaturmanager,\n\ um\ das\ Paddle\ zu\ bewegen.\n
 comment3.params=
 comment3.target=void\ paddleControl()
+comment3.text=\n\ Je\ nach\ Tastendruck\ werden\ die\ Paddles\ hoch\ oder\ runter\ bewegt\n
 numComments=4

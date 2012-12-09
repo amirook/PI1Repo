@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.10.16)  7 DEC 2012 20:21
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.10.16)  9 DEC 2012 13:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -877,25 +877,89 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [6]
+Underfull \hbox (badness 10000) in paragraph at lines 294--299
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 294--299
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 300--301
+
+ []
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[7] (./Uebungsblatt_7.aux)
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 339--342
+
+ []
+
+
+Overfull \hbox (0.88481pt too wide) in paragraph at lines 343--347
+[]\OT1/cmr/m/n/10.95 Da die-se Klas-se jetzt bei-de Funk-tio-nen []ubernahm, wu
+r-de es not-wen-dig des-sen Hand-lungsf[]ahigkeit
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[8]
+Overfull \hbox (36.46623pt too wide) in paragraph at lines 375--376
+[]\OT1/cmr/m/n/10.95 Die je-wei-li-ge Steue-rung der In-stan-zen wur-de jetzt m
+it ei-nem mo-di-fi-zier-ten Form des \KeyboardManager\
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 393--395
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 418--419
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 420--421
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[10] (./Uebungsblatt_7.aux)
 Package logreq Info: Writing requests to 'Uebungsblatt_7.run.xml'.
 \openout1 = `Uebungsblatt_7.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 11590 strings out of 493488
- 178697 string characters out of 3141325
- 461992 words of memory out of 3000000
- 14732 multiletter control sequences out of 15000+200000
- 8531 words of font info for 31 fonts, out of 3000000 for 9000
+ 11603 strings out of 493488
+ 178863 string characters out of 3141325
+ 465992 words of memory out of 3000000
+ 14744 multiletter control sequences out of 15000+200000
+ 8877 words of font info for 32 fonts, out of 3000000 for 9000
  961 hyphenation exceptions out of 8191
- 44i,19n,46p,856b,1795s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,19n,46p,856b,1821s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
@@ -908,12 +972,13 @@ texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/tex
 live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/local/texl
 ive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
 ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive
-/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/
-2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on Uebungsblatt_7.pdf (7 pages, 184888 bytes).
+/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/
+2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2
+012/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on Uebungsblatt_7.pdf (10 pages, 208160 bytes).
 PDF statistics:
- 84 PDF objects out of 1000 (max. 8388607)
- 60 compressed objects within 1 object stream
+ 97 PDF objects out of 1000 (max. 8388607)
+ 69 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
