@@ -14,27 +14,7 @@ public class Comb extends Obstacle
      * Comb überwunden wird.
      */
     public Comb(){
+        super(Scissor.class);
         beatenSound = "Something.wav";
     }
-    
-    /**
-     * Prüft ob das sich im Inventar befindende Objekt eine Instanz von Schere ist. Falls ja, wird die Wabe von der 
-     * Schere
-     * geschlagen und die Heldin kann passieren.
-     * 
-     * @param collectable Das zu prüfende Objekt.
-     * @return true, wenn Comb überwunden ist.
-     */
-    public boolean isBeaten(Actor collectable)
-    {
-        if ( collectable instanceof Scissor )
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    
 }

@@ -16,15 +16,26 @@ public class Obstacle extends Actor
     public String beatenSound;
     
     /**
-     * Diese Methode muss von den Unterklassen überschrieben werden, da sie jeweils aufgerufen wird, ohne zu wissen zu 
-     * welcher der Unterklassen das jeweilige Objekt gehört. Liefert standardmäßig false zurück, da alle abgeleiteten
-     * Objekte Hindernisse darstellen sollen.
+     * 
+     */
+    protected Class isBeatenBy;
+    
+    /**
+     * 
+     */
+    public Obstacle(Class isBeatenBy){
+        this.isBeatenBy = isBeatenBy;
+    }
+    
+    /**
+     * Prüft ob das sich im Inventar befindende Objekt eine Instanz von Scissor ist. Falls ja, wird das Gebüsch von der Schere
+     * geschlagen und die Heldin kann passieren.
      * 
      * @param collectable Das zu prüfende Objekt.
-     * @return Liefert immer false.
+     * @return true, wenn Bush überwunden ist.
      */
     public boolean isBeaten(Actor collectable)
     {
-        return false;
+        return collectable.getClass() == isBeatenBy ;
     }
 }

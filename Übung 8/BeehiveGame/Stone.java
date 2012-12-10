@@ -14,25 +14,7 @@ public class Stone extends Obstacle
      * Stone überwunden wird.
      */
     public Stone(){
+        super(Hammer.class);
         beatenSound = "explosion.wav";
     }
-    
-    /**
-     * Prüft ob das sich im Inventar befindende Objekt eine Instanz von Hammer ist. 
-     * Falls ja, wird die Wand vom Hammer geschlagen und die HeldIn kann passieren.
-     * 
-     * @param collectable Das zu prüfende Objekt
-     * @return true, wenn Stone überwunden ist.
-     */
-    public boolean isBeaten(Actor collectable)
-    {
-        if ( collectable instanceof Hammer )
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }  
 }

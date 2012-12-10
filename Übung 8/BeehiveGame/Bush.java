@@ -14,26 +14,7 @@ public class Bush extends Obstacle
      * Bush überwunden wird.
      */
     public Bush(){
+        super(Scissor.class);
         beatenSound = "Song.wav";
     }
-    
-    /**
-     * Prüft ob das sich im Inventar befindende Objekt eine Instanz von Scissor ist. Falls ja, wird das Gebüsch von der Schere
-     * geschlagen und die Heldin kann passieren.
-     * 
-     * @param collectable Das zu prüfende Objekt.
-     * @return true, wenn Bush überwunden ist.
-     */
-    public boolean isBeaten(Actor collectable)
-    {
-        if ( collectable instanceof Scissor )
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    
 }

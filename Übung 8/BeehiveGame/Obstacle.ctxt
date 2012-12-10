@@ -1,5 +1,8 @@
 #BlueJ class context
-comment0.params=collectable
-comment0.target=boolean\ isBeaten(greenfoot.Actor)
-comment0.text=\n\ Diese\ Methode\ muss\ von\ den\ Unterklassen\ \u00FCberschrieben\ werden,\ da\ sie\ jeweils\ aufgerufen\ wird,\ ohne\ zu\ wissen\ zu\ \n\ welcher\ der\ Unterklassen\ das\ jeweilige\ Objekt\ geh\u00F6rt.\ Liefert\ standardm\u00E4\u00DFig\ false\ zur\u00FCck,\ da\ alle\ abgeleiteten\n\ Objekte\ Hindernisse\ darstellen\ sollen.\n\ \n\ @param\ collectable\ Das\ zu\ pr\u00FCfende\ Objekt.\n\ @return\ Liefert\ immer\ false.\n
-numComments=1
+comment0.params=isBeatenBy
+comment0.target=Obstacle(java.lang.Class)
+comment0.text=\n\ \n
+comment1.params=collectable
+comment1.target=boolean\ isBeaten(greenfoot.Actor)
+comment1.text=\n\ Pr\u00FCft\ ob\ das\ sich\ im\ Inventar\ befindende\ Objekt\ eine\ Instanz\ von\ Scissor\ ist.\ Falls\ ja,\ wird\ das\ Geb\u00FCsch\ von\ der\ Schere\n\ geschlagen\ und\ die\ Heldin\ kann\ passieren.\n\ \n\ @param\ collectable\ Das\ zu\ pr\u00FCfende\ Objekt.\n\ @return\ true,\ wenn\ Bush\ \u00FCberwunden\ ist.\n
+numComments=2
