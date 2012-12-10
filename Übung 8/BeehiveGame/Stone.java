@@ -10,8 +10,10 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
 public class Stone extends Obstacle
 {
     /**
-     * Konstruktor von Stone. Die Sounddatei wird gesetzt, die abgespielt wird, wenn
-     * Stone überwunden wird.
+     * Konstruktor von Bush. Die Klasse der Objekte, die dieses Hindernis
+     * übwerwinden können, werden dem Konstruktor der Superklasse Obstacle
+     * übergeben. Die Sounddatei wird gesetzt, die abgespielt wird, wenn
+     * das Hindernis überwunden wird.
      */
     public Stone(){
         super(Hammer.class);

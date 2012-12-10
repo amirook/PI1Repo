@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.params=isBeatenBy
 comment0.target=Obstacle(java.lang.Class)
-comment0.text=\n\ \n
+comment0.text=\n\ Konstruktor\ von\ Obstacle\ wird\ von\ der\ Subklasse\ aufgerufen.\n\ @param\ isBeatenBy\ Die\ Klasse\ des\ Objekts,\ welches\ das\ Hindernis\ \u00FCberwinden\ kann.\n
 comment1.params=collectable
 comment1.target=boolean\ isBeaten(greenfoot.Actor)
-comment1.text=\n\ Pr\u00FCft\ ob\ das\ sich\ im\ Inventar\ befindende\ Objekt\ eine\ Instanz\ von\ Scissor\ ist.\ Falls\ ja,\ wird\ das\ Geb\u00FCsch\ von\ der\ Schere\n\ geschlagen\ und\ die\ Heldin\ kann\ passieren.\n\ \n\ @param\ collectable\ Das\ zu\ pr\u00FCfende\ Objekt.\n\ @return\ true,\ wenn\ Bush\ \u00FCberwunden\ ist.\n
+comment1.text=\n\ Pr\u00FCft\ ob\ das\ sich\ im\ Inventar\ befindende\ Objekt\ eine\ Instanz\ von\ isBeatenBy\ ist.\ Falls\ ja,\ wird\ das\ Hindernis\ von\ dem\ Objekt\n\ im\ Inventar\ geschlagen\ und\ die\ Heldin\ kann\ passieren.\n\ \n\ @param\ collectable\ Das\ zu\ pr\u00FCfende\ Objekt.\n\ @return\ true,\ wenn\ Hindernis\ \u00FCberwunden\ ist.\n
 numComments=2

@@ -1,5 +1,5 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Bush()
-comment0.text=\n\ Konstruktor\ von\ Bush.\ Die\ Sounddatei\ wird\ gesetzt,\ die\ abgespielt\ wird,\ wenn\n\ Bush\ \u00FCberwunden\ wird.\n
+comment0.text=\n\ Konstruktor\ von\ Bush.\ Die\ Klasse\ der\ Objekte,\ die\ dieses\ Hindernis\n\ \u00FCbwerwinden\ k\u00F6nnen,\ werden\ dem\ Konstruktor\ der\ Superklasse\ Obstacle\n\ \u00FCbergeben.\ Die\ Sounddatei\ wird\ gesetzt,\ die\ abgespielt\ wird,\ wenn\n\ das\ Hindernis\ \u00FCberwunden\ wird.\n
 numComments=1

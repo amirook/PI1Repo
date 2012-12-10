@@ -10,8 +10,10 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
 public class Comb extends Obstacle
 {
     /**
-     * Konstruktor von Comb. Die Sounddatei wird gesetzt, die abgespielt wird, wenn
-     * Comb überwunden wird.
+     * Konstruktor von Bush. Die Klasse der Objekte, die dieses Hindernis
+     * übwerwinden können, werden dem Konstruktor der Superklasse Obstacle
+     * übergeben. Die Sounddatei wird gesetzt, die abgespielt wird, wenn
+     * das Hindernis überwunden wird.
      */
     public Comb(){
         super(Scissor.class);
