@@ -12,7 +12,7 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
  * @version 1.0.2
  * 
  */
-public class Bee extends Actor
+public class Bee extends Collider
 {    
     /**
      * Instanz der Klasse Pose, in der die Position der Biene hinterlegt wird

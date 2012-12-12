@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ act()
+comment0.text=\n\ Act\ -\ Tue\ was\ immer\ Collider\ tun\ m\u00F6chte.\ Diese\ Methode\ wird\ aufgerufen,\n\ wenn\ die\ 'Act'-\ oder\ 'Run'-Kn\u00F6pfe\ in\ der\ Umgebung\ gedr\u00FCckt\ werden.\n
+comment1.params=actorClass
+comment1.target=greenfoot.Actor\ getCollidingActor(java.lang.Class)
+comment2.params=actorClass
+comment2.target=boolean\ isColliding(java.lang.Class)
+comment3.params=actorClass
+comment3.target=boolean\ newCollision(java.lang.Class)
+numComments=4
