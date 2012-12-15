@@ -22,9 +22,8 @@ public class Honey extends Crashable
      * Der Honig ist nun das Spielziel. Bei einer Kollision mit der Biene
      * wird das Spiel beendet.
      */
-    protected void checkCollision()
+    public void handleCrash(Bee bee)
     {
-        Bee bee = (Bee) getOneIntersectingObject(Bee.class);
         if ( bee != null ) {
             WorldManager.gameOver = true;
         }

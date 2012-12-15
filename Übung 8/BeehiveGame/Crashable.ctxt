@@ -1,11 +1,5 @@
 #BlueJ class context
-comment0.params=
-comment0.target=void\ act()
-comment0.text=\n\ Act\ -\ Tue\ was\ immer\ Bug\ tun\ m\u00F6chte.\ Diese\ Methode\ wird\ aufgerufen,\n\ wenn\ die\ 'Act'-\ oder\ 'Run'-Kn\u00F6pfe\ in\ der\ Umgebung\ gedr\u00FCckt\ werden.\n
-comment1.params=
-comment1.target=void\ checkCollision()
-comment1.text=\n\ Pr\u00FCft\ ob\ das\ Objekt\ mit\ neo\ kollidiert.\ Setzt\ das\ Objekt\ in\ den\ "isCrashing"\ Zustand,\ damit\ der\ Sound\ nur\ einmal\ abgespielt\ wird.\ F\u00FChrt\ den\ Crash\ Handler\ aus.\n
-comment2.params=bee
-comment2.target=void\ handleCrash(Bee)
-comment2.text=\n\ Reagiert\ auf\ eine\ eingetretene\ Kollision.\n\ @param\ bee\ Bee,\ der\ mit\ diesem\ Objekt\ kollidiert.\n
-numComments=3
+comment0.params=bee
+comment0.target=void\ handleCrash(Bee)
+comment0.text=\n\ Reagiert\ auf\ eine\ eingetretene\ Kollision.\n\ @param\ bee\ Bee,\ der\ mit\ diesem\ Objekt\ kollidiert.\n
+numComments=1

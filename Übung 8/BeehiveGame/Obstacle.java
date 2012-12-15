@@ -4,22 +4,22 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
  * Oberklasse für alle Hindernisse. Diese Klasse vereint alle Hindernisse,
  * so dass man leichter auf ein Hindernis prüfen kann.
  * 
- * @author Beate Ruffer (Bea), Mohamadreza Khostevan (Amir), Daniel Knobloch (Knobi) 
- * @version 1.0.2
+ * @author Beate Ruffer (Bea), Mohamadreza Khostevan (Amir), Leopold Schulz-Hanke (Leo) 
+ * @version 2.0.0
  * 
  */
-public class Obstacle extends Actor
+public class Obstacle extends Crashable
 {   
     /**
      * Sound Datei, die Abgespielt wird, wenn dieses Hindernisse überwunden wurde.
      */
     public String beatenSound;
-    
+
     /**
      * Definiert durch Objekte welcher Klasse das Hindernis überwunden werden kann
      */
     protected Class isBeatenBy;
-    
+
     /**
      * Konstruktor von Obstacle wird von der Subklasse aufgerufen.
      * @param isBeatenBy Die Klasse des Objekts, welches das Hindernis überwinden kann.
@@ -27,7 +27,7 @@ public class Obstacle extends Actor
     public Obstacle(Class isBeatenBy){
         this.isBeatenBy = isBeatenBy;
     }
-    
+
     /**
      * Prüft ob das sich im Inventar befindende Objekt eine Instanz von isBeatenBy ist. Falls ja, wird das Hindernis von dem Objekt
      * im Inventar geschlagen und die Heldin kann passieren.
@@ -38,5 +38,19 @@ public class Obstacle extends Actor
     public boolean isBeaten(Actor collectable)
     {
         return collectable.getClass() == isBeatenBy ;
+    }
+
+    public void handleCrash(Bee bee){
+        if (!bee.myInventory.isEmpty() && bee.myInventory.getInventory().getClass() == isBeatenBy)
+        {
+            getWorld().removeObject(this);
+            bee.myInventory.clearInventory();
+            Greenfoot.playSound(beatenSound);
+        }
+        else
+        {
+            // Kollision mit Hindernis und kein passendes Inventarobjekt oder leeres Inventar
+            bee.pose.resetPose();
+        }
     }
 }

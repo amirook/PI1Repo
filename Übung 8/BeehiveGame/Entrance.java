@@ -8,7 +8,7 @@ import java.util.*;
  * @author Beate Ruffer (Bea), Mohamadreza Khostevan (Amir), Daniel Knobloch (Knobi)
  * @version 1.0.2
  */
-public class Entrance extends Actor
+public class Entrance extends Crashable
 {
     /**
      * Die Klasse der Welt, in die das Entrance führt.
@@ -45,23 +45,11 @@ public class Entrance extends Actor
     }
     
     /**
-     * Falls Entrance mit der Biene kollidiert wird der Entrance genutzt um
-     * Objekte in die neue Welt zu transportieren.
-     */
-    public void act() 
-    {
-        Bee bee = (Bee) getOneIntersectingObject(Bee.class);
-        if (bee != null){
-            useEntrance(bee);
-        }
-    }
-    
-    /**
      * Entrance wird genutzt um in die nächste Welt zu gelangen
      * 
      * @param bee Die Biene
      */
-    private void useEntrance(Bee bee)
+    public void handleCrash(Bee bee)
     {
         World nextWorld = WorldManager.getWorldReference(nextWorldClass);
         World currentWorld = getWorld();

@@ -12,19 +12,116 @@
 % Beginn des eigentlichen Textes
 
 \section{Alles super hier (20\%)}
+In unserem Spiel sind 2 Klassen implementiert dessen Instanzen Aufgehoben werden können: Hammer und Scissor. Sie besaßen schon die Superklasse \texttt{Collectable} seit einigen Abgaben. Auch die Klassen der Hindernisse: Bush, Stone und Comb erbten schon von der Superklasse \texttt{Obstacle}. Da wir aber in vorherigen Aufgaben mit Hilfe vom \emph{instanceof}-Operator auf ein passendes Inventar prüfen sollten, war es nicht möglich das passende Inventar als Attribut zu hinterlegen und die Methode in der Superklasse die Prüfung zu überlassen. Nun haben wir eine Objektattribut \texttt{isBeatenBy} vom Typ Class eingeführt, mit dessen Hilfe der Vergleich durchgeführt wird. Somit können wir die prüfende Methode in der Superklasse Obstacle verschieben. Dadurch haben wir 3-Fach duplizierten Code in nur eine Methode zusammengeführt.
 
+\begin{lstlisting}[caption={Klasse \emph{Obstacle}}, firstnumber=3, language=Java]
+/**
+ * Oberklasse für alle Hindernisse. Diese Klasse vereint alle Hindernisse,
+ * so dass man leichter auf ein Hindernis prüfen kann.
+ * 
+ * @author Beate Ruffer (Bea), Mohamadreza Khostevan (Amir), Leopold Schulz-Hanke (Leo) 
+ * @version 2.0.0
+ * 
+ */
+public class Obstacle extends Actor
+{   
+    /**
+     * Sound Datei, die Abgespielt wird, wenn dieses Hindernisse überwunden wurde.
+     */
+    public String beatenSound;
+    
+    /**
+     * Definiert durch Objekte welcher Klasse das Hindernis überwunden werden kann
+     */
+    protected Class isBeatenBy;
+    
+    /**
+     * Konstruktor von Obstacle wird von der Subklasse aufgerufen.
+     * @param isBeatenBy Die Klasse des Objekts, welches das Hindernis überwinden kann.
+     */
+    public Obstacle(Class isBeatenBy){
+        this.isBeatenBy = isBeatenBy;
+    }
+    
+    /**
+     * Prüft ob das sich im Inventar befindende Objekt eine Instanz von isBeatenBy ist. Falls ja, wird das Hindernis von dem Objekt
+     * im Inventar geschlagen und die Heldin kann passieren.
+     * 
+     * @param collectable Das zu prüfende Objekt.
+     * @return true, wenn Hindernis überwunden ist.
+     */
+    public boolean isBeaten(Actor collectable)
+    {
+        return collectable.getClass() == isBeatenBy ;
+    }
+}
 
+\end{lstlisting}
+
+Nun müssen die Klassen der Hindernisse, nur noch das passende Inventar (über den Konstruktor der Superklasse) und den Sound setzen.
+
+\begin{lstlisting}[caption={Konstruktor von \emph{Stone}}, firstnumber=18, language=Java]
+public Stone(){
+        super(Hammer.class);
+        beatenSound = "explosion.wav";
+    }
+\end{lstlisting}
+
+\paragraph{Tests.}Da nun mal jedes kleine Refactoring Regression-Bugs hervorbringen kann, haben wir erneut getestet. Wir haben einen Hammer in unser Inventar aufgenommen, konnten wie erwartet keinen Bush oder Comb passieren. Nur der Stone konnte überwunden werden (der richtige Sound wurde auch abgespielt). Mit der Schere im Inventar konnten wir den Stone nicht überwinden, dafür aber Comb und Bush (ebenfalls mit den richtigen Sounds).
 
 \section{Massenkarambolage (30\%)}
 \label{s:collider}
 
 \begin{enumerate}
 
-\item 
+\item
+Bla bla bla
+\begin{lstlisting}[caption={\emph{getCollidingObject(Class cls)}-Methode}, firstnumber=25, language=Java]
+/**
+     * Liefert das Objekt der Klasse cls mit dem eine Kolliosion besteht.
+     * @param cls die Klasse, nach dessen Kollision geprüft wird
+     * @return das Objekt, mit dem Kollidiert wurde
+     */
+    public Actor getCollidingObject(Class cls){
+        return getOneIntersectingObject(cls);
+    }
+\end{lstlisting}
 
-\item 
+\item
+Bla bla bla
+\begin{lstlisting}[caption={\emph{collidesWith(Class cls)}-Methode}, firstnumber=25, language=Java]
+/**
+     * Prüft ob gerade eine Kollision besteht
+     * @param cls die Klasse, nach dessen Kollision geprüft wird
+     * @return ob gerade eine Kollision mit einer Instanz der Klasse cls besteht
+     */
+    public boolean collidesWith(Class cls){
+        return getCollidingObject(cls) != null;
+    }
+\end{lstlisting}
 
-\item 
+\item
+Bla bla bla
+\begin{lstlisting}[caption={\emph{newCollisionWith(Class cls)}-Methode}, firstnumber=25, language=Java]
+//**
+     * Prüft, ob gerade eine neue Kollision mit einer Instanz
+     * der Klasse cls begonnen hat.
+     * @param cls die Klasse, nach dessen Kollision geprüft wird
+     * @return ob gerade eine neue Kollision mit einer Instanz der Klasse cls begonnen hat
+     */
+    public boolean newCollisionWith(Class cls) {
+        Actor obj =  getCollidingObject(cls);
+        if ( collidesWith(cls) ){
+            if (collisions.get(cls) == null || collisions.get(cls) != obj ){
+                collisions.put(cls, obj);
+                return true;
+            }
+        } else {
+            collisions.remove(cls);
+        }
+        return false;
+    }
+\end{lstlisting}
 
 \end{enumerate}
 

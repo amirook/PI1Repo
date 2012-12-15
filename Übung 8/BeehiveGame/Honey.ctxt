@@ -2,7 +2,7 @@
 comment0.params=
 comment0.target=Honey()
 comment0.text=\n\ Konstruktor\ initialisiert\ die\ Anfangswerte\ f\u00FCr\ die\ Sound\ Datei\ und\ dem\ Punktewert\ f\u00FCr\ Honey.\n
-comment1.params=
-comment1.target=void\ checkCollision()
+comment1.params=bee
+comment1.target=void\ handleCrash(Bee)
 comment1.text=\n\ \u00DCberscheibt\ die\ checkCollision()\ Methode\ von\ Crashable.\n\ Der\ Honig\ ist\ nun\ das\ Spielziel.\ Bei\ einer\ Kollision\ mit\ der\ Biene\n\ wird\ das\ Spiel\ beendet.\n
 numComments=2

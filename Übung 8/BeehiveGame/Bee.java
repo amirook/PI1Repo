@@ -17,12 +17,12 @@ public class Bee extends Collider
     /**
      * Instanz der Klasse Pose, in der die Position der Biene hinterlegt wird
      */
-    private Pose pose;
+    public Pose pose;
 
     /**
      * Inventar der Biene
      */
-    private Inventory myInventory;
+    public Inventory myInventory;
 
     /**
      * Das ScoreBoard der Biene
@@ -139,7 +139,8 @@ public class Bee extends Collider
             takeOrFreeCollectable();
         }
         // auf Hindernis prüfen
-        checkForObstacle();
+        checkCollisions();
+        
     }
 
     private void bufferBee()
@@ -154,32 +155,36 @@ public class Bee extends Collider
      * Objekt im Inventar hat um das Hindernis zu passieren, wird die alte Position der Biene wiederhergestellt.
      * Andernfalls wird das Inventar geleert und das Hindernis entfernt.
      */
-    private void checkForObstacle()
+    private void checkCollisions()
     {
-        Obstacle obstacle = (Obstacle) getOneIntersectingObject(Obstacle.class);
-        boolean isBeaten = false;
-        if (obstacle != null) 
+        Crashable crashable = null;
+        if (newCollisionWith(Stone.class)) 
         {
-            // Kollision mit Hindernis ist eingetreten
-            if (!myInventory.isEmpty())
-            {
-                // Kollision mit Hindernis und nicht leeres Inventar. Hindernis prüfen lassen,
-                // ob Inventarobjekt zu Hindernis passt und Hindernis passierbar ist.
-                isBeaten = obstacle.isBeaten( myInventory.getInventory());
-            }
-            if ( isBeaten ) 
-            {
-                // Kollision mit Hindernis und dazu passendes Inventarobjekt
-                getWorld().removeObject(obstacle);
-                myInventory.clearInventory();
-                Greenfoot.playSound(obstacle.beatenSound);
-            }
-            else
-            {
-                // Kollision mit Hindernis und kein passendes Inventarobjekt oder leeres Inventar
-                pose.resetPose();
-            }
-        } 
+            crashable = (Obstacle) getCollidingObject(Stone.class);
+        }
+        if (newCollisionWith(Comb.class)) 
+        {
+            crashable = (Obstacle) getCollidingObject(Comb.class);
+        }
+        if (newCollisionWith(Bush.class)) 
+        {
+            crashable = (Obstacle) getCollidingObject(Bush.class);
+        }
+        if (newCollisionWith(Flower.class)) 
+        {
+            crashable = (Flower) getCollidingObject(Flower.class);
+        }
+        if (newCollisionWith(Entrance.class)) 
+        {
+            crashable = (Entrance) getCollidingObject(Entrance.class);
+        }
+        if (newCollisionWith(Honey.class)) 
+        {
+            crashable = (Honey) getCollidingObject(Honey.class);
+        }
+        if (crashable != null){
+            crashable.handleCrash(this);
+        }
     }
 
     /**

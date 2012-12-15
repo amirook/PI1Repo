@@ -5,4 +5,6 @@ comment0.text=\n\ Konstruktor\ von\ Obstacle\ wird\ von\ der\ Subklasse\ aufgeru
 comment1.params=collectable
 comment1.target=boolean\ isBeaten(greenfoot.Actor)
 comment1.text=\n\ Pr\u00FCft\ ob\ das\ sich\ im\ Inventar\ befindende\ Objekt\ eine\ Instanz\ von\ isBeatenBy\ ist.\ Falls\ ja,\ wird\ das\ Hindernis\ von\ dem\ Objekt\n\ im\ Inventar\ geschlagen\ und\ die\ Heldin\ kann\ passieren.\n\ \n\ @param\ collectable\ Das\ zu\ pr\u00FCfende\ Objekt.\n\ @return\ true,\ wenn\ Hindernis\ \u00FCberwunden\ ist.\n
-numComments=2
+comment2.params=bee
+comment2.target=void\ handleCrash(Bee)
+numComments=3
