@@ -12,7 +12,7 @@
 % Beginn des eigentlichen Textes
 
 \section{Alles super hier (20\%)}
-In unserem Spiel sind 2 Klassen implementiert dessen Instanzen Aufgehoben werden können: Hammer und Scissor. Sie besaßen schon die Superklasse \texttt{Collectable} seit einigen Abgaben. Auch die Klassen der Hindernisse: Bush, Stone und Comb erbten schon von der Superklasse \texttt{Obstacle}. Da wir aber in vorherigen Aufgaben mit Hilfe vom \emph{instanceof}-Operator auf ein passendes Inventar prüfen sollten, war es nicht möglich das passende Inventar als Attribut zu hinterlegen und die Methode in der Superklasse die Prüfung zu überlassen. Nun haben wir eine Objektattribut \texttt{isBeatenBy} vom Typ Class eingeführt, mit dessen Hilfe der Vergleich durchgeführt wird. Somit können wir die prüfende Methode in der Superklasse Obstacle verschieben. Dadurch haben wir 3-Fach duplizierten Code in nur eine Methode zusammengeführt.
+In unserem Spiel sind 2 Klassen implementiert, deren Instanzen aufgehoben werden können: Hammer und Scissor. Sie besaßen schon die Superklasse \texttt{Collectable} seit einigen Abgaben. Auch die Klassen der Hindernisse Bush, Stone und Comb erbten schon von der Superklasse \texttt{Obstacle}. Da wir aber in vorherigen Aufgaben mit Hilfe vom \emph{instanceof}-Operator auf ein passendes Inventar prüfen sollten, war es nicht möglich das passende Inventar als Attribut zu hinterlegen und die Methode in der Superklasse die Prüfung zu überlassen. Nun haben wir ein Objektattribut \texttt{isBeatenBy} vom Typ Class eingeführt, mit dessen Hilfe der Vergleich durchgeführt wird. Somit können wir die prüfende Methode in die Superklasse Obstacle verschieben. Dadurch haben wir 3-Fach duplizierten Code in nur eine Methode zusammengeführt.
 
 \begin{lstlisting}[caption={Klasse \emph{Obstacle}}, firstnumber=3, language=Java]
 /**
@@ -26,7 +26,7 @@ In unserem Spiel sind 2 Klassen implementiert dessen Instanzen Aufgehoben werden
 public class Obstacle extends Actor
 {   
     /**
-     * Sound Datei, die Abgespielt wird, wenn dieses Hindernisse überwunden wurde.
+     * Sound Datei, die abgespielt wird, wenn diese Hindernisse überwunden wurden.
      */
     public String beatenSound;
     
@@ -80,7 +80,7 @@ Methode
 /**
      * Liefert das Objekt der Klasse cls mit dem eine Kolliosion besteht.
      * @param cls die Klasse, nach dessen Kollision geprüft wird
-     * @return das Objekt, mit dem Kollidiert wurde
+     * @return das Objekt, mit dem kollidiert wurde
      */
     public Actor getCollidingObject(Class cls){
         return getOneIntersectingObject(cls);
@@ -123,11 +123,11 @@ Methode
 
 \end{enumerate}
 
-Erneut musste einiges an Refactoring gemacht werden. Alle Klassen, mit dessen Instanzen die Biene nun kollidieren kann, erben nun von \texttt{Crashable}. Jede Subklasse von Crashable hat nun auch eine Methode \texttt{handleCrash(Bee bee)}, mit der sie auf (von der Biene registrierten) Kollisionen reagieren kann. Registriert die Biene nun eine Kollision, ruft sie den Crash Hanlder des Objektes auf, mit dem sie kollidiert. Dabei übergibt sie sich selbst als Paramter (für eventuelle Zugriffe auf das Inventar oder Scoreboard der Biene).
+Erneut musste einiges an Refactoring gemacht werden. Alle Klassen, mit dessen Instanzen die Biene nun kollidieren kann, erben nun von \texttt{Crashable}. Jede Subklasse von Crashable hat nun auch eine Methode \texttt{handleCrash(Bee bee)}, mit der sie auf (von der Biene registrierten) Kollisionen reagieren kann. Registriert die Biene nun eine Kollision, ruft sie den Crash Handler des Objektes auf, mit dem sie kollidiert. Dabei übergibt sie sich selbst als Paramter (für eventuelle Zugriffe auf das Inventar oder Scoreboard der Biene).
 
 \section{Richtig kollidieren (50\%)}
 
-Da nun alle Klassen, die mit der Biene kollidieren können, Subklassen von \texttt{Crashable} sind, somit braucht sie nicht mehr zu wissen, mit welcher Subklasse von Crashable kollidiert wird, sondern braucht nur noch dessen Crash-Handler aufzurufen.
+Da nun alle Klassen, die mit der Biene kollidieren können, Subklassen von \texttt{Crashable} sind, braucht sie nicht mehr zu wissen, mit welcher Subklasse von Crashable die Kollision stattfindet, sondern braucht nur noch dessen Crash Handler aufzurufen.
 
 \begin{lstlisting}[caption={\emph{checkCollisions()}-Methode}, firstnumber=156, language=Java]
 /**
@@ -148,7 +148,7 @@ Einzige Ausnahme dabei sind die \emph{Collectables}. Dies sind die Objekte, die 
 \begin{lstlisting}[caption={\emph{takeOrFreeCollectable()}-Methode}, firstnumber=168, language=Java]
 /**
      * Wenn ein Collectable in der Nähe und das Inventar leer ist, wird das Collectable eingesammelt.
-     * Beindet sich ein Actor im Inventar, wird dieser an der aktuellen Position der Biene in die
+     * Befindet sich ein Actor im Inventar, wird dieser an der aktuellen Position der Biene in die
      * Welt gesetzt. Andernfalls wird der Fehlerton abgespielt.
      */
     private void takeOrFreeCollectable()
@@ -164,9 +164,9 @@ Einzige Ausnahme dabei sind die \emph{Collectables}. Dies sind die Objekte, die 
     }
 \end{lstlisting}
 
-Kommen wir nun zu der Implementation der 3 Methoden zur Kollisionsprüfung.
-Im Vergleich zu Aufgabe 2, haben wir nur die erste Methode erweitert.\\
-\texttt{getCollidingObject(Class cls)} gibt uns das Objekt zurück, mit dem Tatsächlich (also nicht nur die Bounding Box) kollidiert wird.
+Kommen wir nun zur Implementierung der 3 Methoden zur Kollisionsprüfung.
+Im Vergleich zu Aufgabe 2 haben wir nur die erste Methode erweitert.\\
+\texttt{getCollidingObject(Class cls)} gibt uns das Objekt zurück, mit dem tatsächlich (also nicht nur die Bounding Box) kollidiert wird.
 
 \begin{lstlisting}[caption={\emph{getCollidingObject(Class cls)}-Methode}, firstnumber=22, language=Java]
 /**
@@ -202,7 +202,7 @@ Im Vergleich zu Aufgabe 2, haben wir nur die erste Methode erweitert.\\
     }
 \end{lstlisting}
 
-Zunächst speichern wir eine Liste mit allen Kollidierten Objekten (noch Bounding Box). Diese Liste wird durchlaufen und darin wird jeweils jedes Pixel des Bildes durchlaufen (Zeilen 31 \& 32).\\
+Zunächst speichern wir eine Liste mit allen kollidierten Objekten (noch Bounding Box). Diese Liste wird durchlaufen und darin wird jeweils jedes Pixel des Bildes durchlaufen (Zeilen 31 \& 32).\\
 Im Falle eines nicht-transparenten Pixels (Zeile 33) wird dieses Pixel in die Weltkoordinaten umgerechnet. Anhand dieser Koordinaten können wir dann die Koordinaten im kollidierendem Objekt errechnen. Doch vorher müssen wir prüfen, ob diese Koordinaten überhaupt innerhalb des kollidierten Objekts liegen. Dies geschieht mit \texttt{pixelsWithinImageBounds(Actor obj, int x, int y)}.
 
 \begin{lstlisting}[caption={\emph{pixelsWithinImageBounds(Actor obj, int x, int y)}-Methode}, firstnumber=97, language=Java]
@@ -227,7 +227,7 @@ Liegen die Koordinaten also innerhalb des kollidierenden Objekts, können die We
 \begin{lstlisting}[caption={\emph{visiblePixelAt(int xWorld, int yWorld, Actor obj)}-Methode}, firstnumber=80, language=Java]
 /**
      * Rechnet Weltkoordinaten in die Bildkoordinaten des Actors um und prüft
-     * ob dort ein Sichrbarer sichtbarer Pixel ist
+     * ob dort ein sichtbarer Pixel ist
      * @param xWorld x-Weltkoordiante
      * @param yWorld y-Weltkoordinate
      * @param obj Das Objekt in dessen Bildkoordinaten umgerechnet werden soll
