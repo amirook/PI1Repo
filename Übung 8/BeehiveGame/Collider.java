@@ -17,7 +17,7 @@ public class Collider extends Actor
     /**
      * Testmodus, der die Überschneidenden Pixel rot färbt.
      */
-    private boolean testMode = true;
+    private boolean testMode = false;
     
     /**
      * Liefert das Objekt der Klasse cls, mit dem eine Kolliosion besteht.

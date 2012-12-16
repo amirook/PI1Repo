@@ -127,18 +127,124 @@ Erneut musste einiges an Refactoring gemacht werden. Alle Klassen, mit dessen In
 
 \section{Richtig kollidieren (50\%)}
 
+Da nun alle Klassen, die mit der Biene kollidieren können, Subklassen von \texttt{Crashable} sind, somit braucht sie nicht mehr zu wissen, mit welcher Subklasse von Crashable kollidiert wird, sondern braucht nur noch dessen Crash-Handler aufzurufen.
 
+\begin{lstlisting}[caption={\emph{checkCollisions()}-Methode}, firstnumber=156, language=Java]
+/**
+     * Prüft, ob die Biene mit einem Hindernis kollidiert. Falls eine Kollision existiert, wird
+     * der Crash Handler des Objekts aufgerufen.
+     */
+    private void checkCollisions()
+    {
+        if (newCollisionWith(Crashable.class))  {
+            Crashable crashable = (Crashable) getCollidingObject(Crashable.class);
+            crashable.handleCrash(this);
+        }
+    }
+\end{lstlisting}
 
-\begin{enumerate}
+Einzige Ausnahme dabei sind die \emph{Collectables}. Dies sind die Objekte, die in das Inventar aufgenommen werden können. Da nicht mit jedem act()-Aufruf auf Kollisionen mit Collectables geprüft werden soll, sondern nur auf Tastendruck, erben Collectables nicht von Crashable (haben somit auch keinen Crash Handler). Es wird weiterhin auf Tastendruck die Methode takeOrFreeCollectable() aufgerufen. Diese nutzt aber zur Kollisionsprüfung nun unsere neuen Methoden.
 
-\item 
+\begin{lstlisting}[caption={\emph{takeOrFreeCollectable()}-Methode}, firstnumber=168, language=Java]
+/**
+     * Wenn ein Collectable in der Nähe und das Inventar leer ist, wird das Collectable eingesammelt.
+     * Beindet sich ein Actor im Inventar, wird dieser an der aktuellen Position der Biene in die
+     * Welt gesetzt. Andernfalls wird der Fehlerton abgespielt.
+     */
+    private void takeOrFreeCollectable()
+    {
+        if (newCollisionWith(Collectable.class) && myInventory.isEmpty() ){
+            Collectable collectable = (Collectable) getCollidingObject(Collectable.class);
+            myInventory.pushToInventory(collectable);
+        } else if (!myInventory.isEmpty()){
+            myInventory.removeFromInventory(this.getX(), this.getY());
+        } else {
+            Greenfoot.playSound("out.wav");
+        }
+    }
+\end{lstlisting}
 
-\item 
+Kommen wir nun zu der Implementation der 3 Methoden zur Kollisionsprüfung.
+Im Vergleich zu Aufgabe 2, haben wir nur die erste Methode erweitert.\\
+\texttt{getCollidingObject(Class cls)} gibt uns das Objekt zurück, mit dem Tatsächlich (also nicht nur die Bounding Box) kollidiert wird.
 
-\item 
+\begin{lstlisting}[caption={\emph{getCollidingObject(Class cls)}-Methode}, firstnumber=22, language=Java]
+/**
+     * Liefert das Objekt der Klasse cls, mit dem eine Kolliosion besteht.
+     * @param cls die Klasse, nach dessen Kollision geprüft wird
+     * @return das Objekt, mit dem Kollidiert wurde
+     */
+     public Actor getCollidingObject(Class cls){
+        List<Actor> objects = getIntersectingObjects(cls);
+        
+        for (Actor object : objects){
+                for (int x = 0; x < this.getImage().getWidth(); x++){
+                    for (int y = 0; y < this.getImage().getHeight(); y++){
+                        if (this.getImage().getColorAt(x, y).getAlpha() > 0){
+                            double rotation = Math.toRadians(this.getRotation());
+                            double dx = x - this.getImage().getWidth() / 2;
+                            double dy = y - this.getImage().getHeight() / 2;
+                            int xWorld = (int) (this.getX() + dx * Math.cos(rotation) - dy * Math.sin(rotation));
+                            int yWorld = (int) (this.getY() + dx * Math.sin(rotation) + dy * Math.cos(rotation));
+                            if (pixelsWithinImageBounds(object, xWorld, yWorld) && visiblePixelAt(xWorld, yWorld, object)){
+                                if (testMode){
+                                    this.getImage().setColorAt(x, y, Color.RED);
+                                } else {
+                                    return object;
+                                }
+                            }                            
+                        }
+                    }
+                }
+            
+        }
+        return null;
+    }
+\end{lstlisting}
 
-\end{enumerate}
+Zunächst speichern wir eine Liste mit allen Kollidierten Objekten (noch Bounding Box). Diese Liste wird durchlaufen und darin wird jeweils jedes Pixel des Bildes durchlaufen (Zeilen 31 \& 32).\\
+Im Falle eines nicht-transparenten Pixels (Zeile 33) wird dieses Pixel in die Weltkoordinaten umgerechnet. Anhand dieser Koordinaten können wir dann die Koordinaten im kollidierendem Objekt errechnen. Doch vorher müssen wir prüfen, ob diese Koordinaten überhaupt innerhalb des kollidierten Objekts liegen. Dies geschieht mit \texttt{pixelsWithinImageBounds(Actor obj, int x, int y)}.
 
+\begin{lstlisting}[caption={\emph{pixelsWithinImageBounds(Actor obj, int x, int y)}-Methode}, firstnumber=97, language=Java]
+/**
+     * Prüft ob ein die Koordinaten innerhalb des Bildes eines Objektes liegen
+     * @param obj Das zu Prüfende Objekt
+     * @param x X-Koordinate
+     * @param y Y-Koordinate
+     * @return true, wenn die Koordinaten innerhalb des Bildes liegen
+     */
+    private boolean pixelsWithinImageBounds(Actor obj, int x, int y){
+        int xStart = obj.getX() - obj.getImage().getWidth() / 2;
+        int xEnd = xStart + obj.getImage().getWidth();
+        int yStart = obj.getY() - obj.getImage().getHeight() / 2;
+        int yEnd = yStart + obj.getImage().getHeight();
+        return x >= xStart && x < xEnd && y >= yStart && y < yEnd;
+    }
+\end{lstlisting}
+
+Liegen die Koordinaten also innerhalb des kollidierenden Objekts, können die Weltkoordinaten in die Bildkoordinaten dieses Objekt umgerechnet werden. Dann wird geprüft, ob auch dieses Pixel nicht-transparent ist.
+
+\begin{lstlisting}[caption={\emph{visiblePixelAt(int xWorld, int yWorld, Actor obj)}-Methode}, firstnumber=80, language=Java]
+/**
+     * Rechnet Weltkoordinaten in die Bildkoordinaten des Actors um und prüft
+     * ob dort ein Sichrbarer sichtbarer Pixel ist
+     * @param xWorld x-Weltkoordiante
+     * @param yWorld y-Weltkoordinate
+     * @param obj Das Objekt in dessen Bildkoordinaten umgerechnet werden soll
+     * @return true, wenn an den Koordinsten ein Sichtbarer Pixel im Bild ist
+     */
+    private boolean visiblePixelAt(int xWorld, int yWorld, Actor obj){
+        double rotation = Math.toRadians(obj.getRotation());
+        int dx = xWorld - obj.getX();
+        int dy = yWorld - obj.getY();
+        int xInObject = (int) (obj.getImage().getWidth() / 2 + dx * Math.cos(rotation) + dy * Math.sin(rotation));    
+        int yInObject = (int) (obj.getImage().getHeight() / 2 - dx * Math.sin(rotation) + dy * Math.cos(rotation));
+        return (obj.getImage().getColorAt(xInObject, yInObject).getAlpha() > 0 );
+    }
+\end{lstlisting}
+
+Liefern pixelsWithinImageBounds() und visiblePixelAt() beide true zurück, wird das Objekt, mit dem man dann tatsächlich Kollidiert ist zurückgeliefert. Dies geschieht aber nicht im testMode. In dem Fall wird lediglich das entsprechende Pixel rot gefärbt (Listing 8 Zeile 40).\\
+Der testMode ist ein Objektattribut in Collider. Dieser kann auf Wunsch einfach auf true gesetzt werden.
 
 \end{document}
 

@@ -22,6 +22,7 @@ comment6.target=void\ processKeys()
 comment6.text=\n\ Pr\u00FCft,\ ob\ Tasten\ gedr\u00FCckt\ werden\ und\ reagiert\ entsprechend.\n
 comment7.params=
 comment7.target=void\ bufferBee()
+comment7.text=\n\ Tr\u00E4gt\ den\ aktuellen\ Zustand\ der\ Biene\ in\ den\ RingBuffer\ ein.\n
 comment8.params=
 comment8.target=void\ checkCollisions()
 comment8.text=\n\ Pr\u00FCft,\ ob\ die\ Biene\ mit\ einem\ Hindernis\ kollidiert.\ Falls\ eine\ Kollision\ existiert,\ wird\n\ der\ Crash\ Handler\ des\ Objekts\ aufgerufen.\n

@@ -142,7 +142,10 @@ public class Bee extends Collider
         checkCollisions();
 
     }
-
+    
+    /**
+     * Trägt den aktuellen Zustand der Biene in den RingBuffer ein.
+     */
     private void bufferBee()
     {
         bufferX.push(this.getX());
