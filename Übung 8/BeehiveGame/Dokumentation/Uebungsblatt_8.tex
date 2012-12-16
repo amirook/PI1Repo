@@ -246,7 +246,7 @@ Liegen die Koordinaten also innerhalb des kollidierenden Objekts, können die We
 Liefern pixelsWithinImageBounds() und visiblePixelAt() beide true zurück, wird das Objekt, mit dem dann tatsächlich eine Kollision stattgefunden hat, zurückgeliefert. Dies geschieht aber nicht im testMode. In dem Fall wird lediglich das entsprechende Pixel rot gefärbt (Listing 8 Zeile 40).\\
 Der testMode ist ein Objektattribut in Collider. Dieser kann auf Wunsch einfach auf true gesetzt werden.
 
-\section{\dots und aus dem Weg räumen}
+\paragraph{Tests.}
 Die Superklasse Collider  sowie ihre Methoden und Teilabschnitte mussten anfangs durch kleinere Testausgaben überprüft werden. Zu diesen Tests zählten beispielsweise die Systemausgaben und die Verwendung des integrierten TestModus.
 
 Um zu garantieren, dass die Collider Superklasse und ihre Kollisionserfassung nicht nur theoretisch funktionieren, wurde es notwendig diese Methode und ihre Modifikationen in die Grundfunktionen des Spielers und anderer kollisionsabhängiger Klassen zu integrieren. Vorläufig wurde hierfür die Bee Klasse modifiziert um die Methoden der Superklasse an der Positionswiederherstellung zu prüfen.
