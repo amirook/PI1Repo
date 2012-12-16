@@ -12,6 +12,6 @@ comment3.params=xWorld\ yWorld\ obj
 comment3.target=boolean\ visiblePixelAt(int,\ int,\ greenfoot.Actor)
 comment3.text=\n\ Rechnet\ Weltkoordinaten\ in\ die\ Bildkoordinaten\ des\ Actors\ um\ und\ pr\u00FCft\n\ ob\ dort\ ein\ Sichrbarer\ sichtbarer\ Pixel\ ist\n\ @param\ xWorld\ x-Weltkoordiante\n\ @param\ yWorld\ y-Weltkoordinate\n\ @param\ obj\ Das\ Objekt\ in\ dessen\ Bildkoordinaten\ umgerechnet\ werden\ soll\n\ @return\ true,\ wenn\ an\ den\ Koordinsten\ ein\ Sichtbarer\ Pixel\ im\ Bild\ ist\n
 comment4.params=obj\ x\ y
-comment4.target=boolean\ pixelsWithinImageBounds(Crashable,\ int,\ int)
+comment4.target=boolean\ pixelsWithinImageBounds(greenfoot.Actor,\ int,\ int)
 comment4.text=\n\ Pr\u00FCft\ ob\ ein\ die\ Koordinaten\ innerhalb\ des\ Bildes\ eines\ Objektes\ liegen\n\ @param\ obj\ Das\ zu\ Pr\u00FCfende\ Objekt\n\ @param\ x\ X-Koordinate\n\ @param\ y\ Y-Koordinate\n\ @return\ true,\ wenn\ die\ Koordinaten\ innerhalb\ des\ Bildes\ liegen\n
 numComments=5

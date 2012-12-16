@@ -1,5 +1,5 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
-
+import java.util.*;
 /**
  * Die Bine repräsentiert eine übliche Honigbiene der Realwelt. Die Biene
  * läst sich mittels der Kursortasten der Tastatur vor/zurück und 
@@ -140,7 +140,7 @@ public class Bee extends Collider
         }
         // auf Hindernis prüfen
         checkCollisions();
-        
+
     }
 
     private void bufferBee()
@@ -156,32 +156,8 @@ public class Bee extends Collider
      */
     private void checkCollisions()
     {
-        Crashable crashable = null;
-        if (newCollisionWith(Stone.class)) 
-        {
-            crashable = (Obstacle) getCollidingObject(Stone.class);
-        }
-        if (newCollisionWith(Comb.class)) 
-        {
-            crashable = (Obstacle) getCollidingObject(Comb.class);
-        }
-        if (newCollisionWith(Bush.class)) 
-        {
-            crashable = (Obstacle) getCollidingObject(Bush.class);
-        }
-        if (newCollisionWith(Flower.class)) 
-        {
-            crashable = (Flower) getCollidingObject(Flower.class);
-        }
-        if (newCollisionWith(Entrance.class)) 
-        {
-            crashable = (Entrance) getCollidingObject(Entrance.class);
-        }
-        if (newCollisionWith(Honey.class)) 
-        {
-            crashable = (Honey) getCollidingObject(Honey.class);
-        }
-        if (crashable != null){
+        if (newCollisionWith(Crashable.class))  {
+            Crashable crashable = (Crashable) getCollidingObject(Crashable.class);
             crashable.handleCrash(this);
         }
     }
@@ -193,16 +169,12 @@ public class Bee extends Collider
      */
     private void takeOrFreeCollectable()
     {
-        Actor collectable = (Actor) getOneIntersectingObject(Collectable.class);
-        if ( ( collectable != null) && ( myInventory.isEmpty() ) )
-        {
+        if (newCollisionWith(Collectable.class) && myInventory.isEmpty() ){
+            Collectable collectable = (Collectable) getCollidingObject(Collectable.class);
             myInventory.pushToInventory(collectable);
-        } 
-        else if (!myInventory.isEmpty() && myInventory.getInventory() instanceof Actor )
-        {
+        } else if (!myInventory.isEmpty()){
             myInventory.removeFromInventory(this.getX(), this.getY());
-        } else
-        {
+        } else {
             Greenfoot.playSound("out.wav");
         }
     }

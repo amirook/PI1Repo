@@ -25,9 +25,9 @@ public class Collider extends Actor
      * @return das Objekt, mit dem Kollidiert wurde
      */
      public Actor getCollidingObject(Class cls){
-        List<Crashable> objects = getIntersectingObjects(cls);
+        List<Actor> objects = getIntersectingObjects(cls);
         
-        for (Crashable object : objects){
+        for (Actor object : objects){
                 for (int x = 0; x < this.getImage().getWidth(); x++){
                     for (int y = 0; y < this.getImage().getHeight(); y++){
                         if (this.getImage().getColorAt(x, y).getAlpha() > 0){
@@ -101,7 +101,7 @@ public class Collider extends Actor
      * @param y Y-Koordinate
      * @return true, wenn die Koordinaten innerhalb des Bildes liegen
      */
-    private boolean pixelsWithinImageBounds(Crashable obj, int x, int y){
+    private boolean pixelsWithinImageBounds(Actor obj, int x, int y){
         int xStart = obj.getX() - obj.getImage().getWidth() / 2;
         int xEnd = xStart + obj.getImage().getWidth();
         int yStart = obj.getY() - obj.getImage().getHeight() / 2;
