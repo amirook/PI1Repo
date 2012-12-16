@@ -99,5 +99,6 @@ public class Meadow extends World
         addObject(flower3, 300, 100);
         Flower flower4 = new Flower();
         addObject(flower4, 222, 216);
+        this.setPaintOrder(Bee.class, Crashable.class);
     }
 }
