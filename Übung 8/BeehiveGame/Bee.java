@@ -151,9 +151,8 @@ public class Bee extends Collider
     }
 
     /**
-     * Prüft, ob die Biene mit einem Hindernis kollidiert. Falls eine Kollision existiert und man kein passendes
-     * Objekt im Inventar hat um das Hindernis zu passieren, wird die alte Position der Biene wiederhergestellt.
-     * Andernfalls wird das Inventar geleert und das Hindernis entfernt.
+     * Prüft, ob die Biene mit einem Hindernis kollidiert. Falls eine Kollision existiert, wird
+     * der Crash Handler des Objekts aufgerufen.
      */
     private void checkCollisions()
     {

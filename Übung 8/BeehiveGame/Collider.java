@@ -1,6 +1,6 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
 import java.util.*;
-import java.awt.*;
+import java.awt.Color;
 /**
  * Beschreiben Sie hier die Klasse Collider.
  * 
@@ -23,33 +23,33 @@ public class Collider extends Actor
         // Fügen Sie Ihren Aktions-Code hier ein.
     }
     
-//     /**
-//      * Liefert das Objekt der Klasse cls mit dem eine Kolliosion besteht.
-//      * @param cls die Klasse, nach dessen Kollision geprüft wird
-//      * @return das Objekt, mit dem Kollidiert wurde
-//      */
-//     public Actor getCollidingObject(){
-//         for (Map.Entry<Class, Actor> entry : collisions.entrySet()){
-//             Actor obj = getOneIntersectingObject(entry.getKey());
-//             if (obj != null){
-//                 for (int x = 0; x < this.getImage().getWidth(); x++){
-//                     for (int y = 0; y < this.getImage().getHeight(); y++){
-//                         if (this.getImage().getColorAt(x, y).getAlpha() > 0){
-//                             int xWorld = (int) (this.getX() + (x - this.getImage().getWidth() / 2) * Math.cos(Math.toRadians(this.getRotation())) - (y - this.getImage().getHeight() / 2) * Math.sin(Math.toRadians(this.getRotation())));
-//                             int yWorld = (int) (this.getY() + (x - this.getImage().getWidth() / 2) * Math.sin(Math.toRadians(this.getRotation())) - (y - this.getImage().getHeight() / 2) * Math.cos(Math.toRadians(this.getRotation())));
-//                             if (visiblePixelAt(xWorld, yWorld, obj)){
-//                                 return obj;
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//         return null;
-//     }
-
+    /**
+     * Liefert das Objekt der Klasse cls, mit dem eine Kolliosion besteht.
+     * @param cls die Klasse, nach dessen Kollision geprüft wird
+     * @return das Objekt, mit dem Kollidiert wurde
+     */
      public Actor getCollidingObject(Class cls){
-        return getOneIntersectingObject(cls);
+        List<Crashable> objects = getIntersectingObjects(cls);
+        
+        for (Crashable object : objects){
+            
+                for (int x = 0; x < this.getImage().getWidth(); x++){
+                    for (int y = 0; y < this.getImage().getHeight(); y++){
+                        if (this.getImage().getColorAt(x, y).getAlpha() > 0){
+                            double rotation = Math.toRadians(this.getRotation());
+                            double dx = x - this.getImage().getWidth() / 2;
+                            double dy = y - this.getImage().getHeight() / 2;
+                            int xWorld = (int) (this.getX() + dx * Math.cos(rotation) - dy * Math.sin(rotation));
+                            int yWorld = (int) (this.getY() + dx * Math.sin(rotation) + dy * Math.cos(rotation));
+                            if (visiblePixelAt(xWorld, yWorld, object)){
+                                return object;
+                            }
+                        }
+                    }
+                }
+            
+        }
+        return null;
     }
 
     /**
@@ -58,10 +58,7 @@ public class Collider extends Actor
      * @return ob gerade eine Kollision mit einer Instanz der Klasse cls besteht
      */
     public boolean collidesWith(Class cls){
-        if(getCollidingObject(cls) != null){
-            return getCollidingObject(cls).getClass() == cls;
-        }
-        return false;
+        return getCollidingObject(cls) != null;
     }
 
     /**
@@ -77,15 +74,21 @@ public class Collider extends Actor
                 collisions.put(cls, obj);
                 return true;
             }
-        } else {
-            collisions.remove(cls);
-        }
+        } 
         return false;
     }
     
-//     private boolean visiblePixelAt(int xWorld, int yWorld, Actor obj){
-//         int xInObject = (int) (obj.getImage().getWidth() / 2 + (xWorld - obj.getX()) * Math.cos(Math.toRadians(obj.getRotation())) + (yWorld - obj.getY()) * Math.sin(Math.toRadians(obj.getRotation())));    
-//         int yInObject = (int) (obj.getImage().getHeight() / 2 + (xWorld - obj.getX()) * Math.sin(Math.toRadians(obj.getRotation())) + (yWorld - obj.getY()) * Math.cos(Math.toRadians(obj.getRotation())));    
-//         return (obj.getImage().getColorAt(xInObject, yInObject).getAlpha() > 0 );
-//     }
+    private boolean visiblePixelAt(int xWorld, int yWorld, Actor obj){
+        double rotation = Math.toRadians(obj.getRotation());
+        int dx = xWorld - obj.getX();
+        int dy = yWorld - obj.getY();
+        int xInObject = (int) (obj.getImage().getWidth() / 2 + dx * Math.cos(rotation) + dy * Math.sin(rotation));    
+        int yInObject = (int) (obj.getImage().getHeight() / 2 - dx * Math.sin(rotation) + dy * Math.cos(rotation));
+        System.out.println("X-Welt:" + xWorld + "\n" +
+                            "Y-Welt:" + yWorld + "\n" +
+                            "X-Object:" + xInObject + "\n" +
+                            "Y-Object:" + yInObject + "\n" + 
+                            "Roatation:" + rotation);
+        return (obj.getImage().getColorAt(xInObject, yInObject).getAlpha() > 0 );
+    }
 }

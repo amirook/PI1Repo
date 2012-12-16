@@ -75,7 +75,7 @@ public Stone(){
 \begin{enumerate}
 
 \item
-Bla bla bla
+Methode
 \begin{lstlisting}[caption={\emph{getCollidingObject(Class cls)}-Methode}, firstnumber=25, language=Java]
 /**
      * Liefert das Objekt der Klasse cls mit dem eine Kolliosion besteht.
@@ -88,7 +88,7 @@ Bla bla bla
 \end{lstlisting}
 
 \item
-Bla bla bla
+Methode
 \begin{lstlisting}[caption={\emph{collidesWith(Class cls)}-Methode}, firstnumber=25, language=Java]
 /**
      * Prüft ob gerade eine Kollision besteht
@@ -101,31 +101,29 @@ Bla bla bla
 \end{lstlisting}
 
 \item
-Bla bla bla
+Methode
 \begin{lstlisting}[caption={\emph{newCollisionWith(Class cls)}-Methode}, firstnumber=25, language=Java]
-//**
+/**
      * Prüft, ob gerade eine neue Kollision mit einer Instanz
      * der Klasse cls begonnen hat.
      * @param cls die Klasse, nach dessen Kollision geprüft wird
      * @return ob gerade eine neue Kollision mit einer Instanz der Klasse cls begonnen hat
      */
     public boolean newCollisionWith(Class cls) {
-        Actor obj =  getCollidingObject(cls);
+        Crashable obj =  null;
         if ( collidesWith(cls) ){
             if (collisions.get(cls) == null || collisions.get(cls) != obj ){
                 collisions.put(cls, obj);
                 return true;
             }
-        } else {
-            collisions.remove(cls);
-        }
+        } 
         return false;
     }
 \end{lstlisting}
 
 \end{enumerate}
 
-
+Erneut musste einiges an Refactoring gemacht werden. Alle Klassen, mit dessen Instanzen die Biene nun kollidieren kann, erben nun von \texttt{Crashable}. Jede Subklasse von Crashable hat nun auch eine Methode \texttt{handleCrash(Bee bee)}, mit der sie auf (von der Biene registrierten) Kollisionen reagieren kann. Registriert die Biene nun eine Kollision, ruft sie den Crash Hanlder des Objektes auf, mit dem sie kollidiert. Dabei übergibt sie sich selbst als Paramter (für eventuelle Zugriffe auf das Inventar oder Scoreboard der Biene).
 
 \section{Richtig kollidieren (50\%)}
 

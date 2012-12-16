@@ -40,6 +40,10 @@ public class Obstacle extends Crashable
         return collectable.getClass() == isBeatenBy ;
     }
 
+    /**
+     * Crash Handler der Hindernisse. Wird von Bee aufgerufen, wenn eine Kollision auftritt.
+     * @param bee Die Biene übergibt sich selbst
+     */
     public void handleCrash(Bee bee){
         if (!bee.myInventory.isEmpty() && bee.myInventory.getInventory().getClass() == isBeatenBy)
         {

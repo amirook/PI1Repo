@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.10.16)  15 DEC 2012 01:33
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.10.16)  16 DEC 2012 01:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -815,10 +815,10 @@ Package logreq Info: Writing requests to 'Uebungsblatt_8.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 11553 strings out of 493488
- 178109 string characters out of 3141325
+ 11532 strings out of 493488
+ 177909 string characters out of 3141325
  469008 words of memory out of 3000000
- 14697 multiletter control sequences out of 15000+200000
+ 14676 multiletter control sequences out of 15000+200000
  8877 words of font info for 32 fonts, out of 3000000 for 9000
  961 hyphenation exceptions out of 8191
  44i,19n,46p,884b,1860s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -831,7 +831,7 @@ ocal/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/lo
 cal/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/loc
 al/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/loca
 l/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on Uebungsblatt_8.pdf (3 pages, 120461 bytes).
+Output written on Uebungsblatt_8.pdf (3 pages, 122206 bytes).
 PDF statistics:
  50 PDF objects out of 1000 (max. 8388607)
  35 compressed objects within 1 object stream
