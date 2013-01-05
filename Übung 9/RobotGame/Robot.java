@@ -43,8 +43,7 @@ public class Robot extends Collider
             Pose oldPose = new Pose(this); // Übungsblatt 3
 
             keyboardControl(); // Übungsblatt 2
-            unlockDoor(); // Übungsblatt 3 mit Bonusaufgabe
-            blowUpWall(); // Übungsblatt 3 Bonusaufgabe
+            inventory.useInventory(this); // Übungsblatt 9
 
             // Übungsblatt 3
             if (collidesWith(Obstacle.class)) {
@@ -108,33 +107,40 @@ public class Robot extends Collider
     {
         this.score = score;
     }
-
+    
     /**
-     * Testet, ob eine Tür geöffnet (entfernt) werden kann. (Übungsblatt 3)
+     * 
      */
-    private void unlockDoor()
-    {
-        if (collidesWith(Door.class) && !inventory.isEmpty() 
-                && inventory.get() instanceof Key) { // Übungsblatt 3 Bonusaufgabe
-            inventory.clear();
-            getWorld().removeObject(getCollidingObject(Door.class));
-            score.setScore(score.getScore() + 100);
-            Greenfoot.playSound("door-open.wav");
-        }
+    public Score getScore(){
+        return score;
     }
 
-    /**
-     * Testet, ob eine Wand gesprengt (entfernt) werden kann. (Übungsblatt 3 Bonusaufgabe)
-     */
-    private void blowUpWall()
-    {
-        if (collidesWith(Wall.class) && !inventory.isEmpty() && inventory.get() instanceof Bomb) {
-            inventory.clear();
-            getWorld().removeObject(getCollidingObject(Wall.class));
-            score.setScore(score.getScore() + 200);
-            Greenfoot.playSound("Explosion.wav");
-        }
-    }
+//     /**
+//      * Testet, ob eine Tür geöffnet (entfernt) werden kann. (Übungsblatt 3)
+//      */
+//     private void unlockDoor()
+//     {
+//         if (collidesWith(Door.class) && !inventory.isEmpty() 
+//                 && inventory.get() instanceof Key) { // Übungsblatt 3 Bonusaufgabe
+//             inventory.clear();
+//             getWorld().removeObject(getCollidingObject(Door.class));
+//             score.setScore(score.getScore() + 100);
+//             Greenfoot.playSound("door-open.wav");
+//         }
+//     }
+// 
+//     /**
+//      * Testet, ob eine Wand gesprengt (entfernt) werden kann. (Übungsblatt 3 Bonusaufgabe)
+//      */
+//     private void blowUpWall()
+//     {
+//         if (collidesWith(Wall.class) && !inventory.isEmpty() && inventory.get() instanceof Bomb) {
+//             inventory.clear();
+//             getWorld().removeObject(getCollidingObject(Wall.class));
+//             score.setScore(score.getScore() + 200);
+//             Greenfoot.playSound("Explosion.wav");
+//         }
+//     }
 
     /**
      * Hebt ein Objekt auf oder legt es ab, wenn die Leertaste gedrückt wird.

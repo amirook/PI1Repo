@@ -1,18 +1,18 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
 
 /**
- * Eine Bombe. Kann benutzt werden, um Wände zu sprengen. (Bonusaufgabe Übungsblatt 3)
+ * Beschreiben Sie hier die Klasse BombFire.
  * 
- * @author Thomas Röfer 
- * @version 01.11.2012
+ * @author (Ihr Name) 
+ * @version (Eine Versionsnummer oder ein Datum)
  */
-public class Bomb extends Item
+public class BombFire extends Item
 {
     /**
      * 
      */
     public boolean matches(Obstacle obstacle){   
-        return obstacle instanceof Fire;
+        return obstacle instanceof Wall;
     }
     
     /**
@@ -23,8 +23,9 @@ public class Bomb extends Item
             Obstacle obstacle = (Obstacle) robot.getCollidingObject(Obstacle.class);
             if (matches(obstacle)){
                 robot.getWorld().removeObject(obstacle);
-                Greenfoot.playSound("Bottle.aiff");
-                return new BombFire();
+                robot.getScore().setScore(robot.getScore().getScore() + 200);
+                Greenfoot.playSound("Explosion.wav");
+                return null;
             }
         }
         return this;

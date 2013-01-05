@@ -63,4 +63,18 @@ public class Inventory extends Actor
     {
         return contents == null;
     }
+    
+    /**
+     * 
+     */
+    public void useInventory(Robot robot){
+        if (!isEmpty()){
+            Item item = contents.useItem(robot);
+            if (item != null){
+                store(item);
+            } else {
+                clear();
+            }
+        }
+    }
 }

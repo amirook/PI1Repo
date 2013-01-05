@@ -6,6 +6,15 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
  * @author Thomas Röfer
  * @version 02.12.2012
  */
-public class Item extends Actor
+public abstract class Item extends Actor
 {
+    /**
+     * 
+     */
+    public abstract Item useItem(Robot robot);
+    
+    /**
+     * 
+     */
+    public abstract boolean matches(Obstacle obstacle);
 }

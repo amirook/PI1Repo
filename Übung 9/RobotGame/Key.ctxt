@@ -1,2 +1,8 @@
 #BlueJ class context
-numComments=0
+comment0.params=robot
+comment0.target=Item\ useItem(Robot)
+comment0.text=\n\ \n
+comment1.params=obstacle
+comment1.target=boolean\ matches(Obstacle)
+comment1.text=\n\ \n
+numComments=2
