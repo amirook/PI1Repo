@@ -98,5 +98,8 @@ public class Level1 extends World
         Score score = new Score();
         addObject(score, 38, 13);
         robot.setScore(score);
+        Fire fire = new Fire();
+        addObject(fire, 455, 336);
+        fire.setLocation(449, 330);
     }
 }
