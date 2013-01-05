@@ -1,7 +1,7 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
 
 /**
- * Beschreiben Sie hier die Klasse Fire.
+ * Eine Bombe im Inventar kann man mit Feuer anzünden (Übung 9)
  * 
  * @author (Ihr Name) 
  * @version (Eine Versionsnummer oder ein Datum)

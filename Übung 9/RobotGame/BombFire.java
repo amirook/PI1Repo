@@ -9,14 +9,9 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
 public class BombFire extends Item
 {
     /**
-     * 
-     */
-    public boolean matches(Obstacle obstacle){   
-        return obstacle instanceof Wall;
-    }
-    
-    /**
-     * 
+     * Methode um das Item zu nutzen
+     * @param robot Unser Roboter
+     * @return Das Item, welches das im Inventar liegende Item ersetzt
      */
     public Item useItem(Robot robot){
         if (robot.collidesWith(Obstacle.class)){
@@ -29,5 +24,14 @@ public class BombFire extends Item
             }
         }
         return this;
+    }
+    
+    /**
+     * Methode, die prüft ob das Item zum Hinderniss passt.
+     * @param obstacle Das zu prüfende Hinderniss
+     * @return true, wenn das Item zum Hinderniss passt
+     */
+    public boolean matches(Obstacle obstacle){   
+        return obstacle instanceof Wall;
     }
 }

@@ -65,7 +65,8 @@ public class Inventory extends Actor
     }
     
     /**
-     * 
+     * Benutzt das im Inventar leigende Item und ersetzt gegebenfalls das Item
+     * @param robot Der Roboter wird übergeben.
      */
     public void useInventory(Robot robot){
         if (!isEmpty()){

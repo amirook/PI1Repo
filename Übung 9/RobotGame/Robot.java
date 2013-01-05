@@ -115,33 +115,6 @@ public class Robot extends Collider
         return score;
     }
 
-//     /**
-//      * Testet, ob eine Tür geöffnet (entfernt) werden kann. (Übungsblatt 3)
-//      */
-//     private void unlockDoor()
-//     {
-//         if (collidesWith(Door.class) && !inventory.isEmpty() 
-//                 && inventory.get() instanceof Key) { // Übungsblatt 3 Bonusaufgabe
-//             inventory.clear();
-//             getWorld().removeObject(getCollidingObject(Door.class));
-//             score.setScore(score.getScore() + 100);
-//             Greenfoot.playSound("door-open.wav");
-//         }
-//     }
-// 
-//     /**
-//      * Testet, ob eine Wand gesprengt (entfernt) werden kann. (Übungsblatt 3 Bonusaufgabe)
-//      */
-//     private void blowUpWall()
-//     {
-//         if (collidesWith(Wall.class) && !inventory.isEmpty() && inventory.get() instanceof Bomb) {
-//             inventory.clear();
-//             getWorld().removeObject(getCollidingObject(Wall.class));
-//             score.setScore(score.getScore() + 200);
-//             Greenfoot.playSound("Explosion.wav");
-//         }
-//     }
-
     /**
      * Hebt ein Objekt auf oder legt es ab, wenn die Leertaste gedrückt wird.
      * Aufheben ist möglich, wenn das Inventar leer ist und ein Objekt in der
