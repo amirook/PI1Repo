@@ -1,0 +1,46 @@
+\documentclass{../pi-aufgabenblatt}
+
+\begin{document}
+
+\maketitle{9}{06.01.2013}
+
+\section{Java-Krise (30\%)}
+
+In der Wirtschaftskrise muss überall gespart werden, auch bei Java. Die Programmiersprachen-Troika hat bereits fast alle Java-Kontrollanweisungen gestrichen (\texttt{do} \ldots \texttt{while}, \texttt{for} usw., aber auch den \emph{?:}-Operator). Übrig geblieben sind nur \texttt{while} und \texttt{if-else}. Eine Anweisung will euch die Troika lassen, aber die andere müsst ihr auch noch einsparen. Zeigt, dass sich eine der beiden Anweisungen vollständig durch die andere ersetzen lässt. Diskutiert auch, warum die Ersetzung in der anderen Richtung im Allgemeinen nicht möglich ist.
+
+\section{Delegationsspiel}
+
+Die HeldIn fühlt sich überlastet, da sie sich um alles kümmern muss. Ihr wäre es lieber, wenn die Objekte um sie herum mehr unter sich ausmachen würden. 
+
+\subsection{Vorbereiten (15\%)}
+\label{s:erweitern}
+
+Daher sollt ihr die in Übungsblatt 8 eingeführte Superklasse aller aufhebbaren Gegenstände um zwei Methoden erweitern:
+
+\begin{enumerate}
+
+\item Eine Methode, die die HeldIn als Parameter bekommt und die Wirkung dieses Gegenstands auf die Welt ausführt. Die Methode liefert zurück, was diesen Gegenstand im Inventar ersetzen soll. Es gibt dafür drei Möglichkeiten: Zum einen kann sich der Gegenstand beim Aufruf der Methode selbst wieder zurückliefern, wodurch er im Inventar verbleibt. Das wird üblicherweise so sein, wenn er gerade nichts in der Welt bewirken kann. Zum zweiten kann die Methode \texttt{null} zurückliefern, wodurch der Gegenstand aus dem Inventar entfernt wird (z.B. wenn er "`verbraucht"' wurde). Drittens kann sie aber auch einen anderen Gegenstand zurückliefern, wenn dieser Gegenstand mit etwas in der Welt kombiniert wurde, z.B. könnte eine Fackel eine brennende Fackel zurückliefern, wenn sie in der Welt auf Feuer getroffen ist. Standardrückgabe dieser Methode ist der Gegenstand selbst.
+
+\item Eine Methode, die ein Hindernis als Parameter bekommt und zurückliefert, ob dieses Hindernis durch diesen Gegenstand passierbar geworden ist. Standardrückgabe der Methode ist, dass ein Hindernis weiterhin als Hindernis wirkt.
+
+\end{enumerate}
+
+Erweitert das Inventar, so dass es die beiden Methoden für die HeldIn bereitstellt. Wenn sich ein Gegenstand im Inventar befindet, wird dessen entsprechende Methode ausgeführt, ansonsten gibt es ein sinnvolles Standardverhalten, z.B. nichts zu tun. Nutzt die neuen Fähigkeiten des Inventars.
+
+\subsection{Delegieren (25\%)}
+
+Durch die beiden in \ref{s:erweitern} definierten Methoden könnt ihr nun die für Übungsblatt 3 implementierte Logik zum Anwenden von Gegenständen komplett in die Gegenstände selbst verschieben, indem ihr jeweils eine der beiden Methoden überschreibt. Erweitert euer Spiel so, dass beide Methoden benutzt werden und alle Varianten der Rückgabe Verwendung finden.
+
+\subsection{Reflektieren (10\%)}
+
+Diskutiert die gemachten Änderungen unter den Aspekten Wartbarkeit und Erweiterbarkeit. Fallen euch weitere Verbesserungen für die Struktur eures Spiels ein?
+
+\section{Buh! (20\%)}
+
+Baut ein Monster in euer Spiel ein, das sich automatisch bewegt. Seine Bewegungen sollen eine gewisse Tendenz in Richtung HeldIn haben. Berührungen mit der HeldIn sind für diese üblicherweise nicht gut\ldots
+
+\section{Bonusaufgabe: Was war das für ein Geräusch? (5\%)}
+
+Wird ein Sound abgespielt, soll sich das Monster in Richtung der Soundquelle drehen.\footnote{Falls ihr einen Sound ständig abspielt, z.B. ein Motorengeräusch, macht es vermutlich mehr Sinn, wenn das Monster diesen ignoriert, aber auf andere reagiert.}
+
+\end{document}

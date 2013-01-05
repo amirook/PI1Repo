@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=actor
+comment0.target=Pose(greenfoot.Actor)
+comment0.text=\n\ Der\ Konstruktor\ speichert\ die\ Position\ und\ Rotation\ des\ \u00FCbergebenen\n\ Actors\ ab.\n
+comment1.params=actor
+comment1.target=void\ restore(greenfoot.Actor)
+comment1.text=\n\ Setzt\ die\ Position\ und\ Rotation\ des\ \u00FCbergebenen\ Actors\ auf\ die\n\ in\ diesem\ Objekt\ gespeichern\ Werte.\n
+numComments=2

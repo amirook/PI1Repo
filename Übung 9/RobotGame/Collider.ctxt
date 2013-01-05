@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.params=clazz
+comment0.target=greenfoot.Actor\ getCollidingObject(java.lang.Class)
+comment0.text=\n\ Liefert\ das\ erste\ Objekt\ der\ \u00FCbergebenen\ Klasse\ zur\u00FCck,\ mit\ dem\ dieses\ kollidiert.\n\ @param\ clazz\ Die\ Klasse\ der\ Objekte,\ die\ auf\ Kollisionen\ getestet\ werden.\ Falls\ null,\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ wird\ mit\ allen\ Objekten\ getestet.\n\ @return\ Das\ Objekt,\ mit\ dem\ eine\ Kollision\ besteht,\ oder\ null,\ falls\ es\ keine\n\ \ \ \ \ \ \ \ \ Kollision\ gibt.\n
+comment1.params=clazz
+comment1.target=boolean\ collidesWith(java.lang.Class)
+comment1.text=\n\ Stellt\ fest,\ ob\ dieses\ Objekt\ mit\ einer\ Instanz\ der\ \u00FCbergebenen\ Klasse\ kollidiert.\n\ @param\ clazz\ Die\ Klasse\ der\ Objekte,\ die\ auf\ Kollisionen\ getestet\ werden.\ Falls\ null,\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ wird\ mit\ allen\ Objekten\ getestet.\n\ @return\ Gibt\ es\ eine\ Kollision?\n
+comment2.params=clazz
+comment2.target=boolean\ newCollisionWith(java.lang.Class)
+comment2.text=\n\ Stellt\ fest,\ ob\ gerade\ eine\ Kollision\ zwischen\ diesem\ Objekt\ und\ einer\ Instanz\ der\ \n\ \u00FCbergebenen\ Klasse\ begonnen\ hat.\n\ @param\ clazz\ Die\ Klasse\ der\ Objekte,\ die\ auf\ Kollisionen\ getestet\ werden.\ Falls\ null,\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ wird\ mit\ allen\ Objekten\ getestet.\n\ @return\ Hat\ gerade\ eine\ neue\ Kollision\ begonnen?\n
+comment3.params=other
+comment3.target=boolean\ confirmCollisionWith(greenfoot.Actor)
+comment3.text=\n\ Best\u00E4tigen\ der\ Kollision\ zwischen\ zwei\ Actoren.\ Es\ wird\ f\u00FCr\ jedes\ nicht-transparente\n\ Pixel\ im\ Bild\ dieses\ Actors\ \u00FCberpr\u00FCft,\ ob\ sich\ an\ derselben\ Stelle\ in\ der\ Welt\ im\n\ Bild\ des\ anderen\ Actors\ auch\ ein\ nicht-transparentes\ Pixel\ befindet.\ In\ dem\ Falle\ liegt\n\ eine\ Kollision\ vor.\n\ @param\ other\ Der\ andere\ Actor,\ mit\ dem\ die\ Kollision\ \u00FCberpr\u00FCft\ wird.\n\ @return\ Liegt\ tats\u00E4chlich\ eine\ Kollision\ zwischen\ den\ sichtbaren\ Teilen\ beider\ Bilder\n\ \ \ \ \ \ \ \ \ vor?\n
+comment4.params=actor\ inImage
+comment4.target=int[]\ toWorld(greenfoot.Actor,\ int[])
+comment4.text=\n\ Transformation\ der\ Pixelkoordinaten\ eines\ Actors\ in\ Weltkoordinaten.\n\ @param\ actor\ Der\ Actor,\ zu\ dem\ das\ Pixel\ geh\u00F6rt\n\ @param\ inImage\ Die\ Koordinaten\ des\ Pixels\ innerhalb\ des\ Bildes\ des\ Actors.\n\ @return\ Die\ Koordinaten\ desselben\ Pixels\ innerhalb\ der\ Welt.\n
+comment5.params=actor\ inWorld
+comment5.target=int[]\ toImage(greenfoot.Actor,\ int[])
+comment5.text=\n\ Transformation\ von\ Weltkoordinaten\ in\ die\ Pixelkoordinaten\ eines\ Actors.\n\ @param\ actor\ Der\ Actor,\ in\ dessen\ Pixelkoordinaten\ transformiert\ wird.\n\ @param\ inWorld\ Die\ Weltkoordinaten\ des\ Pixels.\n\ @return\ Die\ Koordinaten\ desselben\ Pixels\ innerhalb\ des\ Bilds\ des\ Actors.\n
+comment6.params=active
+comment6.target=void\ setTestMode(boolean)
+comment6.text=\n\ Aktivieren\ oder\ Deaktivieren\ des\ Testmodus'.\ Im\ Testmodus\ werden\ keine\ Kollisionen\n\ mehr\ gemeldet\ und\ alle\ Kollisionstests\ zeichnen\ \u00DCberlappungen\ mit\ anderen\ Objekten\n\ bei\ sich\ in\ rot\ ein.\n\ @param\ active\ Testmodus\ aktivieren?\n
+comment7.params=
+comment7.target=void\ resetImageInTestMode()
+comment7.text=\n\ Ersetzt\ das\ Bild\ dieses\ Objekts\ wieder\ durch\ das\ zuletzt\ geladene.\n\ Das\ funktioniert\ nur,\ wenn\ der\ Dateiname\ des\ Bildes\ keine\ zwei\ aufeinander\n\ folgenden\ Leerzeichen\ enth\u00E4lt.\n
+numComments=8

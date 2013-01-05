@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=worldClass\ x\ y
+comment0.target=Exit(java.lang.Class,\ int,\ int)
+comment0.text=\n\ Konstruktor.\n\ @param\ worldClass\ Die\ Klasse\ der\ Welt,\ zu\ der\ verzweigt\ wird.\n\ @param\ x\ Die\ x-Position\ des\ Roboters\ in\ der\ neuen\ Welt.\n\ @param\ y\ Die\ y-Position\ des\ Roboters\ in\ der\ neuen\ Welt.\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\n\ Testet\ auf\ eine\ Kollision\ mit\ dem\ Roboter\ und\ wechselt\ die\ Welt,\ wenn\ eine\ auftritt.\n
+comment2.params=robot
+comment2.target=void\ switchWorld(Robot)
+comment2.text=\n\ Verzweigt\ zu\ einer\ anderen\ Welt\ und\ nimmt\ den\ Roboter\ samt\ Inventar\ mit.\n\ Es\ wird\ angenommen,\ dass\ das\ Inventar\ in\ der\ neuen\ Welt\ an\ derselben\n\ Stelle\ angezeigt\ wird,\ wie\ in\ der\ alten.\n\ @param\ robot\ Der\ Roboter,\ der\ samt\ seinem\ Inventar\ mitgenommen\ wird.\n
+comment3.params=actorClass\ from\ to
+comment3.target=void\ transfer(java.lang.Class,\ greenfoot.World,\ greenfoot.World)
+comment3.text=\n\ Verschiebt\ alle\ Akteure\ einer\ bestimmten\ Klassen\ von\ einer\n\ Welt\ in\ eine\ andere.\n\ @param\ actorClass\ Die\ Klasse\ der\ Akteure,\ die\ verschoben\ werden.\n\ @param\ from\ Die\ Welt,\ aus\ der\ die\ Akteure\ entfernt\ werden.\n\ @param\ to\ Die\ Welt,\ in\ die\ die\ Akteure\ eingef\u00FCgt\ werden.\n
+numComments=4

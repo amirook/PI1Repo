@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Inventory()
+comment0.text=Der\ Konstruktor\ l\u00F6scht\ das\ Inventar.
+comment1.params=object
+comment1.target=void\ store(Item)
+comment1.text=\n\ Speichern\ eines\ Gegenstands\ im\ Inventar.\ Das\ Inventar\ sieht\ nun\ so\ aus,\ wie\ \n\ der\ gespeicherte\ Gegenstand.\ Der\ Gegenstand\ selbst\ wird\ aus\ der\ Szene\ entfernt.\n\ Sollte\ sich\ bereits\ ein\ Gegenstand\ im\ Inventar\ befinden,\ geht\ dieser\ verloren.\n
+comment2.params=x\ y
+comment2.target=void\ dropAt(int,\ int)
+comment2.text=\n\ Legt\ den\ Inhalt\ des\ Inventars\ an\ der\ angegebenen\ Position\ in\ der\ Welt\ ab.\n\ L\u00F6scht\ das\ Inventar.\n
+comment3.params=
+comment3.target=Item\ get()
+comment3.text=\n\ Liefert\ den\ Inhalt\ des\ Inventars.\ Ist\ es\ leer,\ wird\ null\ zur\u00FCckgeliefert.\n
+comment4.params=
+comment4.target=void\ clear()
+comment4.text=\n\ L\u00F6schen\ des\ Inventars.\ Das\ Inventar\ wird\ als\ leeres\ Bild\ dargestellt.\n
+comment5.params=
+comment5.target=boolean\ isEmpty()
+comment5.text=\n\ Liefert\ zur\u00FCck,\ ob\ das\ Inventar\ leer\ ist.\n
+numComments=6

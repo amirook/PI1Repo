@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ act()
+comment0.text=\n\ Spielt\ eine\ traurige\ Melodie\ ab,\ wenn\ es\ eine\ \u00DCberschneidung\ mit\ einem\n\ Actor\ gibt.\ Das\ Abspielen\ wird\ nur\ gestartet,\ wenn\ es\ bei\ der\ vorherigen\n\ Ausf\u00FChrung\ keine\ \u00DCberschneidung\ gab.\n
+numComments=1

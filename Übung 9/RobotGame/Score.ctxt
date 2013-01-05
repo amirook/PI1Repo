@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Score()
+comment0.text=\n\ Der\ Konstruktor\ setzt\ den\ Punktestand\ auf\ 0.\n
+comment1.params=score
+comment1.target=void\ setScore(int)
+comment1.text=\n\ Setzen\ des\ Punktestandes.\n\ Speichert\ den\ \u00FCbergebenen\ Wert\ und\ aktualisiert\ das\ Bild,\ das\ den\n\ Punktestand\ darstellt.\ Der\ Punktestand\ wird\ immer\ f\u00FCnfstellig\ angezeigt.\n\ @param\ score\ Der\ neue\ Punktestand.\n
+comment2.params=
+comment2.target=int\ getScore()
+comment2.text=\n\ Liefert\ den\ aktuellen\ Punktestand\ zur\u00FCck.\n
+numComments=3
