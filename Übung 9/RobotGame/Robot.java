@@ -87,7 +87,7 @@ public class Robot extends Collider
     {
         if (newCollisionWith(Smiley.class)) {
             score.setScore(score.getScore() + 10);
-        } else if (newCollisionWith(Skull.class)) {
+        } else if (newCollisionWith(Skull.class)||newCollisionWith(Enemy.class)) {
             replaying = true;
         }
     }

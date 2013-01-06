@@ -8,13 +8,8 @@ import java.util.*;
  */
 public class Ghost extends Enemy
 {
-    private boolean hunting = false;
-    private boolean sethome = false;
-    private Object target;
-    private int homex;
-    private int homey;
-        
-
+    private Actor target; 
+    
     /**
      * Act - Tue was immer Ghost tun möchte. Diese Methode wird aufgerufen,
      * wenn die 'Act'- oder 'Run'-Knöpfe in der Umgebung gedrückt werden.
@@ -49,7 +44,7 @@ public class Ghost extends Enemy
 
     private void setNextTarget(){
         //erfasst den nächsten/neusten Spieler im Radius und setzt den Geist auf diesen an
-        Object obj= ObjectInRange(1000,Robot.class);
+        Actor obj= (Actor) ObjectInRange(1000,Robot.class);
         if(obj != target && obj != null) {
             target = obj;
         }

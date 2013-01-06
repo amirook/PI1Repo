@@ -231,6 +231,96 @@ Wenn wir unser Spiel nun erweitern möchten (wie wir es z.B. mit der brennenden 
 Es wäre ratsam auf gleiche Weise das Verhalten des Smileys und des Totenkopfs in sich selbst zu implementieren statt in der Klasse Robot. Das ist aktuell schon mit dem abspielen des Tons so definiert, doch auch der Punktewert (bei Smiley) und das starten des replays (Skull) sollten dort definiert sein. Gäbe es eine Superklasse dieser beiden, könnte man ein Standardverhalten für weitere Objekte festlegen, mit denen man Punkte sammelt.
 
 \section{Buh! (20\%)}
+Das Spielfeld besitzt eine Labyrinth-artige Form, dieser Fakt sorgt für eine starke Einschränkung der Manövrierfähigkeit des Spielers.
+Um Einen Gegner zu erstellen, welcher trotz der genannten Umstände für den Spieler überwindbar sein sollte, musste dieser ebenfalls in seinen Fähigkeiten eingeschränkt werden.\newline
+Unsere Aufgabe war es ein Monster zu erstellen welches in seinen Bewegungen eine Tendenz zum Spieler besitzt.
+
+Eine der hilfreiche Methoden hierzu war die Methode \texttt{turnTowards(x,y)}. Diese Methode ist ein Wegweiser zu jedem Objekt im Spiel, solange sich dieses in der selben Welt befindet, und das Monster sich durch Wände bewegen kann.
+Auf Grund dieser Tatsache implementierten wir ein Monster, welches aus der Klasse Ghost besteht.\newline
+Es stellte sich bereits nach einem Versuch heraus das sich das Monster zu effektiv verhielt, es erfasste den ersten Spieler auf dem Spielfeld und wanderte mit einer geraden Linie durch alle Wände auf ihn zu.
+
+Eine Kollision mit Instanzen der Klasse Enemy sorgt genau so wie eine Kollision mit der Klasse Skull für ein replay der letzten Spielerbewegungen und das Ende des Spiels.
+Der Spieler hatte praktisch keine Chance zu entkommen. Die Herausforderung bestand somit nicht länger in dem erstellen eines starken Gegners, sondern in dessen Verdummung.
+Der Spieler musste eine Chance besitzen dem Gegner aus zu weichen oder von diesem verfehlt zu werden.
+
+\begin{lstlisting}[caption={Klasse \emph{Ghost}},firstnumber=1, language=Java]
+import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
+import java.util.*;
+/**
+ * Beschreiben Sie hier die Klasse Ghost.
+ * 
+ * @author Beate Ruffer (Bea), Mohamadreza Khostevan (Amir), Leopold schulz-Hanke (Leo) 
+ * @version (Eine Versionsnummer oder ein Datum)
+ */
+public class Ghost extends Enemy
+{
+    private Actor target; 
+    
+    /**
+     * Act - Tue was immer Ghost tun möchte. Diese Methode wird aufgerufen,
+     * wenn die 'Act'- oder 'Run'-Knöpfe in der Umgebung gedrückt werden.
+     */
+    public void act() 
+    {
+        if (newCollisionWith(Robot.class)) {
+            Greenfoot.playSound("sad-trombone.wav");
+            target = null;
+        }
+        move(1);
+        
+        //kollision mit Spielfeld grenzen
+        int width  = getWorld().getWidth();
+        int height = getWorld().getHeight();
+        int iwidth  = getImage().getWidth();
+        int iheight = getImage().getHeight();
+        if (this.getX()-(iwidth/2)<=0 || this.getX()+(iwidth/2)>= width||
+        this.getY()-(iheight/2)<=0 || this.getY()+(iheight/2)>=height) {
+            turn(3);
+        }
+        
+        //warscheinlichkeit sich zum Spieler zu drehen
+        if(Greenfoot.getRandomNumber(150)==1) {
+            setNextTarget();
+            turnTowardsObject((Actor)target);
+        }
+        else{
+            turn(Greenfoot.getRandomNumber(6)-3);
+        }
+    }
+
+    private void setNextTarget(){
+        //erfasst den nächsten/neusten Spieler im Radius und setzt den Geist auf diesen an
+        Actor obj= (Actor) ObjectInRange(1000,Robot.class);
+        if(obj != target && obj != null) {
+            target = obj;
+        }
+    }
+}
+
+\end{lstlisting}
+Zeilen 19-22 erkennen eine Kollision potentiell Kollision mit dem Spieler,
+Das Spiel wird jedoch erst gestoppt sollte der Spieler ebenfalls eine Kollision mit dem Geist erfasst haben.
+
+Der Geist reagiert nicht auf Kollisionen mit Hindernissen, andererseits erfasst er jedoch Kollisionen mit der Spielfeldgrenze. Dieser Vorgang findet in Zeilen 25-33 statt. Sollte das Bild des Geistes sich mit der grenze schneiden, oder diese überschreiten, so beginnt der Geist sich im Uhrzeigersinn zu drehen (Zeile 32).
+
+Der Geist selbst kann wie alle anderen Objekte, das Spielfeld nicht verlassen, der oben beschriebene Mechanismus verhindert jedoch das die Klasse dauerhaft am Spielfeldrand hängen bleibt oder sich in einer der Spielfeld-Ecken verfängt. 
+
+Die nächsten Zeilen folgt ein Mechanismus der die zufällige Bewegung des Geistes erzeugt (Zeilen 35-42).
+Der Geist besitzt bei jedem Durchgang seines 
+Programms eine Chance von 1/150 sich mittels der Methode "turnTowardsObject()"
+zu einem Spieler zu drehen der unter dem Parameter target vermerkt ist.\newline
+Der jeweilige Spieler wird hierbei durch die Methode "setNextTarget()" bestimmt (Zeilen 45-50)\newline
+Diese Methode erfasst ein Objekt, welches sich im genannten radius des Geistes befindet. Sollte es ein anderes Objekt der Klasse Roboter sein als momentan für den Parameter target eingespeichert ist, so wird dieses für den Geist als neues Ziel gesetzt.\newline
+Der Radius lässt sich beliebig variieren solange der Geist bei dessen ersten Auslösung ein Objekt im Radius erfasst, das er jagen kann.
+
+Wenn sich der Geist bei der Chance von 1/150 mal nicht zum Spieler dreht (Zeilen 40-42), so dreht er sich bei jeder Auslösung in einem zufälligen Winkel von +- 3 Grad
+
+Dieser Vorgang sorgt für ein unregelmäßiges Bewegungsmuster des Geistes über das Spielfeld.
+
+Möchte man den Schwierigkeitsgrad erhöhen so erhöht man einfach die Chance das sich der Geist zum Spieler dreht
+
+Als zusätzlichen Gegner fürs Labyrinth haben wir zur Klasse Enemy ebenfalls die Klasse "Walker" hinzu gefügt, jene orientiert sich jedoch in keiner weise am Spieler selbst und bewegt sich per Zufall im Labyrinth.
+Sie stellt für den Spieler jedoch eine Gefahr da sollte sie ihn in eine Sackgasse drängen.
 
 \section{Bonusaufgabe: Was war das für ein Geräusch? (5\%)}
 
@@ -266,7 +356,8 @@ Nun möchten wir, dass unsere Gegner sich bei jedem Geräusch in Richtung des Ro
     }
 \end{lstlisting}
 
-Sie bekommt als Argument den Namen der Sounddatei, die abzuspielen ist und auch unseren Roboter. Somit kann man anhand des Roboters die Welt ermitteln und ihn auch der turnTowardsObject() Methode übergeben. Diese Methode wird für alle in der Welt vorhandenen Enemy Instanzen ausgeführt.
+Sie bekommt als Argument den Namen der Sounddatei, die abzuspielen ist und auch unseren Roboter. Somit kann man anhand des Roboters die Welt ermitteln und ihn auch der turnTowardsObject() Methode übergeben. Diese Methode wird für alle in der Welt vorhandenen Enemy Instanzen ausgeführt.\\
+Somit wird nun immer diese Methode (z.B. \texttt{Game.playSound("hooray.wav", robot);} ) ausgeführt um Sound abzuspielen.
 
 \end{document}
 
