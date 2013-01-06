@@ -317,7 +317,7 @@ Möchte man den Schwierigkeitsgrad erhöhen, so erhöht man einfach die Chance d
 Als zusätzlichen Gegner fürs Labyrinth haben wir zur Klasse  \texttt{Enemy} die Klasse  \texttt{Walker} hinzugefügt. Jene orientiert sich jedoch nicht Spieler selbst und bewegt sich per Zufall im Labyrinth.
 Sie stellt für den Spieler jedoch eine Gefahr dar, sollte sie ihn in eine Sackgasse drängen.
 
-\paragraph{Tests} Wir haben eine Instanz von Walker und zwei Instanzen von Ghost zu Spielbeginn. Bei bewegen sich recht zufällig. Der Walker überquert keine Hindernisse. Die Geister jedoch nähern sich nach und nach unsrem Roboter. Wenn wir die Position des Roboters wechseln sehen wir, dass die Geister auch langsam sich in diese Richtung bewegen. Sowohl eine Kollision mit einem Walker, als auch mit einem Geist, beenden das Spiel. Der passende Sound ertönt und das Replay wird abgespielt.
+\paragraph{Tests} Wir haben eine Instanz von \texttt{Walker} und zwei Instanzen von \texttt{Ghost} zu Spielbeginn. Bei bewegen sich recht zufällig. Der \texttt{Walker} überquert keine Hindernisse. Die Geister jedoch nähern sich nach und nach unserem Roboter. Wenn wir die Position des Roboters wechseln, sehen wir, dass die Geister sich auch langsam in diese Richtung bewegen. Sowohl eine Kollision mit einem \texttt{Walker}, als auch mit einem Geist, beenden das Spiel. Der passende Sound ertönt und das Replay wird abgespielt.
 
 \section{Bonusaufgabe: Was war das für ein Geräusch? (5\%)}
 
@@ -353,11 +353,11 @@ Nun möchten wir, dass unsere Gegner sich bei jedem Geräusch in Richtung der So
     }
 \end{lstlisting}
 
-Sie bekommt als Argument den Namen der Sounddatei, die abzuspielen ist und auch unseren den Actor, in dessen Richtung sich unsere Gegner wenden sollen. Somit kann man anhand des Acors die Welt ermitteln und ihn auch der  \texttt{turnTowardsObject()}-Methode übergeben. Diese Methode wird für alle in der Welt vorhandenen  \texttt{Enemy}-Instanzen ausgeführt.\\
-Somit wird nun immer diese Methode (z.B. \texttt{Game.playSound("hooray.wav", robot);} ) ausgeführt um Sound abzuspielen. Ist nicht der Roboter die Soundqulle (z.B. der Smiley) wird nicht der Roboter, sondern der jeweilige Actor selbst (this) übegeben.
+Sie bekommt als Argument den Namen der Sounddatei, die abzuspielen ist und auch unseren Actor, in dessen Richtung sich unsere Gegner wenden sollen. Somit kann man anhand des Actors die Welt ermitteln und ihn auch der  \texttt{turnTowardsObject()}-Methode übergeben. Diese Methode wird für alle in der Welt vorhandenen  \texttt{Enemy}-Instanzen ausgeführt.\\
+Somit wird nun immer diese Methode (z.B. \texttt{Game.playSound("hooray.wav", robot);} ) ausgeführt um Sound abzuspielen. Ist nicht der Roboter die Soundquelle (z.B. der Smiley) wird nicht der Roboter, sondern der jeweilige Actor selbst (this) übegeben.
 
-\paragraph{Tests} Der vergebliche Versuch ein Atem aufzuheben wird mit einem Ton signalisiert. Somit können wir uns durch das Spiel bewgen und durch das Betätigen der Space Taste prüfen, ob sich die Gegner der Soundquelle zuwenden.
-Auch das nutzen eines Schlüssels, einer Bombe oder des Smileys bringt dir Gegner dazu sich in die Richtung der Soundquelle zu drehen.
+\paragraph{Tests} Der vergebliche Versuch ein Item aufzuheben wird mit einem Ton signalisiert. Somit können wir uns durch das Spiel bewegen und durch das Betätigen der Space Taste prüfen, ob sich die Gegner der Soundquelle zuwenden.
+Auch das Nutzen eines Schlüssels, einer Bombe oder des Smileys bringt die Gegner dazu sich in die Richtung der Soundquelle zu drehen.
 
 \end{document}
 
