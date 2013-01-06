@@ -16,7 +16,8 @@ public class Smiley extends Collider
     public void act() 
     {
         if (newCollisionWith(Robot.class)) {
-            Greenfoot.playSound("hooray.wav");
+            Robot robot = (Robot) getCollidingObject(Robot.class);
+            Game.playSound("hooray.wav", robot);
         }
     }    
 }

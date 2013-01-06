@@ -36,8 +36,9 @@ public class Exit extends Collider
     public void act() 
     {
         if (newCollisionWith(Robot.class)) {
-            Greenfoot.playSound("fanfare.wav");
-            switchWorld((Robot) getCollidingObject(Robot.class));
+            Robot robot = (Robot) getCollidingObject(Robot.class);
+            Game.playSound("fanfare.wav", robot);
+            switchWorld(robot);
         }
     }
 

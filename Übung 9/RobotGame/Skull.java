@@ -16,7 +16,8 @@ public class Skull extends Collider
     public void act() 
     {
         if (newCollisionWith(Robot.class)) {
-            Greenfoot.playSound("sad-trombone.wav");
+            Robot robot = (Robot) getCollidingObject(Robot.class);
+            Game.playSound("sad-trombone.wav", robot);
         }
         turn(1);
     }    

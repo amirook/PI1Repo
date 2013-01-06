@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ act()
+comment0.text=\n\ Act\ -\ Tue\ was\ immer\ Enemy\ tun\ m\u00F6chte.\ Diese\ Methode\ wird\ aufgerufen,\n\ wenn\ die\ 'Act'-\ oder\ 'Run'-Kn\u00F6pfe\ in\ der\ Umgebung\ gedr\u00FCckt\ werden.\n
+comment1.params=range\ cls
+comment1.target=java.lang.Object\ ObjectInRange(int,\ java.lang.Class)
+comment2.params=actor
+comment2.target=void\ turnTowardsObject(greenfoot.Actor)
+numComments=3

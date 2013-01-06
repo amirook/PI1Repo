@@ -19,7 +19,7 @@ public class BombFire extends Item
             if (matches(obstacle)){
                 robot.getWorld().removeObject(obstacle);
                 robot.getScore().setScore(robot.getScore().getScore() + 200);
-                Greenfoot.playSound("Explosion.wav");
+                Game.playSound("Explosion.wav", robot);
                 return null;
             }
         }

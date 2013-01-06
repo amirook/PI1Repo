@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
-
+import java.util.List;
 /**
  * Ein Roboter, der per Tastatur gesteuert werden kann.
  * 
@@ -129,7 +129,7 @@ public class Robot extends Collider
                 if (collidesWith(Item.class)) {
                     inventory.store((Item) getCollidingObject(Item.class));
                 } else {
-                    Greenfoot.playSound("Bottle.aiff");
+                    Game.playSound("Bottle.aiff", this);
                 }
             } else {
                 inventory.dropAt(getX(), getY());

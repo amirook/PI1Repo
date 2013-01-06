@@ -18,7 +18,7 @@ public class Bomb extends Item
             Obstacle obstacle = (Obstacle) robot.getCollidingObject(Obstacle.class);
             if (matches(obstacle)){
                 robot.getWorld().removeObject(obstacle);
-                Greenfoot.playSound("Bottle.aiff");
+                Game.playSound("Bottle.aiff", robot);
                 return new BombFire();
             }
         }

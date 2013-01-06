@@ -19,7 +19,7 @@ public class Key extends Item
             if (matches(obstacle)){
                 robot.getWorld().removeObject(obstacle);
                 robot.getScore().setScore(robot.getScore().getScore() + 100);
-                Greenfoot.playSound("door-open.wav");
+                Game.playSound("door-open.wav", robot);
                 return null;
             }
         }

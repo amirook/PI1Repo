@@ -1,6 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
 import java.util.ArrayList;
-
+import java.util.List;
 /**
  * Das Spiel. Erzeugt alle Welten und bietet eine Klassenmethode, 
  * die zu einer Klasse die passende Welt heraussucht. (Übungsblatt 4)
@@ -38,5 +38,20 @@ public class Game extends World
             }
         }
         return null;
+    }
+    
+    /**
+     * Spielt einen Sound ab. Da aber alle Gegner sich bei jedem Sound in
+     * Richtung des Roboters drehen sollen, wird hier der Roboter als Argument
+     * erwartet.
+     * @param sound Der Abgespielt werden soll
+     * @param robot zu dem sich die Gengner Hinwenden sollen
+     */
+    public static void playSound(String sound, Robot robot){
+        Greenfoot.playSound(sound);
+        List<Enemy> enemys = robot.getWorld().getObjects(Enemy.class);
+            for (Enemy enemy : enemys) {
+                enemy.turnTowardsObject(robot);
+            }
     }
 }
