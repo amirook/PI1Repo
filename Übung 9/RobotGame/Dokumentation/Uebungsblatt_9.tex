@@ -52,10 +52,10 @@ public void ifCheckWhile(){
     }
 \end{lstlisting}
 
-If lässt sich somit ohne großen Aufwand durch while ersetzen.\\
-Andersrum ist das etwas schwieriger und kann nicht ohne Einschränkungen umgesetzt werden. Eine If Anweisung kann immer nur genau \texttt{ein Mal} ausgeführt werden. Möchten wir damit eine while Schleife ersetzen, müssen wir einen Weg finden, die if-Anweisung mehrmals (so lange die Bedingung wahr ist) auszuführen.
+\emph{If} lässt sich somit ohne größeren Aufwand durch \emph{while} ersetzen.\\
+Andersrum ist das etwas schwieriger und kann nicht ohne Einschränkungen umgesetzt werden. Eine \emph{If}-Anweisung kann immer nur genau \texttt{ein Mal} ausgeführt werden. Möchten wir damit eine \emph{while}-Schleife ersetzen, müssen wir einen Weg finden, die \emph{if}-Anweisung mehrmals (so lange die Bedingung wahr ist) auszuführen.
 
-Versuchen wir die folgende while Schleife nur mit Hilfe von if zu implementieren.
+Versuchen wir die folgende \emph{while}-Schleife nur mit Hilfe von \emph{if} zu implementieren:
 
 \begin{lstlisting}[caption={}, firstnumber=1, language=Java]
  public void whileCheckWhile(){
@@ -69,7 +69,7 @@ Versuchen wir die folgende while Schleife nur mit Hilfe von if zu implementieren
 
 Der Wert von i wird also so lange ausgegeben, bis die Bedingung \emph{i $<$ 10} nicht mehr wahr ist.
 
-Da sowohl \emph{while} als auch \emph{if-else} von der Wahrheit einer Bedingung abhängen, ist es theoretisch möglich while durch if zu ersetzen. Um aber die wiederholte Bedingungsprüfung und Ausführung des Schleifenkörpers mit if zu erzwingen, müssen wir eine Methode schreiben, welche sich selbst rekursiv aufruft.
+Da sowohl \emph{while} als auch \emph{if-else} von der Wahrheit einer Bedingung abhängen, ist es theoretisch möglich \emph{while} durch \emph{if} zu ersetzen. Um aber die wiederholte Bedingungsprüfung und Ausführung des Schleifenkörpers mit \emph{if} zu erzwingen, müssen wir eine Methode schreiben, welche sich selbst rekursiv aufruft:
 
 \begin{lstlisting}[caption={}, firstnumber=1, language=Java]
 // Es muss whileChekIf(0) ausgeführt werden
@@ -81,7 +81,7 @@ Da sowohl \emph{while} als auch \emph{if-else} von der Wahrheit einer Bedingung 
     }
 \end{lstlisting}
 
-Führt man nun \emph{whileCheckIf(0)} auf, werden genau wie bei der while Schleife alle Zahlen von 0 bis 9 Ausgegeben.
+Führt man nun  \texttt{whileCheckIf(0)} auf, werden genau wie bei der \emph{while}-Schleife alle Zahlen von 0 bis 9 Ausgegeben.
 
 Hieraus ist ersichtlich, dass sich eine bedingte \emph{if-else}-Anweisung durchaus durch mehrere \emph{while}-Schleifen ersetzen lässt. Es muss lediglich, um eine unendliche Wiederholung der Schleife zu vermeiden entweder der zu prüfende Ausdruck (unpraktisch) oder ein zusätzlich eingeführter Parameter (wie im Beispiel) verändert werden, damit die Bedingung zur Ausführung nicht mehr wahr ist. Auch weitere Verzweigungen sollten sich theoretisch so darstellen lassen, wenngleich dies wahrscheinlich schnell relativ unübersichtlich würde.
 
@@ -90,7 +90,7 @@ Hieraus ist ersichtlich, dass sich eine bedingte \emph{if-else}-Anweisung durcha
 
 \subsection{Vorbereiten (15\%)}
 
-Die Klasse Item hat nun 2 Methoden bekommen, mit denen die Items selbst über ihr Verhalten bestimmen können.
+Die Klasse  \texttt{Item} hat nun 2 Methoden bekommen, mit denen die Items selbst über ihr Verhalten bestimmen können.
 \begin{lstlisting}[caption={Klasse \emph{Item}}, firstnumber=1, language=Java]
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
 
@@ -129,7 +129,7 @@ public abstract class Item extends Actor
 \end{lstlisting}
 
 Wir möchten im Inventar die Nutzung des Items anstoßen, ohne uns darum kümmern zu müssen, um welches Item es geht.
-Wir werden zu keiner Zeit Instanzen von Item direkt erzeugen, daher können wir abstrakte Methoden implementieren, die dann in den Subklassen überschrieben werden. Die Methode \texttt{matches()} ist abstrakt, da wir diese auf jeden Fall in den Subklassen überschreiben müssen, denn nur die Subklasse kann wissen welches Hindernis zu diesem Item passt.\\
+Wir werden zu keiner Zeit Instanzen von Item direkt erzeugen, daher können wir abstrakte Methoden implementieren, die dann in den Subklassen überschrieben werden. Die Methode \texttt{matches()} ist abstrakt, da wir diese auf jeden Fall in den Subklassen überschreiben müssen, denn nur die Subklasse kann wissen, welches Hindernis zu diesem Item passt.\\
 \texttt{useItem()} wurde nicht abstrakt implementiert, damit wir auf diese Weise ein Standardverhalten für Items haben. Wenn diese Methode also nicht überschrieben wird, kann man mit dem Item das passende Hindernis überwinden, es wird jedoch weder ein Sound abgespielt noch werden Punkte gutgeschrieben.
 
 \subsection{Delegieren (25\%)}
@@ -175,7 +175,7 @@ public class Key extends Item
 }
 \end{lstlisting}
 
-Wir können nun die Methoden blowUpWall() und openDoor() aus der Klasse Robot entfernen. Stattdessen führen wir in jedem act() Zyklus \texttt{inventory.useInventory(this);} aus.
+Wir können nun die Methoden  \texttt{blowUpWall()} und  \texttt{openDoor()} aus der Klasse  \texttt{Robot} entfernen. Stattdessen führen wir in jedem  \texttt{act()}-Zyklus \texttt{inventory.useInventory(this);} aus.
 \\
 Falls ein Item im Inventar ist, wird das Item nun genutzt.
 
@@ -197,10 +197,10 @@ Falls ein Item im Inventar ist, wird das Item nun genutzt.
 \end{lstlisting}
 
 Das zurückgelieferte Item wird wieder im Inventar gespeichert. Standardverhalten - wenn das Item nicht genutzt werden kann - ist, dass sich das Item selbst zurückliefert.\\
-Nach der Benutzung wird \texttt{null} zurückgeliefert. In diesem Fall wird das Inventar geleert.\\
+Nach der Benutzung wird \emph{null} zurückgeliefert. In diesem Fall wird das Inventar geleert.\\
 \\
-Wir haben nun also 2 Varianten implementiert: Rückgabe des Items selbst und Rückgabe von null. Als dritte Variante sollen wir nun ein anderes Item zurückgeben (z.B. Durch Kombination von Item und Hindernis).\\
-Dazu haben wir nun zusätzlich zu dem Item Bomb ein weiteres Item \texttt{BombFire} und ein weiteres Hindernis \texttt{Fire}.\\
+Wir haben nun also 2 Varianten implementiert: Rückgabe des Items selbst und Rückgabe von \emph{null}. Als dritte Variante sollen wir nun ein anderes Item zurückgeben (z.B. Durch Kombination von Item und Hindernis).\\
+Dazu haben wir nun zusätzlich zu dem Item  \texttt{Bomb} ein weiteres Item \texttt{BombFire} und ein weiteres Hindernis \texttt{Fire}.\\
 Um eine Wand sprengen zu können, benötigen wir nun nicht einfach eine Bombe, sondern müssen diese vorher anzünden indem wir (mit der Bombe im Inventar) mit dem Feuer kollidieren. Dann wird die Bombe im Inventar durch die brennende Bombe (BombFire) ersetzt.
 
 \begin{lstlisting}[caption={Klasse \emph{Bomb}, Methode \emph{useItem()}},firstnumber=11, language=Java]
@@ -226,22 +226,21 @@ Um eine Wand sprengen zu können, benötigen wir nun nicht einfach eine Bombe, s
 
 \subsection{Reflektieren (10\%)}
 
-Durch die Auslagerung der Logik jedes Items in seine eigene Klasse haben wir die Wartbarkeit um einiges verbessert. Möchten wir das Verhalten eines Items nun ändern, wissen wir genau, dass es in dem Item selbst zu finden ist und müssen nicht mehr die entsprechende Methode in der Klasse Robot suchen. Außerdem hat sich dich die Übersichtlichkeit der Klasse Robot dadurch stark verbessert.\\
-Wenn wir unser Spiel nun erweitern möchten (wie wir es z.B. mit der brennenden Bombe gemacht haben), müssen wir nur noch eine Subklasse von Item erzeugen und dessen Logik darin implementieren. Es können auch ohne viel Aufwand nun Items mit Standardverhalten hinzugefügt werden, es muss lediglich die Methode \texttt{matches()} überschrieben werden.\\
-Es wäre ratsam auf gleiche Weise das Verhalten des Smileys und des Totenkopfs in sich selbst zu implementieren statt in der Klasse Robot. Das ist aktuell schon mit dem abspielen des Tons so definiert, doch auch der Punktewert (bei Smiley) und das starten des replays (Skull) sollten dort definiert sein. Gäbe es eine Superklasse dieser beiden, könnte man ein Standardverhalten für weitere Objekte festlegen, mit denen man Punkte sammelt.
+Durch die Auslagerung der Logik jedes Items in seine eigene Klasse haben wir die Wartbarkeit um einiges verbessert. Möchten wir das Verhalten eines Items nun ändern, wissen wir genau, dass es in dem Item selbst zu finden ist und müssen nicht mehr die entsprechende Methode in der Klasse Robot suchen. Außerdem hat sich dich die Übersichtlichkeit der Klasse  \texttt{Robot} dadurch stark verbessert.\\
+Wenn wir unser Spiel nun erweitern möchten (wie wir es z.B. mit der brennenden Bombe gemacht haben), müssen wir nur noch eine Subklasse von Item erzeugen und dessen Logik darin implementieren. Es können nun auch ohne viel Aufwand Items mit Standardverhalten hinzugefügt werden, es muss lediglich die Methode \texttt{matches()} überschrieben werden.\\
+Es wäre ratsam auf gleiche Weise das Verhalten des Smileys und des Totenkopfs in sich selbst zu implementieren statt in der Klasse  \texttt{Robot}. Das ist aktuell schon mit dem abspielen des Tons so definiert, doch auch der Punktewert (bei Smiley) und das Starten des Replays (Skull) sollten dort definiert sein. Gäbe es eine Superklasse dieser beiden, könnte man ein Standardverhalten für weitere Objekte festlegen, mit denen man Punkte sammelt.
 
 \section{Buh! (20\%)}
-Das Spielfeld besitzt eine Labyrinth-artige Form, dieser Fakt sorgt für eine starke Einschränkung der Manövrierfähigkeit des Spielers.
-Um Einen Gegner zu erstellen, welcher trotz der genannten Umstände für den Spieler überwindbar sein sollte, musste dieser ebenfalls in seinen Fähigkeiten eingeschränkt werden.\newline
-Unsere Aufgabe war es ein Monster zu erstellen welches in seinen Bewegungen eine Tendenz zum Spieler besitzt.
+Das Spielfeld besitzt eine labyrinthartige Form. Dies sorgt für eine starke Einschränkung der Manövrierfähigkeit des Spielers.
+Um einen Gegner zu erstellen, welcher trotz der genannten Umstände für den Spieler überwindbar sein sollte, musste dieser ebenfalls in seinen Fähigkeiten eingeschränkt werden.\newline
+Unsere Aufgabe war es ein Monster zu erstellen, welches in seinen Bewegungen eine Tendenz zum Spieler besitzt.
 
-Eine der hilfreiche Methoden hierzu war die Methode \texttt{turnTowards(x,y)}. Diese Methode ist ein Wegweiser zu jedem Objekt im Spiel, solange sich dieses in der selben Welt befindet, und das Monster sich durch Wände bewegen kann.
-Auf Grund dieser Tatsache implementierten wir ein Monster, welches aus der Klasse Ghost besteht.\newline
-Es stellte sich bereits nach einem Versuch heraus das sich das Monster zu effektiv verhielt, es erfasste den ersten Spieler auf dem Spielfeld und wanderte mit einer geraden Linie durch alle Wände auf ihn zu.
+Eine der hilfreiche Methoden hierzu ist die Methode \texttt{turnTowards(x,y)}. Diese Methode ist ein Wegweiser zu jedem Objekt im Spiel, solange sich dieses in der selben Welt befindet und das Monster sich durch Wände bewegen kann.
+Aufgrund dieser Tatsache implementierten wir ein Monster, welches aus der Klasse  \texttt{Ghost} besteht.\newline
+Es stellte sich bereits nach einem Versuch heraus, dass sich das Monster zu effektiv verhielt, es erfasste den ersten Spieler auf dem Spielfeld und wanderte mit einer geraden Linie durch alle Wände auf ihn zu.
 
-Eine Kollision mit Instanzen der Klasse Enemy sorgt genau so wie eine Kollision mit der Klasse Skull für ein replay der letzten Spielerbewegungen und das Ende des Spiels.
-Der Spieler hatte praktisch keine Chance zu entkommen. Die Herausforderung bestand somit nicht länger in dem erstellen eines starken Gegners, sondern in dessen Verdummung.
-Der Spieler musste eine Chance besitzen dem Gegner aus zu weichen oder von diesem verfehlt zu werden.
+Eine Kollision mit Instanzen der Klasse  \texttt{Enemy} sorgt genau so wie eine Kollision mit der Klasse  \texttt{Skull} für ein Replay der letzten Spielerbewegungen und das Ende des Spiels.
+Der Spieler hatte praktisch keine Chance zu entkommen. Die Herausforderung bestand somit nicht länger im Erstellen eines starken Gegners, sondern darin einen Gegner zu erstellen, der dem Spieler eine Chance ließ dem Gegner auszuweichen oder von diesem verfehlt zu werden.
 
 \begin{lstlisting}[caption={Klasse \emph{Ghost}},firstnumber=1, language=Java]
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
@@ -268,7 +267,7 @@ public class Ghost extends Enemy
         }
         move(1);
         
-        //kollision mit Spielfeld grenzen
+        //Kollision mit Spielfeldgrenzen
         int width  = getWorld().getWidth();
         int height = getWorld().getHeight();
         int iwidth  = getImage().getWidth();
@@ -278,7 +277,7 @@ public class Ghost extends Enemy
             turn(3);
         }
         
-        //warscheinlichkeit sich zum Spieler zu drehen
+        //Warscheinlichkeit sich zum Spieler zu drehen
         if(Greenfoot.getRandomNumber(150)==1) {
             setNextTarget();
             turnTowardsObject(target);
@@ -297,33 +296,30 @@ public class Ghost extends Enemy
     }
 }
 \end{lstlisting}
-Zeilen 19-22 erkennen eine Kollision potentiell Kollision mit dem Spieler,
-Das Spiel wird jedoch erst gestoppt sollte der Spieler ebenfalls eine Kollision mit dem Geist erfasst haben.
+Zeilen 19-22 erkennen eine potentielle Kollision mit dem Spieler, das Spiel wird jedoch erst gestoppt, wenn der Spieler ebenfalls eine Kollision mit dem Geist erfasst.
 
-Der Geist reagiert nicht auf Kollisionen mit Hindernissen, andererseits erfasst er jedoch Kollisionen mit der Spielfeldgrenze. Dieser Vorgang findet in Zeilen 25-33 statt. Sollte das Bild des Geistes sich mit der grenze schneiden, oder diese überschreiten, so beginnt der Geist sich im Uhrzeigersinn zu drehen (Zeile 32).
+Der Geist reagiert nicht auf Kollisionen mit Hindernissen, andererseits erfasst er jedoch Kollisionen mit den Spielfeldgrenzen. Dieser Vorgang findet in den Zeilen 25-33 statt. Sollte das Bild des Geistes sich mit der Grenze schneiden oder diese überschreiten, so beginnt der Geist sich im Uhrzeigersinn zu drehen (Zeile 32).
 
-Der Geist selbst kann wie alle anderen Objekte, das Spielfeld nicht verlassen, der oben beschriebene Mechanismus verhindert jedoch das die Klasse dauerhaft am Spielfeldrand hängen bleibt oder sich in einer der Spielfeld-Ecken verfängt. 
+Der Geist selbst kann wie alle anderen Objekte das Spielfeld nicht verlassen. Der oben beschriebene Mechanismus verhindert jedoch, dass die Klasse dauerhaft am Spielfeldrand hängen bleibt oder sich in einer der Spielfeld-Ecken verfängt. 
 
-Die nächsten Zeilen folgt ein Mechanismus der die zufällige Bewegung des Geistes erzeugt (Zeilen 35-42).
-Der Geist besitzt bei jedem Durchgang seines 
-Programms eine Chance von 1/150 sich mittels der Methode "turnTowardsObject()"
-zu einem Spieler zu drehen der unter dem Parameter target vermerkt ist.\newline
-Der jeweilige Spieler wird hierbei durch die Methode "setNextTarget()" bestimmt (Zeilen 45-50)\newline
-Diese Methode erfasst ein Objekt, welches sich im genannten radius des Geistes befindet. Sollte es ein anderes Objekt der Klasse Roboter sein als momentan für den Parameter target eingespeichert ist, so wird dieses für den Geist als neues Ziel gesetzt.\newline
+In den nächsten Zeilen folgt ein Mechanismus, der die zufällige Bewegung des Geistes erzeugt (Zeilen 35-42).
+Der Geist besitzt bei jedem Durchgang seines Programms eine Chance von 1/150 sich mittels der Methode  \texttt{turnTowardsObject()} zu einem Spieler zu drehen, der unter dem Parameter target vermerkt ist.\newline
+Der jeweilige Spieler wird hierbei durch die Methode  \texttt{setNextTarget()} bestimmt (Zeilen 45-50)\newline
+Diese Methode erfasst ein Objekt, welches sich im genannten Radius des Geistes befindet. Sollte es ein anderes Objekt der Klasse  \texttt{Roboter} sein als momentan für den Parameter  \emph{target} eingespeichert ist, so wird dieses für den Geist als neues Ziel gesetzt.\newline
 Der Radius lässt sich beliebig variieren solange der Geist bei dessen ersten Auslösung ein Objekt im Radius erfasst, das er jagen kann.
 
 Wenn sich der Geist bei der Chance von 1/150 mal nicht zum Spieler dreht (Zeilen 40-42), so dreht er sich bei jeder Auslösung in einem zufälligen Winkel von +- 3 Grad
 
 Dieser Vorgang sorgt für ein unregelmäßiges Bewegungsmuster des Geistes über das Spielfeld.
 
-Möchte man den Schwierigkeitsgrad erhöhen so erhöht man einfach die Chance das sich der Geist zum Spieler dreht
+Möchte man den Schwierigkeitsgrad erhöhen, so erhöht man einfach die Chance das sich der Geist zum Spieler dreht.
 
-Als zusätzlichen Gegner fürs Labyrinth haben wir zur Klasse Enemy ebenfalls die Klasse "Walker" hinzu gefügt, jene orientiert sich jedoch in keiner weise am Spieler selbst und bewegt sich per Zufall im Labyrinth.
-Sie stellt für den Spieler jedoch eine Gefahr da sollte sie ihn in eine Sackgasse drängen.
+Als zusätzlichen Gegner fürs Labyrinth haben wir zur Klasse  \texttt{Enemy} die Klasse  \texttt{Walker} hinzugefügt. Jene orientiert sich jedoch nicht Spieler selbst und bewegt sich per Zufall im Labyrinth.
+Sie stellt für den Spieler jedoch eine Gefahr dar, sollte sie ihn in eine Sackgasse drängen.
 
 \section{Bonusaufgabe: Was war das für ein Geräusch? (5\%)}
 
-Alle unsere Gegner (Ghost und Walker) erben von ihrer Superklasse die Methode \texttt{turnTowardsObject()}
+Alle unsere Gegner ( \texttt{Ghost} und  \texttt{Walker}) erben von ihrer Superklasse die Methode \texttt{turnTowardsObject()}
 
 \begin{lstlisting}[caption={Methode \emph{turnTowardsObject()}}, firstnumber=31, language=Java]
 /**
@@ -355,7 +351,7 @@ Nun möchten wir, dass unsere Gegner sich bei jedem Geräusch in Richtung des Ro
     }
 \end{lstlisting}
 
-Sie bekommt als Argument den Namen der Sounddatei, die abzuspielen ist und auch unseren Roboter. Somit kann man anhand des Roboters die Welt ermitteln und ihn auch der turnTowardsObject() Methode übergeben. Diese Methode wird für alle in der Welt vorhandenen Enemy Instanzen ausgeführt.\\
+Sie bekommt als Argument den Namen der Sounddatei, die abzuspielen ist und auch unseren Roboter. Somit kann man anhand des Roboters die Welt ermitteln und ihn auch der  \texttt{turnTowardsObject()}-Methode übergeben. Diese Methode wird für alle in der Welt vorhandenen  \texttt{Enemy}-Instanzen ausgeführt.\\
 Somit wird nun immer diese Methode (z.B. \texttt{Game.playSound("hooray.wav", robot);} ) ausgeführt um Sound abzuspielen.
 
 \end{document}
