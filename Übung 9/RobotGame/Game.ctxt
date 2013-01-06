@@ -7,5 +7,5 @@ comment1.target=greenfoot.World\ getWorld(java.lang.Class)
 comment1.text=\n\ Sucht\ die\ Instanz\ einer\ bestimmten\ Weltenklasse\ heraus\ und\ liefert\ diese\ zur\u00FCck.\n\ Falls\ sie\ nicht\ gefunden\ wird,\ ist\ das\ Ergebnis\ null.\n\ @param\ worldClass\ Die\ Klasse\ der\ Welt,\ nach\ deren\ Instanz\ gesucht\ wird.\n
 comment2.params=sound\ source
 comment2.target=void\ playSound(java.lang.String,\ greenfoot.Actor)
-comment2.text=\n\ Spielt\ einen\ Sound\ ab.\ Da\ aber\ alle\ Gegner\ sich\ bei\ jedem\ Sound\ in\n\ Richtung\ des\ Roboters\ drehen\ sollen,\ wird\ hier\ der\ Roboter\ als\ Argument\n\ erwartet.\n\ @param\ sound\ Der\ Abgespielt\ werden\ soll\n\ @param\ robot\ zu\ dem\ sich\ die\ Gengner\ Hinwenden\ sollen\n
+comment2.text=\n\ Spielt\ einen\ Sound\ ab.\ \n\ Zus\u00E4tlich\ wird\ der\ Actor\ \u00FCbegeben,\ in\ dessen\ Richtung\ sich\ die\n\ Gegner\ wenden\ sollen.\n\ @param\ sound\ Der\ Abgespielt\ werden\ soll\n\ @param\ source\ zu\ dem\ sich\ die\ Gengner\ Hinwenden\ sollen\n
 numComments=3

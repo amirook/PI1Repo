@@ -222,7 +222,7 @@ Um eine Wand sprengen zu können, benötigen wir nun nicht einfach eine Bombe, s
     }
 \end{lstlisting}
 
-\paragraph{Testen} Durch die Änderungen wurde das Verhalten mit dem Schlüssel nicht beeinflusst. Nimmt man diesen ins Inventar auf, kann man nach wie vor keine Wand sprengen. Die korrekte Punkteanzahl wird gutgeschrieben ebenso auch der richtige Sound abgespielt. Mit der Bombe im Inventar können nun keine Wände mehr gesprengt werden. Kollidiert man aber nun mit dem Feuer, wird dieses aus der Welt entfernt und die Bombe im Inventar wird durch die brennende Bombe ersetzt. Damit lassen sich nun die Wände sprengen (Sound korrekt, Punkte korrekt). Das restliche Verhalten des Spiels bleibt weiterhin unverändert.
+\paragraph{Tests} Durch die Änderungen wurde das Verhalten mit dem Schlüssel nicht beeinflusst. Nimmt man diesen ins Inventar auf, kann man nach wie vor keine Wand sprengen. Die korrekte Punkteanzahl wird gutgeschrieben ebenso auch der richtige Sound abgespielt. Mit der Bombe im Inventar können nun keine Wände mehr gesprengt werden. Kollidiert man aber nun mit dem Feuer, wird dieses aus der Welt entfernt und die Bombe im Inventar wird durch die brennende Bombe ersetzt. Damit lassen sich nun die Wände sprengen (Sound korrekt, Punkte korrekt). Das restliche Verhalten des Spiels bleibt weiterhin unverändert.
 
 \subsection{Reflektieren (10\%)}
 
@@ -317,6 +317,8 @@ Möchte man den Schwierigkeitsgrad erhöhen, so erhöht man einfach die Chance d
 Als zusätzlichen Gegner fürs Labyrinth haben wir zur Klasse  \texttt{Enemy} die Klasse  \texttt{Walker} hinzugefügt. Jene orientiert sich jedoch nicht Spieler selbst und bewegt sich per Zufall im Labyrinth.
 Sie stellt für den Spieler jedoch eine Gefahr dar, sollte sie ihn in eine Sackgasse drängen.
 
+\paragraph{Tests} Wir haben eine Instanz von Walker und zwei Instanzen von Ghost zu Spielbeginn. Bei bewegen sich recht zufällig. Der Walker überquert keine Hindernisse. Die Geister jedoch nähern sich nach und nach unsrem Roboter. Wenn wir die Position des Roboters wechseln sehen wir, dass die Geister auch langsam sich in diese Richtung bewegen. Sowohl eine Kollision mit einem Walker, als auch mit einem Geist, beenden das Spiel. Der passende Sound ertönt und das Replay wird abgespielt.
+
 \section{Bonusaufgabe: Was war das für ein Geräusch? (5\%)}
 
 Alle unsere Gegner ( \texttt{Ghost} und  \texttt{Walker}) erben von ihrer Superklasse die Methode \texttt{turnTowardsObject()}
@@ -332,27 +334,30 @@ Alle unsere Gegner ( \texttt{Ghost} und  \texttt{Walker}) erben von ihrer Superk
     }
 \end{lstlisting}
 
-Nun möchten wir, dass unsere Gegner sich bei jedem Geräusch in Richtung des Roboters drehen. Unsere Klasse \texttt{Game} bekommt also eine statische Methode, die das für uns übernimmt.
+Nun möchten wir, dass unsere Gegner sich bei jedem Geräusch in Richtung der Soundqulle drehen. Unsere Klasse \texttt{Game} bekommt also eine statische Methode, die das für uns übernimmt.
 
 \begin{lstlisting}[caption={Methode \emph{playSound()} in der Klasse Game}, firstnumber=43, language=Java]
 /**
-     * Spielt einen Sound ab. Da aber alle Gegner sich bei jedem Sound in
-     * Richtung des Roboters drehen sollen, wird hier der Roboter als Argument
-     * erwartet.
+     * Spielt einen Sound ab. 
+     * Zusätlich wird der Actor übegeben, in dessen Richtung sich die
+     * Gegner wenden sollen.
      * @param sound Der Abgespielt werden soll
-     * @param robot zu dem sich die Gengner Hinwenden sollen
+     * @param source zu dem sich die Gengner Hinwenden sollen
      */
-    public static void playSound(String sound, Robot robot){
+    public static void playSound(String sound, Actor source){
         Greenfoot.playSound(sound);
-        List<Enemy> enemys = robot.getWorld().getObjects(Enemy.class);
+        List<Enemy> enemys = source.getWorld().getObjects(Enemy.class);
             for (Enemy enemy : enemys) {
-                enemy.turnTowardsObject(robot);
+                enemy.turnTowardsObject(source);
             }
     }
 \end{lstlisting}
 
-Sie bekommt als Argument den Namen der Sounddatei, die abzuspielen ist und auch unseren Roboter. Somit kann man anhand des Roboters die Welt ermitteln und ihn auch der  \texttt{turnTowardsObject()}-Methode übergeben. Diese Methode wird für alle in der Welt vorhandenen  \texttt{Enemy}-Instanzen ausgeführt.\\
-Somit wird nun immer diese Methode (z.B. \texttt{Game.playSound("hooray.wav", robot);} ) ausgeführt um Sound abzuspielen.
+Sie bekommt als Argument den Namen der Sounddatei, die abzuspielen ist und auch unseren den Actor, in dessen Richtung sich unsere Gegner wenden sollen. Somit kann man anhand des Acors die Welt ermitteln und ihn auch der  \texttt{turnTowardsObject()}-Methode übergeben. Diese Methode wird für alle in der Welt vorhandenen  \texttt{Enemy}-Instanzen ausgeführt.\\
+Somit wird nun immer diese Methode (z.B. \texttt{Game.playSound("hooray.wav", robot);} ) ausgeführt um Sound abzuspielen. Ist nicht der Roboter die Soundqulle (z.B. der Smiley) wird nicht der Roboter, sondern der jeweilige Actor selbst (this) übegeben.
+
+\paragraph{Tests} Der vergebliche Versuch ein Atem aufzuheben wird mit einem Ton signalisiert. Somit können wir uns durch das Spiel bewgen und durch das Betätigen der Space Taste prüfen, ob sich die Gegner der Soundquelle zuwenden.
+Auch das nutzen eines Schlüssels, einer Bombe oder des Smileys bringt dir Gegner dazu sich in die Richtung der Soundquelle zu drehen.
 
 \end{document}
 

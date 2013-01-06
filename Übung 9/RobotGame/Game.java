@@ -41,11 +41,11 @@ public class Game extends World
     }
     
     /**
-     * Spielt einen Sound ab. Da aber alle Gegner sich bei jedem Sound in
-     * Richtung des Roboters drehen sollen, wird hier der Roboter als Argument
-     * erwartet.
+     * Spielt einen Sound ab. 
+     * Zusätlich wird der Actor übegeben, in dessen Richtung sich die
+     * Gegner wenden sollen.
      * @param sound Der Abgespielt werden soll
-     * @param robot zu dem sich die Gengner Hinwenden sollen
+     * @param source zu dem sich die Gengner Hinwenden sollen
      */
     public static void playSound(String sound, Actor source){
         Greenfoot.playSound(sound);
