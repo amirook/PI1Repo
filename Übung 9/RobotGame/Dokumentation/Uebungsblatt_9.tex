@@ -88,7 +88,7 @@ Hier wird in einer Methode wie bei einer \emph{while}-Schleife durch \emph{if} g
 
 \subsection{Vorbereiten (15\%)}
 
-Die Klasse Item hat nun 2 Methoden bekommen, mit denen die Item selbst über ihr verhalten bestimmen können.
+Die Klasse Item hat nun 2 Methoden bekommen, mit denen die Items selbst über ihr Verhalten bestimmen können.
 \begin{lstlisting}[caption={Klasse \emph{Item}}, firstnumber=1, language=Java]
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
 
@@ -132,7 +132,7 @@ Wir werden zu keiner Zeit Instanzen von Item direkt erzeugen, daher können wir 
 
 \subsection{Delegieren (25\%)}
 
-Jede Subklasse von Item kann nun sein eigenes Verhalten definiert, indem sie \texttt{useItem(Robot robot)} überschreibt. Tut sie es nicht, wird das Standardverhalten genutzt.\\
+Jede Subklasse von Item kann nun sein eigenes Verhalten definieren, indem sie \texttt{useItem(Robot robot)} überschreibt. Tut sie dies nicht, wird das Standardverhalten genutzt.\\
 Mit der Methode \texttt{matches(Obstacle obstacle)} definieren wir welches Hindernis zum Item passt.
 
 \begin{lstlisting}[caption={Klasse \emph{Key}}, firstnumber=1, language=Java]
@@ -220,7 +220,7 @@ Um eine Wand sprengen zu können, benötigen wir nun nicht einfach eine Bombe, s
     }
 \end{lstlisting}
 
-\paragraph{Testen} Durch die Änderungen wurde das Verhalten mit dem Schlüssel nicht beeinflusst. Nimmt man diesen ins Inventar auf, kann man nach wie vor keine Wand sprengen. Die korrekte Punkteanzahl wird gutgeschrieben sowie auch der richtige Sound wird abgespielt. Mit der Bombe im Inventar können nun keine Wände mehr gesprengt werden. Kollidiert man aber nun mit dem Feuer, wird dieser aus der Welt entfernt und die Bombe im Inventar wird durch die brennende Bombe ersetzt. Damit lassen sich nun die Wände sprengen (Sound korrekt, Punkte korrekt). Das restliche Verhalten des Spiels bleibt weiterhin unverändert.
+\paragraph{Testen} Durch die Änderungen wurde das Verhalten mit dem Schlüssel nicht beeinflusst. Nimmt man diesen ins Inventar auf, kann man nach wie vor keine Wand sprengen. Die korrekte Punkteanzahl wird gutgeschrieben ebenso auch der richtige Sound abgespielt. Mit der Bombe im Inventar können nun keine Wände mehr gesprengt werden. Kollidiert man aber nun mit dem Feuer, wird dieses aus der Welt entfernt und die Bombe im Inventar wird durch die brennende Bombe ersetzt. Damit lassen sich nun die Wände sprengen (Sound korrekt, Punkte korrekt). Das restliche Verhalten des Spiels bleibt weiterhin unverändert.
 
 \subsection{Reflektieren (10\%)}
 
