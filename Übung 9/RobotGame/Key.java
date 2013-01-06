@@ -17,9 +17,9 @@ public class Key extends Item
         if (robot.collidesWith(Obstacle.class)){
             Obstacle obstacle = (Obstacle) robot.getCollidingObject(Obstacle.class);
             if (matches(obstacle)){
-                robot.getWorld().removeObject(obstacle);
                 robot.getScore().setScore(robot.getScore().getScore() + 100);
                 Game.playSound("door-open.wav", robot);
+                robot.getWorld().removeObject(obstacle);
                 return null;
             }
         }

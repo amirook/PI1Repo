@@ -47,11 +47,11 @@ public class Game extends World
      * @param sound Der Abgespielt werden soll
      * @param robot zu dem sich die Gengner Hinwenden sollen
      */
-    public static void playSound(String sound, Robot robot){
+    public static void playSound(String sound, Actor source){
         Greenfoot.playSound(sound);
-        List<Enemy> enemys = robot.getWorld().getObjects(Enemy.class);
+        List<Enemy> enemys = source.getWorld().getObjects(Enemy.class);
             for (Enemy enemy : enemys) {
-                enemy.turnTowardsObject(robot);
+                enemy.turnTowardsObject(source);
             }
     }
 }
