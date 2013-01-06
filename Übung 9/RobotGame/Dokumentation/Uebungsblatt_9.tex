@@ -13,6 +13,77 @@
 
 \section{Java-Krise (30\%)}
 
+\emph{If-else} dient der bedingten Anweisung, also der Ausführung einer Anweisung unter einer bestimmten Bedingung (\emph{if}). Die Bedingung ist dabei ein Ausdruck der als Ergebnis einen booleschen Wert (\emph{true} oder \emph{false}) liefern muss. Trifft die Bedingung nicht zu, wird eine alternative Anweisung ausgeführt (\emph{else}).
+
+Ein Beispiel verdeutlicht dies:
+
+\begin{lstlisting}[caption={}, firstnumber=1, language=Java]
+    public boolean thisIsTrue = false;
+    public void ifCheckIf(){
+        if (thisIsTrue){
+            System.out.println("Something");
+        }
+        else {
+            System.out.println("Something ELSE");
+        }
+    }
+\end{lstlisting}
+
+Ist die Bedingung wahr, (also \emph{thisIsTrue = true}) wird die Anweisung des \emph{if}-Blocks ausgeführt, ist die Bedingung falsch (\emph{thisIsTrue = false}), wird die Anweisung des \emph{else}-Teils ausgeführt.
+
+\emph{While} wiederum wiederholt eine Anweisung solange die Bedingung wahr ist, wobei die Bedingung vor der Anweisung geprüft wird.
+
+Im Beispiel:
+
+\begin{lstlisting}[caption={}, firstnumber=1, language=Java]
+ public void whileCheckWhile(){
+        int i = 0;
+        while(i < 10){
+            System.out.println(i);
+            i++;
+        }
+    }
+\end{lstlisting}
+
+Der Wert von i wird also so lange ausgegeben, bis die Bedingung \emph{i $<$ 10} nicht mehr wahr ist.
+
+Da sowohl \emph{while} als auch \emph{if-else} von der Wahrheit einer Bedingung abhängen, ist es theoretisch möglich eine Anweisung durch die andere zu ersetzen:
+
+\begin{lstlisting}[caption={}, firstnumber=1, language=Java]
+public void ifCheckWhile(){
+        // if Zweig
+        boolean i = true;
+        while (i && thisIsTrue){
+            System.out.println("Something");
+            i = false;
+        }
+        // else Zweig
+        i=true;
+        while (i && !thisIsTrue){
+            System.out.println("Something ELSE");
+            i=false;
+        }
+    }
+\end{lstlisting}
+
+Hieraus ist ersichtlich, dass sich eine bedingte \emph{if-else}-Anweisung durchaus durch mehrere \emph{while}-Schleifen ersetzen lässt, wenn man die jeweilige Bedingung des \emph{if}-Teils als Bedingung der Durchführung einer \emph{while}-Schleife formuliert. Ist die Bedingung wahr, werden die entsprechenden Anweisungen ausgeführt, ist die Bedingung falsch, werden die Anweisungen der alternativ für den \emph{else}-Teil formulierten \emph{while}-Schleife ausgeführt. Es muss lediglich, um eine unendliche Wiederholung der Schleife zu vermeiden entweder der zu prüfende Ausdruck (unpraktisch) oder ein zusätzlich eingeführter Parameter (wie im Beispiel) verändert werden, damit die Bedingung zur Ausführung nicht mehr wahr ist. Auch weitere Verzweigungen sollten sich theoretisch so darstellen lassen, wenngleich dies wahrscheinlich schnell relativ unübersichtlich würde.
+
+Auch umgekehrt lässt sich eine \emph{while}-Schleife durch eine \emph{if-else} Anweisung ersetzen:
+
+\begin{lstlisting}[caption={}, firstnumber=1, language=Java]
+// Es muss whileChekIf(0) für dasselbe Ergebnis wie bei whileCheckWhile() ausgeführt werden
+public void whileCheckIf(int i){
+        if (i < 10) {
+            System.out.println(i);
+            whileCheckIf(i+1);
+        }
+        else {
+        ;    
+        }
+    }\end{lstlisting}
+
+Hier wird in einer Methode wie bei einer \emph{while}-Schleife durch \emph{if} geprüft, ob die Bedingung zur Ausführung des folgenden Anweisungsblocks wahr ist und für diesen Fall einfach die Methode erneut rekursiv aufgerufen und funktioniert dementsprechend genauso wie eine Schleife. Ebenso wird für den Fall, dass die Bedingung nicht (mehr) wahr ist, der rekursive Aufruf abgebrochen bzw. gar nicht erst durchgeführt. Dazu muss sich die \emph{if-else}-Anweisung allerdings in einer Methode befinden (denn nur so kann sie sich selbst aufrufen).
+
 \section{Delegationsspiel}
 
 \subsection{Vorbereiten (15\%)}
