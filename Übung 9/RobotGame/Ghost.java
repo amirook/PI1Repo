@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class Ghost extends Enemy
 {
-    private Actor target; 
+    private Robot target; 
     
     /**
      * Act - Tue was immer Ghost tun möchte. Diese Methode wird aufgerufen,
@@ -35,7 +35,7 @@ public class Ghost extends Enemy
         //warscheinlichkeit sich zum Spieler zu drehen
         if(Greenfoot.getRandomNumber(150)==1) {
             setNextTarget();
-            turnTowardsObject((Actor)target);
+            turnTowardsObject(target);
         }
         else{
             turn(Greenfoot.getRandomNumber(6)-3);
@@ -44,7 +44,7 @@ public class Ghost extends Enemy
 
     private void setNextTarget(){
         //erfasst den nächsten/neusten Spieler im Radius und setzt den Geist auf diesen an
-        Actor obj= (Actor) ObjectInRange(1000,Robot.class);
+        Robot obj= (Robot) ObjectInRange(1000,Robot.class);
         if(obj != target && obj != null) {
             target = obj;
         }

@@ -17,7 +17,7 @@ public class Enemy extends Collider
         // Fügen Sie Ihren Aktions-Code hier ein.
     }    
     
-    protected Object ObjectInRange(int range, Class cls)
+    protected Actor ObjectInRange(int range, Class cls)
     {
         List<Actor> objects = getObjectsInRange(range,cls);
         for (Actor object : objects) {
