@@ -154,7 +154,8 @@ Um eine Wand sprengen zu können, benötigen wir nun nicht einfach eine Bombe, s
 \subsection{Reflektieren (10\%)}
 
 Durch die Auslagerung der Logik jedes Items in seine eigene Klasse haben wir die Wartbarkeit um einiges verbessert. Möchten wir das Verhalten eines Items nun ändern, wissen wir genau, dass es in dem Item selbst zu finden ist und müssen nicht mehr die entsprechende Methode in der Klasse Robot suchen. Außerdem hat sich dich die Übersichtlichkeit der Klasse Robot dadurch stark verbessert.\\
-Wenn wir unser Spiel nun erweitern möchten (wie wir es z.B. mit der brennenden Bombe gemacht haben), müssen wir nur noch eine Subklasse von Item erzeugen und dessen Logik darin implementieren. Es können auch ohne viel Aufwand nun Items mit Standardverhalten hinzugefügt werden, es muss lediglich die Methode \texttt{matches()} überschrieben werden.
+Wenn wir unser Spiel nun erweitern möchten (wie wir es z.B. mit der brennenden Bombe gemacht haben), müssen wir nur noch eine Subklasse von Item erzeugen und dessen Logik darin implementieren. Es können auch ohne viel Aufwand nun Items mit Standardverhalten hinzugefügt werden, es muss lediglich die Methode \texttt{matches()} überschrieben werden.\\
+Es wäre ratsam auf gleiche Weise das Verhalten des Smileys und des Totenkopfs in sich selbst zu implementieren statt in der Klasse Robot. Das ist aktuell schon mit dem abspielen des Tons so definiert, doch auch der Punktewert (bei Smiley) und das starten des replays (Skull) sollten dort definiert sein. Gäbe es eine Superklasse dieser beiden, könnte man ein Standardverhalten für weitere Objekte festlegen, mit denen man Punkte sammelt.
 
 \section{Buh! (20\%)}
 
