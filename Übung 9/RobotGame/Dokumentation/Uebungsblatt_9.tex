@@ -17,7 +17,128 @@
 
 \subsection{Vorbereiten (15\%)}
 
+Die Klasse Item hat nun 2 Methoden bekommen, mit denen die Item selbst über ihr verhalten bestimmen können.
+\begin{lstlisting}[caption={Klasse \emph{Item}}, firstnumber=1, language=Java]
+import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
+
+/**
+ * Ein Objekt, das aufgehoben werden kann. (Übungsblatt 8)
+ * 
+ * @author Thomas Röfer
+ * @version 02.12.2012
+ */
+public abstract class Item extends Actor
+{
+    /**
+     * Abstrakte Methode um das Item zu nutzen
+     * @param robot Unser Roboter
+     * @return Das Item, welches das im Inventar liegende Item ersetzt
+     */
+    public abstract Item useItem(Robot robot);
+    
+    /**
+     * Abstrakte Methode, die prüft ob das Item zum Hinderniss passt.
+     * @param obstacle Das zu prüfende Hinderniss
+     * @return true, wenn das Item zum Hinderniss passt
+     */
+    public abstract boolean matches(Obstacle obstacle);
+}
+\end{lstlisting}
+
+Wir möchten im Inventar die Nutzung des Items anstoßen, ohne uns darum kümmern zu müssen, um welches Item es geht.
+Wir werden zu keiner Zeit Instanzen von Item direkt erzeugen, daher werden diese Methoden als abstrakt deklariert und dann in den Subklassen überschrieben.
+
 \subsection{Delegieren (25\%)}
+
+Jede Subklasse von Item definiert nun sein eigenes Verhalten, indem sie \texttt{useItem(Robot robot)} überschreibt.\\
+Mit der Methode \texttt{matches(Obstacle obstacle)} definieren wir welches Hindernis zum Item passt.
+
+\begin{lstlisting}[caption={Klasse \emph{Key}}, firstnumber=1, language=Java]
+/**
+ * Ein Schlüssel. Kann benutzt werden, um Türen zu öffnen. (Übungsblatt 3)
+ * 
+ * @author Thomas Röfer 
+ * @version 01.11.2012
+ */
+public class Key extends Item
+{
+    /**
+     * Methode um das Item zu nutzen
+     * @param robot Unser Roboter
+     * @return Das Item, welches das im Inventar liegende Item ersetzt
+     */
+    public Item useItem(Robot robot){
+        if (robot.collidesWith(Obstacle.class)){
+            Obstacle obstacle = (Obstacle) robot.getCollidingObject(Obstacle.class);
+            if (matches(obstacle)){
+                robot.getWorld().removeObject(obstacle);
+                robot.getScore().setScore(robot.getScore().getScore() + 100);
+                Greenfoot.playSound("door-open.wav");
+                return null;
+            }
+        }
+        return this;
+    }
+    
+    /**
+     * Methode, die prüft ob das Item zum Hinderniss passt.
+     * @param obstacle Das zu prüfende Hinderniss
+     * @return true, wenn das Item zum Hinderniss passt
+     */
+    public boolean matches(Obstacle obstacle){   
+        return obstacle instanceof Door;
+    }
+}
+\end{lstlisting}
+
+Wir können nun die Methoden blowUpWall() und openDoor() aus der Klasse Robot entfernen. Stattdessen führen wir in jedem act() Zyklus \texttt{inventory.useInventory(this);} aus.
+\\
+Falls ein Item im Inventar ist, wird das Item nun genutzt.
+
+\begin{lstlisting}[caption={Klasse \emph{Inventory}, Methode \emph{useInventory}}, firstnumber=67, language=Java]
+/**
+     * Benutzt das im Inventar leigende Item und ersetzt gegebenfalls das Item
+     * @param robot Der Roboter wird übergeben.
+     */
+    public void useInventory(Robot robot){
+        if (!isEmpty()){
+            Item item = contents.useItem(robot);
+            if (item != null){
+                store(item);
+            } else {
+                clear();
+            }
+        }
+    }
+\end{lstlisting}
+
+Das zurückgelieferte Item wird wieder im Inventar gespeichert. Standardverhalten - wenn das Item nicht genutzt werden kann - ist, dass sich das Item selbst zurückliefert.\\
+Nach der Benutzung wird \texttt{null} zurückgeliefert. In diesem Fall wird das Inventar geleert.\\
+\\
+Wir haben nun also 2 Varianten implementiert: Rückgabe des Items selbst und Rückgabe von null. Als dritte Variante sollen wir nun ein anderes Item zurückgeben (z.B. Durch Kombination von Item und Hindernis).\\
+Dazu haben wir nun zusätzlich zu dem Item Bomb ein weiteres Item \texttt{BombFire} und ein weiteres Hindernis \texttt{Fire}.\\
+Um eine Wand sprengen zu können, benötigen wir nun nicht einfach eine Bombe, sondern müssen diese vorher anzünden indem wir (mit der Bombe im Inventar) mit dem Feuer kollidieren. Dann wird die Bombe im Inventar durch die brennende Bombe (BombFire) ersetzt.
+
+\begin{lstlisting}[caption={Klasse \emph{Bomb}, Methode \emph{useItem()}},firstnumber=11, language=Java]
+/**
+     * Methode um das Item zu nutzen
+     * @param robot Unser Roboter
+     * @return Das Item, welches das im Inventar liegende Item ersetzt
+     */
+    public Item useItem(Robot robot){
+        if (robot.collidesWith(Obstacle.class)){
+            Obstacle obstacle = (Obstacle) robot.getCollidingObject(Obstacle.class);
+            if (matches(obstacle)){
+                robot.getWorld().removeObject(obstacle);
+                Greenfoot.playSound("Bottle.aiff");
+                return new BombFire();
+            }
+        }
+        return this;
+    }
+\end{lstlisting}
+
+\paragraph{Testen} Durch die Änderungen wurde das Verhalten mit dem Schlüssel nicht beeinflusst. Nimmt man diesen ins Inventar auf, kann man nach wie vor keine Wand sprengen. Die korrekte Punkteanzahl wird gutgeschrieben sowie auch der richtige Sound wird abgespielt. Mit der Bombe im Inventar können nun keine Wände mehr gesprengt werden. Kollidiert man aber nun mit dem Feuer, wird dieser aus der Welt entfernt und die Bombe im Inventar wird durch die brennende Bombe ersetzt. Damit lassen sich nun die Wände sprengen (Sound korrekt, Punkte korrekt). Das restliche Verhalten des Spiels bleibt weiterhin unverändert.
 
 \subsection{Reflektieren (10\%)}
 
@@ -25,9 +146,7 @@
 
 \section{Bonusaufgabe: Was war das für ein Geräusch? (5\%)}
 
-\begin{lstlisting}[caption={Klasse \emph{Obstacle}}, firstnumber=3, language=Java]
 
-\end{lstlisting}
 
 
 
