@@ -6,4 +6,5 @@ comment1.params=range\ cls
 comment1.target=java.lang.Object\ ObjectInRange(int,\ java.lang.Class)
 comment2.params=actor
 comment2.target=void\ turnTowardsObject(greenfoot.Actor)
+comment2.text=\n\ Dreht\ das\ Objekt\ in\ Richtung\ eine\ Actors.\ Im\ Moment\ werden\ die\ Objekte\n\ in\ Richtung\ des\ Roboters\ gedreht.\n\ @param\ actor\ in\ dessen\ Richtung\ sich\ der\ Gegner\ dreht\n
 numComments=3

@@ -234,9 +234,39 @@ Es wäre ratsam auf gleiche Weise das Verhalten des Smileys und des Totenkopfs i
 
 \section{Bonusaufgabe: Was war das für ein Geräusch? (5\%)}
 
+Alle unsere Gegner (Ghost und Walker) erben von ihrer Superklasse die Methode \texttt{turnTowardsObject()}
 
+\begin{lstlisting}[caption={Methode \emph{turnTowardsObject()}}, firstnumber=31, language=Java]
+/**
+     * Dreht das Objekt in Richtung eine Actors. Im Moment werden die Objekte
+     * in Richtung des Roboters gedreht.
+     * @param actor in dessen Richtung sich der Gegner dreht
+     */
+    public void turnTowardsObject(Actor actor){
+        turnTowards(actor.getX(),actor.getY());
+    }
+\end{lstlisting}
 
+Nun möchten wir, dass unsere Gegner sich bei jedem Geräusch in Richtung des Roboters drehen. Unsere Klasse \texttt{Game} bekommt also eine statische Methode, die das für uns übernimmt.
 
+\begin{lstlisting}[caption={Methode \emph{playSound()} in der Klasse Game}, firstnumber=43, language=Java]
+/**
+     * Spielt einen Sound ab. Da aber alle Gegner sich bei jedem Sound in
+     * Richtung des Roboters drehen sollen, wird hier der Roboter als Argument
+     * erwartet.
+     * @param sound Der Abgespielt werden soll
+     * @param robot zu dem sich die Gengner Hinwenden sollen
+     */
+    public static void playSound(String sound, Robot robot){
+        Greenfoot.playSound(sound);
+        List<Enemy> enemys = robot.getWorld().getObjects(Enemy.class);
+            for (Enemy enemy : enemys) {
+                enemy.turnTowardsObject(robot);
+            }
+    }
+\end{lstlisting}
+
+Sie bekommt als Argument den Namen der Sounddatei, die abzuspielen ist und auch unseren Roboter. Somit kann man anhand des Roboters die Welt ermitteln und ihn auch der turnTowardsObject() Methode übergeben. Diese Methode wird für alle in der Welt vorhandenen Enemy Instanzen ausgeführt.
 
 \end{document}
 

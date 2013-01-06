@@ -101,5 +101,11 @@ public class Level1 extends World
         Fire fire = new Fire();
         addObject(fire, 455, 336);
         fire.setLocation(449, 330);
+        Ghost ghost = new Ghost();
+        addObject(ghost, 555, 50);
+        Ghost ghost2 = new Ghost();
+        addObject(ghost2, 114, 50);
+        Walker walker = new Walker();
+        addObject(walker, 466, 209);
     }
 }

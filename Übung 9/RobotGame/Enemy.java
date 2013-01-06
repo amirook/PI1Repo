@@ -28,6 +28,11 @@ public class Enemy extends Collider
         return null;
     }
     
+    /**
+     * Dreht das Objekt in Richtung eine Actors. Im Moment werden die Objekte
+     * in Richtung des Roboters gedreht.
+     * @param actor in dessen Richtung sich der Gegner dreht
+     */
     public void turnTowardsObject(Actor actor){
         turnTowards(actor.getX(),actor.getY());
     }
