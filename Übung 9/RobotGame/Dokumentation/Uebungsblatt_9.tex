@@ -30,11 +30,20 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
 public abstract class Item extends Actor
 {
     /**
-     * Abstrakte Methode um das Item zu nutzen
+     * Standrad Methode um das Item zu nutzen, wenn das Item diese Methode nicht überschreibt
      * @param robot Unser Roboter
      * @return Das Item, welches das im Inventar liegende Item ersetzt
      */
-    public abstract Item useItem(Robot robot);
+    public Item useItem(Robot robot){
+        if (robot.collidesWith(Obstacle.class)){
+            Obstacle obstacle = (Obstacle) robot.getCollidingObject(Obstacle.class);
+            if (matches(obstacle)){
+                robot.getWorld().removeObject(obstacle);
+                return null;
+            }
+        }
+        return this;
+    }
     
     /**
      * Abstrakte Methode, die prüft ob das Item zum Hinderniss passt.
@@ -43,14 +52,16 @@ public abstract class Item extends Actor
      */
     public abstract boolean matches(Obstacle obstacle);
 }
+
 \end{lstlisting}
 
 Wir möchten im Inventar die Nutzung des Items anstoßen, ohne uns darum kümmern zu müssen, um welches Item es geht.
-Wir werden zu keiner Zeit Instanzen von Item direkt erzeugen, daher werden diese Methoden als abstrakt deklariert und dann in den Subklassen überschrieben.
+Wir werden zu keiner Zeit Instanzen von Item direkt erzeugen, daher können wir abstrakte Methoden implementieren, die dann in den Subklassen überschrieben werden. Die Methode \texttt{matches()} ist abstrakt, da wir diese auf jeden Fall in den Subklassen überschreiben müssen, denn nur die Subklasse kann wissen welches Hindernis zu diesem Item passt.\\
+\texttt{useItem()} wurde nicht abstrakt implementiert, damit wir auf diese Weise ein Standardverhalten für Items haben. Wenn diese Methode also nicht überschrieben wird, kann man mit dem Item das passende Hindernis überwinden, es wird jedoch weder ein Sound abgespielt noch werden Punkte gutgeschrieben.
 
 \subsection{Delegieren (25\%)}
 
-Jede Subklasse von Item definiert nun sein eigenes Verhalten, indem sie \texttt{useItem(Robot robot)} überschreibt.\\
+Jede Subklasse von Item kann nun sein eigenes Verhalten definiert, indem sie \texttt{useItem(Robot robot)} überschreibt. Tut sie es nicht, wird das Standardverhalten genutzt.\\
 Mit der Methode \texttt{matches(Obstacle obstacle)} definieren wir welches Hindernis zum Item passt.
 
 \begin{lstlisting}[caption={Klasse \emph{Key}}, firstnumber=1, language=Java]
@@ -141,6 +152,9 @@ Um eine Wand sprengen zu können, benötigen wir nun nicht einfach eine Bombe, s
 \paragraph{Testen} Durch die Änderungen wurde das Verhalten mit dem Schlüssel nicht beeinflusst. Nimmt man diesen ins Inventar auf, kann man nach wie vor keine Wand sprengen. Die korrekte Punkteanzahl wird gutgeschrieben sowie auch der richtige Sound wird abgespielt. Mit der Bombe im Inventar können nun keine Wände mehr gesprengt werden. Kollidiert man aber nun mit dem Feuer, wird dieser aus der Welt entfernt und die Bombe im Inventar wird durch die brennende Bombe ersetzt. Damit lassen sich nun die Wände sprengen (Sound korrekt, Punkte korrekt). Das restliche Verhalten des Spiels bleibt weiterhin unverändert.
 
 \subsection{Reflektieren (10\%)}
+
+Durch die Auslagerung der Logik jedes Items in seine eigene Klasse haben wir die Wartbarkeit um einiges verbessert. Möchten wir das Verhalten eines Items nun ändern, wissen wir genau, dass es in dem Item selbst zu finden ist und müssen nicht mehr die entsprechende Methode in der Klasse Robot suchen. Außerdem hat sich dich die Übersichtlichkeit der Klasse Robot dadurch stark verbessert.\\
+Wenn wir unser Spiel nun erweitern möchten (wie wir es z.B. mit der brennenden Bombe gemacht haben), müssen wir nur noch eine Subklasse von Item erzeugen und dessen Logik darin implementieren. Es können auch ohne viel Aufwand nun Items mit Standardverhalten hinzugefügt werden, es muss lediglich die Methode \texttt{matches()} überschrieben werden.
 
 \section{Buh! (20\%)}
 

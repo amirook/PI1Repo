@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.params=robot
 comment0.target=Item\ useItem(Robot)
-comment0.text=\n\ Abstrakte\ Methode\ um\ das\ Item\ zu\ nutzen\n\ @param\ robot\ Unser\ Roboter\n\ @return\ Das\ Item,\ welches\ das\ im\ Inventar\ liegende\ Item\ ersetzt\n
+comment0.text=\n\ Standrad\ Methode\ um\ das\ Item\ zu\ nutzen,\ wenn\ das\ Item\ diese\ Methode\ nicht\ \u00FCberschreibt\n\ @param\ robot\ Unser\ Roboter\n\ @return\ Das\ Item,\ welches\ das\ im\ Inventar\ liegende\ Item\ ersetzt\n
 comment1.params=obstacle
 comment1.target=boolean\ matches(Obstacle)
 comment1.text=\n\ Abstrakte\ Methode,\ die\ pr\u00FCft\ ob\ das\ Item\ zum\ Hinderniss\ passt.\n\ @param\ obstacle\ Das\ zu\ pr\u00FCfende\ Hinderniss\n\ @return\ true,\ wenn\ das\ Item\ zum\ Hinderniss\ passt\n

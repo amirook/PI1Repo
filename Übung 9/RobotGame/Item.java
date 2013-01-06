@@ -9,11 +9,20 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
 public abstract class Item extends Actor
 {
     /**
-     * Abstrakte Methode um das Item zu nutzen
+     * Standrad Methode um das Item zu nutzen, wenn das Item diese Methode nicht überschreibt
      * @param robot Unser Roboter
      * @return Das Item, welches das im Inventar liegende Item ersetzt
      */
-    public abstract Item useItem(Robot robot);
+    public Item useItem(Robot robot){
+        if (robot.collidesWith(Obstacle.class)){
+            Obstacle obstacle = (Obstacle) robot.getCollidingObject(Obstacle.class);
+            if (matches(obstacle)){
+                robot.getWorld().removeObject(obstacle);
+                return null;
+            }
+        }
+        return this;
+    }
     
     /**
      * Abstrakte Methode, die prüft ob das Item zum Hinderniss passt.
