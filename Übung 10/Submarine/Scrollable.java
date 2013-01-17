@@ -6,7 +6,7 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
  * @author (Ihr Name) 
  * @version (Eine Versionsnummer oder ein Datum)
  */
-public class Scrollable extends Actor
+public class Scrollable extends ServerActor
 {
     /**
      * Act - Tue was immer Scrollable tun möchte. Diese Methode wird aufgerufen,

@@ -6,7 +6,7 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
  * @author Beate Ruffer (Bea), Mohamadreza Khostevan (Amir), Daniel Knobloch (Knobi)
  * @version 1.0.2
  */
-public class Ocean extends World
+public class Ocean extends ServerWorld
 {
  
 

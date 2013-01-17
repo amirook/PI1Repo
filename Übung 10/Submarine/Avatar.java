@@ -6,7 +6,7 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
  * @author (Ihr Name) 
  * @version (Eine Versionsnummer oder ein Datum)
  */
-public class Avatar extends ServerActor
+public class Avatar extends Actor
 {
     /**
      * Act - Tue was immer Avatar tun möchte. Diese Methode wird aufgerufen,

@@ -6,7 +6,7 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
  * @author Beate Ruffer (Bea), Mohamadreza Khostevan (Amir), Daniel Knobloch (Knobi)
  * @version 1.0.2
  */
-public class Beehive extends World
+public class Beehive extends ServerWorld
 {
     /**
      * Konstruktor für Objekte der Klasse Beehive.

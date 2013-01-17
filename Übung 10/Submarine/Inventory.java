@@ -8,7 +8,7 @@ import java.util.*;
  * @version 1.0.2
  * 
  */
-public class Inventory extends Actor
+public class Inventory extends ServerActor
 {
     
     /**

@@ -8,7 +8,7 @@ import java.io.*;
  * @author Mohamadreza Khostevan (Amir)
  * @version 1.0
  */
-public class ScoreBoard extends Actor
+public class ScoreBoard extends ServerActor
 {
     /**
      * Zähler des Punktestands
