@@ -120,21 +120,21 @@ public class Submarine extends Collider
         pose = new Pose(this);
         
         // Cursor-Tasten abfragen
-        if(Greenfoot.isKeyDown("up")) {
+        if(Greenfoot.isKeyDown("w")) {//up
             bufferSubmarine();
             move(3);
         }
-        if(Greenfoot.isKeyDown("down")) {
+        if(Greenfoot.isKeyDown("s")) {//down
             bufferSubmarine();
-            move(-3);
+            move(-2);
         }
-        if(Greenfoot.isKeyDown("left")) {
+        if(Greenfoot.isKeyDown("a")) {//left
             bufferSubmarine();
-            turn(-5);
+            turn(-2);
         }
-        if(Greenfoot.isKeyDown("right")) {
+        if(Greenfoot.isKeyDown("d")) {//right
             bufferSubmarine();
-            turn(5);
+            turn(2);
         }
         // getKey() verhindert Timing-Probleme von isKeyDown() in dem Fall, dass mehrere Objekte im Inventar gespeichert sind. (Für spätere Versionen.)
         if (Greenfoot.getKey() == "space") {
@@ -205,9 +205,9 @@ public class Submarine extends Collider
     */
     public void randomlyBlowBubbles()
     {
-        if(Greenfoot.getRandomNumber(80)==1){
-            //new bubble with lifespan 40 and a scale between(5-40)pixels
-            Bubble bubble = new Bubble(100,Greenfoot.getRandomNumber(35)+5);
+        if(Greenfoot.getRandomNumber(85)==1){
+            //new bubble with lifespan 40 and a scale between(5-35)pixels
+            Bubble bubble = new Bubble(100,Greenfoot.getRandomNumber(30)+5);
             getWorld().addObject(bubble,this.getX(),this.getY());
         }
     }

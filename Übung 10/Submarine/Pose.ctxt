@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.params=actor
 comment0.target=Pose(greenfoot.Actor)
-comment0.text=\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Pose.\ Position\ des\ Actors\ wird\ in\ xPose\ und\ yPose\ und\ dessen\ Rotation\n\ in\ rotationPose\ hinterlegt.\n\ @param\ actor\ Actor,\ dessen\ Position\ und\ Rotation\ gespeichert\ werden\ soll.\n
+comment0.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Pose.\ Position\ des\ Actors\ wird\ in\ xPose\ und\ yPose\ und\ dessen\ Rotation\r\n\ in\ rotationPose\ hinterlegt.\r\n\ @param\ actor\ Actor,\ dessen\ Position\ und\ Rotation\ gespeichert\ werden\ soll.\r\n
 comment1.params=
 comment1.target=void\ resetPose()
-comment1.text=\n\ Position\ und\ Rotation\ des\ Actors\ werden\ auf\ seine\ urspr\u00FCnglichen\ Werte\ zur\u00FCckgesetzt.\n
+comment1.text=\r\n\ Position\ und\ Rotation\ des\ Actors\ werden\ auf\ seine\ urspr\u00FCnglichen\ Werte\ zur\u00FCckgesetzt.\r\n
 numComments=2

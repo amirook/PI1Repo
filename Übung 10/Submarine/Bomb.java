@@ -7,7 +7,7 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
  * @version 1.0.2
  * 
  */
-public class Bomb extends Obstacle
+public class Bomb extends Collectable
 {
     /**
      * Konstruktor von Bomb. Die Klasse der Objekte, die dieses Hindernis
@@ -16,7 +16,5 @@ public class Bomb extends Obstacle
      * das Hindernis überwunden wird.
      */
     public Bomb(){
-        super(Scissor.class);
-        beatenSound = "Song.wav";
     }
 }

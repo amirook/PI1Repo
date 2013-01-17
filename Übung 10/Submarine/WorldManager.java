@@ -28,8 +28,14 @@ public class WorldManager extends World
         
         myWorlds = new ArrayList<World>();
         
-        myWorlds.add(new Ocean());
-        myWorlds.add(new Beehive());
+        myWorlds.add(new Start());
+        myWorlds.add(new Ocean1());
+        myWorlds.add(new Ocean2());
+        myWorlds.add(new Ocean3());
+        myWorlds.add(new Cave1());
+        myWorlds.add(new Cave2());
+        myWorlds.add(new Cave4());
+        myWorlds.add(new Cave5());
         Greenfoot.setWorld(myWorlds.get(0));
     }
     

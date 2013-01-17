@@ -68,12 +68,12 @@ public class CaveShade extends Actor
     private Actor getLightHolder()
     {
         
-        List<Actor> bees = getWorld().getObjects(Submarine.class);
-        for(Actor bee : bees) {
-            if (bee!=null) //&& bee.getInventory().getInventory()==Lamp.class)
+        List<Actor> subs = getWorld().getObjects(Submarine.class);
+        for(Actor sub : subs) {
+            if (sub!=null) //&& bee.myInventory.getInventory()==Lamp.class)
             {
                 lighted=true;
-                return bee;
+                return sub;
             }
         }
         

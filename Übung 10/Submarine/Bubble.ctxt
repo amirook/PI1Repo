@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.params=lifetime\ scale
 comment0.target=Bubble(int,\ int)
-comment0.text=\n\ erfasst\ die\ \u00FCberlebensDauer\ und\ gr\u00F6\u00DFe\ die\ die\ erstellte\ blase\ besitzt\n\ \u00FCbergibt\ man\ lifetime\ 0\ so\ ist\ die\ Blase\ permanent\n\ (sie\ bleibt\ erhalten\ bis\ sie\ die\ Wasseroberfl\u00E4che\ erreicht)\n
+comment0.text=\r\n\ erfasst\ die\ \u00FCberlebensDauer\ und\ gr\u00F6\u00DFe\ die\ die\ erstellte\ blase\ besitzt\r\n\ \u00FCbergibt\ man\ lifetime\ 0\ so\ ist\ die\ Blase\ permanent\r\n\ (sie\ bleibt\ erhalten\ bis\ sie\ die\ Wasseroberfl\u00E4che\ erreicht)\r\n
 comment1.params=
 comment1.target=void\ act()
-comment1.text=\n\ Bewegung\ der\ Blase\ in\ Richtung\ der\ Oberfl\u00E4che\n\ Entfernt\ diese\ wenn\ lifetime<\=0\ ist\n
+comment1.text=\r\n\ Bewegung\ der\ Blase\ in\ Richtung\ der\ Oberfl\u00E4che\r\n\ Entfernt\ diese\ wenn\ lifetime<\=0\ ist\r\n
 numComments=2

@@ -1,17 +1,17 @@
 #BlueJ class context
 comment0.params=
 comment0.target=WorldManager()
-comment0.text=\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ WorldManager.\ Hier\ werden\ alle\ gebrauchten\ Welten\n\ instanziert\ und\ zur\ Weltenliste\ myWorlds\ hinzugef\u00FCgt.\ Beginnende\ Welt\ wird\ gesetzt.\n
+comment0.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ WorldManager.\ Hier\ werden\ alle\ gebrauchten\ Welten\r\n\ instanziert\ und\ zur\ Weltenliste\ myWorlds\ hinzugef\u00FCgt.\ Beginnende\ Welt\ wird\ gesetzt.\r\n
 comment1.params=worldClass
 comment1.target=greenfoot.World\ getWorldReference(java.lang.Class)
-comment1.text=\n\ Liefert\ die\ Referenz\ auf\ die\ Welt\ zur\u00FCck,\ die\ als\ N\u00E4chstes\ verwendet\ werden\ muss.\n\ @param\ worldClass\ Klassenname\ der\ Welt,\ die\ bei\ Kollision\ des\ Entrance\ aktiviert\ werden\ soll.\n\ @return\ Referenz\ auf\ die\ n\u00E4chste\ Welt\ oder\ null,\ wenn\ gesuchte\ Welt\ nie\ instanziiert\ wurde.\n
+comment1.text=\r\n\ Liefert\ die\ Referenz\ auf\ die\ Welt\ zur\u00FCck,\ die\ als\ N\u00E4chstes\ verwendet\ werden\ muss.\r\n\ @param\ worldClass\ Klassenname\ der\ Welt,\ die\ bei\ Kollision\ des\ Entrance\ aktiviert\ werden\ soll.\r\n\ @return\ Referenz\ auf\ die\ n\u00E4chste\ Welt\ oder\ null,\ wenn\ gesuchte\ Welt\ nie\ instanziiert\ wurde.\r\n
 comment2.params=w\ c
 comment2.target=boolean\ isOfClass(greenfoot.World,\ java.lang.Class)
-comment2.text=\n\ Hilfsmethode\ um\ Instanzen\ auf\ Ihre\ Klasse\ zu\ pr\u00FCfen.\n\ \n\ @param\ w\ die\ Welt,\ die\ gepr\u00FCft\ werden\ soll\n\ @param\ c\ die\ Klasse\ auf\ die\ die\ Welt\ gepr\u00FCft\ wird\n\ @return\ true,\ wenn\ die\ Welt\ w\ eine\ Instanz\ von\ c\ ist.\ Andernfalls\ false.\n
+comment2.text=\r\n\ Hilfsmethode\ um\ Instanzen\ auf\ Ihre\ Klasse\ zu\ pr\u00FCfen.\r\n\ \r\n\ @param\ w\ die\ Welt,\ die\ gepr\u00FCft\ werden\ soll\r\n\ @param\ c\ die\ Klasse\ auf\ die\ die\ Welt\ gepr\u00FCft\ wird\r\n\ @return\ true,\ wenn\ die\ Welt\ w\ eine\ Instanz\ von\ c\ ist.\ Andernfalls\ false.\r\n
 comment3.params=actor\ depth
 comment3.target=boolean\ overTheTop(greenfoot.Actor,\ int)
-comment3.text=gibt\ an\ ob\ sich\ der\ Aktor\ \u00FCber\ der\ Wasseroberfl\u00E4che\ befindet\ und\ wenn\ ja\n\ schaltet\ er\ in\ folgenden\ Tests\ erst\ auf\ false\ sobald\ der\ aktor\ unter\ surfaceY+depth\ ankommt\n\ hierdurch\ kann\ eine\ minimale\ Eintauchtiefe\ f\u00FCr\ die\ Aktoren\ festgelegt\ werden\n\ @actor\ der\ gepr\u00FCft\ wird\n\ @zus\u00E4tzliche\ Tiefe\ die\ der\ Aktor\ unter\ der\ Oberfl\u00E4che\ erreichen\ muss,\n
+comment3.text=gibt\ an\ ob\ sich\ der\ Aktor\ \u00FCber\ der\ Wasseroberfl\u00E4che\ befindet\ und\ wenn\ ja\r\n\ schaltet\ er\ in\ folgenden\ Tests\ erst\ auf\ false\ sobald\ der\ aktor\ unter\ surfaceY+depth\ ankommt\r\n\ hierdurch\ kann\ eine\ minimale\ Eintauchtiefe\ f\u00FCr\ die\ Aktoren\ festgelegt\ werden\r\n\ @actor\ der\ gepr\u00FCft\ wird\r\n\ @zus\u00E4tzliche\ Tiefe\ die\ der\ Aktor\ unter\ der\ Oberfl\u00E4che\ erreichen\ muss,\r\n
 comment4.params=actor
 comment4.target=void\ reactToSurface(greenfoot.Actor)
-comment4.text=\n\ verfahren\ welches\ f\u00FCr\ Aktoren\ einen\ visuellen\ Sprung\ zur\u00FCck\ ins\ wasser\ simuliert\n\ wenn\ diese\ die\ Oberfl\u00E4che\ durchschreiten\n
+comment4.text=\r\n\ verfahren\ welches\ f\u00FCr\ Aktoren\ einen\ visuellen\ Sprung\ zur\u00FCck\ ins\ wasser\ simuliert\r\n\ wenn\ diese\ die\ Oberfl\u00E4che\ durchschreiten\r\n
 numComments=5

@@ -26,9 +26,14 @@ public class Entrance extends Crashable
     private int yInNewWorld;
     
     /**
+     * Rotation, in der die Biene in der neuen Welt positioniert werden soll.
+     */
+    private int arcInNewWorld;
+    
+    /**
      * Array, in der die Klassen, der zu übertragenen Objekte gespeichert werden
      */
-    private Class[] classesToMove = {Inventory.class, ScoreBoard.class, Crashable.class, Hammer.class, Obstacle.class};
+    private Class[] classesToMove = {Inventory.class, ScoreBoard.class,};
     
     /**
      * Konstruktor von Entrance. Die Klasse der neuen Welt und die neuen Koordinaten der
@@ -37,10 +42,11 @@ public class Entrance extends Crashable
      * @param y y-Koordinate, an der die Biene in der neuen Welt positioniert werden soll.
      * @param worldClass Die Klasse der Welt, in die das Entrance führt.
      */
-    public Entrance(int x, int y, Class worldClass)
+    public Entrance(int x, int y,int arc, Class worldClass)
     {
         xInNewWorld = x;
         yInNewWorld = y;
+        arcInNewWorld = arc;
         nextWorldClass = worldClass;
     }
     
@@ -68,6 +74,7 @@ public class Entrance extends Crashable
             } 
             currentWorld.removeObject(submarine);
             nextWorld.addObject(submarine, xInNewWorld, yInNewWorld);
+            submarine.setRotation(arcInNewWorld);
             Greenfoot.setWorld(nextWorld);
         }
     }
