@@ -1,11 +1,10 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
 import java.util.*;
 /**
- * Die Bine repräsentiert eine übliche Honigbiene der Realwelt. Die Biene
- * läst sich mittels der Kursortasten der Tastatur vor/zurück und 
+ * Das U-Boot lässt sich mittels Kursortasten der Tastatur vor/zurück und 
  * links/rechts steuern.
- * Da jeder gute Biene ihre eigenen Punktestand verwaltet, bekommt sie von dem getroffenen
- * Objekt eine Information, wieviel Punkte der Zusammenstoß wert war und aktualisiert
+ * Es verwaltet seinen eigenen Punktestand und bekommt dafür von dem getroffenen
+ * Objekt eine Information darüber, wieviele Punkte der Zusammenstoß wert war und aktualisiert
  * seinen Punktestand. Aktuell haben alle getroffenen Objekte den Punktewert 1.
  * 
  * @author Beate Ruffer (Bea), Mohamadreza Khostevan (Amir), Daniel Knobloch (Knobi) 
@@ -15,17 +14,17 @@ import java.util.*;
 public class Submarine extends Collider
 {    
     /**
-     * Instanz der Klasse Pose, in der die Position der Biene hinterlegt wird
+     * Instanz der Klasse Pose, in der die Position des U-Bootes hinterlegt wird
      */
     public Pose pose;
 
     /**
-     * Inventar der Biene
+     * Inventar des U-Bootes
      */
     public Inventory myInventory;
 
     /**
-     * Das ScoreBoard der Biene
+     * Das ScoreBoard des U-Bootes
      */
     private ScoreBoard scoreBoard;
 
@@ -45,7 +44,7 @@ public class Submarine extends Collider
     private RingBuffer bufferRot;
 
     /**
-     * Konstruktor der Biene. Sie kreiirt jeweils einen RingBuffer für die X und Y Positionen und 
+     * Konstruktor des U-Bootes. Kreiirt jeweils einen RingBuffer für die X und Y Positionen und 
      * für die Roation.
      */
     public Submarine()
@@ -56,8 +55,8 @@ public class Submarine extends Collider
     }
 
     /**
-     * Ordnet der Biene einen Punktezähler zu
-     * @param scoreBoard Punktezähler, das der Biene zugeordnet werden soll.
+     * Ordnet dem U-Boot einen Punktezähler zu
+     * @param scoreBoard Punktezähler, der dem U-Boot zugeordnet werden soll.
      */
     public void setScoreBoard(ScoreBoard scoreBoard)
     {
@@ -65,8 +64,8 @@ public class Submarine extends Collider
     }
 
     /**
-     * Liefert den Punktezähler der Biene zurück
-     * @return Das ScoreBoard der Biene.
+     * Liefert den Punktezähler des U-Bootes zurück
+     * @return Das ScoreBoard des U-Bootes.
      */
     public ScoreBoard getScoreBoard()
     {
@@ -74,8 +73,8 @@ public class Submarine extends Collider
     }
 
     /**
-     * Ordnet der Biene ein Inventar zu
-     * @param inventory Inventar, das der Biene zugeordnet werden soll.
+     * Ordnet dem U-Boot ein Inventar zu
+     * @param inventory Inventar, das dem U-Boot zugeordnet werden soll.
      */
     public void setInventory(Inventory inventory)
     {
@@ -83,9 +82,9 @@ public class Submarine extends Collider
     }
 
     /**
-     * Liefert das Inventar der Biene zurück
+     * Liefert das Inventar des U-Bootes zurück
      * 
-     * @return Das Inventar der Biene.
+     * @return Das Inventar des U-Bootes.
      */
     public Inventory getInventory(){
         return myInventory;
@@ -93,7 +92,7 @@ public class Submarine extends Collider
 
     /**
      * Diese Methode wird aufgerufen, wenn die 'Act'- oder 'Run'-Knöpfe in der Umgebung gedrückt werden.
-     * Die Biene muss nichts weiteres tun, als zu prüfen welche Tasten gedrückt sind und sich dementsprechend zu verhalten.
+     * Das U-Boot muss nichts weiter tun, als zu prüfen welche Tasten gedrückt sind und sich dementsprechend verhalten.
      */
     public void act() 
     {
@@ -120,19 +119,19 @@ public class Submarine extends Collider
         
         // Cursor-Tasten abfragen
         if(Greenfoot.isKeyDown("up")) {
-            bufferBee();
+            bufferSubmarine();
             move(3);
         }
         if(Greenfoot.isKeyDown("down")) {
-            bufferBee();
+            bufferSubmarine();
             move(-3);
         }
         if(Greenfoot.isKeyDown("left")) {
-            bufferBee();
+            bufferSubmarine();
             turn(-5);
         }
         if(Greenfoot.isKeyDown("right")) {
-            bufferBee();
+            bufferSubmarine();
             turn(5);
         }
         // getKey() verhindert Timing-Probleme von isKeyDown() in dem Fall, dass mehrere Objekte im Inventar gespeichert sind. (Für spätere Versionen.)
@@ -147,9 +146,9 @@ public class Submarine extends Collider
     }
     
     /**
-     * Trägt den aktuellen Zustand der Biene in den RingBuffer ein.
+     * Trägt den aktuellen Zustand des U-Bootes in den RingBuffer ein.
      */
-    private void bufferBee()
+    private void bufferSubmarine()
     {
         bufferX.push(this.getX());
         bufferY.push(this.getY());
@@ -157,7 +156,7 @@ public class Submarine extends Collider
     }
 
     /**
-     * Prüft, ob die Biene mit einem Hindernis kollidiert. Falls eine Kollision existiert, wird
+     * Prüft, ob das U-Boot mit einem Hindernis kollidiert. Falls eine Kollision existiert, wird
      * der Crash Handler des Objekts aufgerufen.
      */
     private void checkCollisions()
@@ -170,7 +169,7 @@ public class Submarine extends Collider
 
     /**
      * Wenn ein Collectable in der Nähe und das Inventar leer ist, wird das Collectable eingesammelt.
-     * Beindet sich ein Actor im Inventar, wird dieser an der aktuellen Position der Biene in die
+     * Beindet sich ein Actor im Inventar, wird dieser an der aktuellen Position des U-Bootes in die
      * Welt gesetzt. Andernfalls wird der Fehlerton abgespielt.
      */
     private void takeOrFreeCollectable()

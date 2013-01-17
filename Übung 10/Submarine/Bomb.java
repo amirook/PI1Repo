@@ -7,15 +7,15 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
  * @version 1.0.2
  * 
  */
-public class Bush extends Obstacle
+public class Bomb extends Obstacle
 {
     /**
-     * Konstruktor von Bush. Die Klasse der Objekte, die dieses Hindernis
+     * Konstruktor von Bomb. Die Klasse der Objekte, die dieses Hindernis
      * übwerwinden können, werden dem Konstruktor der Superklasse Obstacle
      * übergeben. Die Sounddatei wird gesetzt, die abgespielt wird, wenn
      * das Hindernis überwunden wird.
      */
-    public Bush(){
+    public Bomb(){
         super(Scissor.class);
         beatenSound = "Song.wav";
     }
