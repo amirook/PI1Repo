@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=ScoreBoard()
+comment0.text=\r\n\ Der\ Konstruktor\ von\ ScoreBoard\ setzt\ das\ Hintergrundbild,\ die\ Schrifteigenschaften\r\n\ der\ Anzeige\ und\ setzt\ den\ Anfangswert\ auf\ "00"\r\n
+comment1.params=
+comment1.target=int\ getScore()
+comment1.text=\r\n\ getter\ Methode\ um\ den\ aktuellen\ Punktestand\ zu\ erhalten.\ public,\ damit\ sie\ auch\ aus\ der\ Greenfoot\ Umgebung\ zu\ erreichen\ ist.\r\n
+comment2.params=scoreValue
+comment2.target=void\ updateScore(int)
+comment2.text=\r\n\ Aktualisiert\ den\ Punktestand\ und\ die\ Anzeige.\ Bei\ Zahlen\ <\ 10\ wird\ eine\ 0\ vorangestellt.\r\n\ \r\n\ @param\ scoreValue\ Wert,\ um\ den\ das\ ScoreBoard\ erh\u00F6ht\ werden\ soll\r\n
+comment3.params=
+comment3.target=void\ resetImage()
+comment3.text=\r\n\ Leert\ die\ Punkteanzeige\ indem\ das\ Hindergrundbild\ und\ die\ Schrifteigenschaften\r\n\ neu\ gesetzt\ werden.\r\n
+numComments=4

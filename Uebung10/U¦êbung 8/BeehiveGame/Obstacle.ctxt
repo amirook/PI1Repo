@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=isBeatenBy
+comment0.target=Obstacle(java.lang.Class)
+comment0.text=\r\n\ Konstruktor\ von\ Obstacle\ wird\ von\ der\ Subklasse\ aufgerufen.\r\n\ @param\ isBeatenBy\ Die\ Klasse\ des\ Objekts,\ welches\ das\ Hindernis\ \u00FCberwinden\ kann.\r\n
+comment1.params=collectable
+comment1.target=boolean\ isBeaten(greenfoot.Actor)
+comment1.text=\r\n\ Pr\u00FCft\ ob\ das\ sich\ im\ Inventar\ befindende\ Objekt\ eine\ Instanz\ von\ isBeatenBy\ ist.\ Falls\ ja,\ wird\ das\ Hindernis\ von\ dem\ Objekt\r\n\ im\ Inventar\ geschlagen\ und\ die\ Heldin\ kann\ passieren.\r\n\ \r\n\ @param\ collectable\ Das\ zu\ pr\u00FCfende\ Objekt.\r\n\ @return\ true,\ wenn\ Hindernis\ \u00FCberwunden\ ist.\r\n
+comment2.params=bee
+comment2.target=void\ handleCrash(Bee)
+comment2.text=\r\n\ Crash\ Handler\ der\ Hindernisse.\ Wird\ von\ Bee\ aufgerufen,\ wenn\ eine\ Kollision\ auftritt.\r\n\ @param\ bee\ Die\ Biene\ \u00FCbergibt\ sich\ selbst\r\n
+numComments=3

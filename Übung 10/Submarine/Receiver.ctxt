@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.params=channel\ bufferSize
-comment0.target=Receiver(java.nio.channels.SocketChannel,\ int)
-comment0.text=\n\ Erzeugt\ ein\ neues\ Objekt\ zum\ Empfangen\ von\ Daten.\n\ @param\ channel\ Der\ Kanal,\ auf\ dem\ die\ Daten\ empfangen\ werden.\n\ @param\ bufferSize\ Die\ Gr\u00F6\u00DFe\ des\ Puffers,\ der\ zum\ Empfangen\ genutzt\ wird.\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Diese\ muss\ mindestens\ so\ gew\u00E4hlt\ werden,\ dass\ alle\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Daten\ zwischen\ zwei\ Zeilenvorsch\u00FCben\ in\ den\ Puffer\ passen.\ \n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Besser\ ist\ es\ allerdings,\ wenn\ alle\ Daten\ eines\ \n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Kommunikationszyklus\ in\ den\ Puffer\ passen\ (z.B.\ 10000).\n\ @throws\ IOException\ Ein\ Problem\ beim\ Wechsel\ in\ den\ nicht-blockierenden\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Modus\ ist\ aufgetreten.\n
-comment1.params=
-comment1.target=java.util.Scanner\ receive()
-comment1.text=\n\ Testet,\ ob\ Daten\ zum\ Empfang\ bereitstehen\ und\ liefert\ diese\ in\ Form\ eines\n\ Scanners.\ Es\ werden\ immer\ nur\ Daten\ bis\ einschlie\u00DFlich\ des\ letzten\n\ Zeilenvorschubs\ geliefert.\ Wenn\ man\ Informationseinheiten\ beim\ Senden\n\ mit\ Zeilenvorsch\u00FCben\ abschlie\u00DFt,\ sie\ aber\ selbst\ keinen\ enthalten,\ kann\ man\n\ davon\ ausgehen,\ dass\ diese\ nur\ vollst\u00E4ndig\ geliefert\ werden.\n\ @return\ Einen\ Scanner,\ wenn\ Daten\ empfangen\ wurden.\ \u00DCber\ den\ Scanner\ k\u00F6nnen\n\ \ \ \ \ \ \ \ \ die\ Daten\ gelesen\ werden.\ null,\ wenn\ keine\ neuen\ Daten\ vorhanden\n\ \ \ \ \ \ \ \ \ sind.\n\ @throws\ IOException\ Beim\ Lesen\ ist\ ein\ Fehler\ aufgetreten.\n
-numComments=2

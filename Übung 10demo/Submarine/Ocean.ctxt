@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Ocean()
+comment0.text=\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Ocean.\n
+comment1.params=
+comment1.target=void\ prepare()
+comment1.text=\n\ Bereitet\ die\ Welt\ vor.\ Ben\u00F6tigte\ Actors\ werden\ instanziert\ und\ \n\ in\ die\ Welt\ gesetzt.\n
+numComments=2

@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Honey()
+comment0.text=\r\n\ Konstruktor\ initialisiert\ die\ Anfangswerte\ f\u00FCr\ die\ Sound\ Datei\ und\ dem\ Punktewert\ f\u00FCr\ Honey.\r\n
+comment1.params=bee
+comment1.target=void\ handleCrash(Bee)
+comment1.text=\r\n\ \u00DCberscheibt\ die\ checkCollision()\ Methode\ von\ Crashable.\r\n\ Der\ Honig\ ist\ nun\ das\ Spielziel.\ Bei\ einer\ Kollision\ mit\ der\ Biene\r\n\ wird\ das\ Spiel\ beendet.\r\n
+numComments=2

@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=channel
+comment0.target=Sender(java.nio.channels.SocketChannel)
+comment0.text=\n\ Erzeugt\ ein\ neues\ Objekt\ zum\ Versenden\ von\ Daten.\n\ @param\ channel\ Der\ Kanal,\ auf\ dem\ die\ Daten\ versendet\ werden.\n\ @throws\ IOException\ Ein\ Problem\ beim\ Wechsel\ in\ den\ nicht-blockierenden\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Modus\ ist\ aufgetreten.\n
+comment1.params=
+comment1.target=void\ send()
+comment1.text=\n\ Versendet\ alle\ Daten,\ die\ seit\ dem\ letzten\ Versenden\ an\ diesen\ Stream\ geschickt\n\ wurden.\ Der\ Aufruf\ dieser\ Methode\ beeinflusst\ nicht,\ in\ welcher\ St\u00FCckelung\ die\n\ Daten\ beim\ Empf\u00E4nger\ ankommen,\ d.h.\ mehrere\ Aufrufe\ dieser\ Methode\ k\u00F6nnen\ beim\ \n\ Empf\u00E4nger\ auch\ in\ einem\ gro\u00DFen\ Datenpaket\ ankommen.\n\ @throws\ IOException\ Beim\ Versenden\ ist\ ein\ Fehler\ aufgetreten.\n
+numComments=2

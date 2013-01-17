@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Stone()
+comment0.text=\r\n\ Konstruktor\ von\ Bush.\ Die\ Klasse\ der\ Objekte,\ die\ dieses\ Hindernis\r\n\ \u00FCbwerwinden\ k\u00F6nnen,\ werden\ dem\ Konstruktor\ der\ Superklasse\ Obstacle\r\n\ \u00FCbergeben.\ Die\ Sounddatei\ wird\ gesetzt,\ die\ abgespielt\ wird,\ wenn\r\n\ das\ Hindernis\ \u00FCberwunden\ wird.\r\n
+numComments=1
