@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=collectable
+comment0.target=void\ pushToInventory(greenfoot.Actor)
+comment0.text=\n\ F\u00FCgt\ einen\ Actor\ zum\ Inventar\ hinzu,\ entfernt\ hinzugef\u00FCgtes\ Objekt\ auch\ aus\ der\ Welt.\n\ \n\ @param\ collectable\ Das,\ im\ Inventar\ zu\ speichernde\ Objekt.\n
+comment1.params=xPos\ yPos
+comment1.target=void\ removeFromInventory(int,\ int)
+comment1.text=\n\ Entfernt\ das\ Objekt\ aus\ dem\ Inventar\ und\ setzt\ es\ wieder\ in\ die\ Welt.\n\ \n\ @param\ xPos\ x-Position\ des\ Flappers,\ an\ die\ das\ Objekt\ zur\u00FCck\ gesetzt\ wird\n\ @param\ yPos\ y-Position\ des\ Flappers,\ an\ die\ das\ Objekt\ zur\u00FCck\ gesetzt\ wird\n
+comment2.params=
+comment2.target=void\ clearInventory()
+comment2.text=\n\ Leert\ das\ Inventar.\n
+comment3.params=
+comment3.target=greenfoot.Actor\ getInventory()
+comment3.text=\n\ Liefert\ das\ im\ Inventar\ befindene\ Objekt\ zur\u00FCck.\n\ \n\ @return\ Das\ Werkzeug,\ das\ sich\ im\ Inventar\ bedindet.\n
+comment4.params=
+comment4.target=boolean\ isEmpty()
+comment4.text=\n\ Pr\u00FCft,\ ob\ das\ Inventar\ leer\ ist.\n\ \n\ @return\ true,\ wenn\ das\ Inventar\ leer\ ist,\ andernfalls\ false.\n
+comment5.params=
+comment5.target=void\ resetImage()
+comment5.text=\n\ Zeichnet\ das\ Hintergrundbild\ des\ Inventars\ neu.\n
+numComments=6

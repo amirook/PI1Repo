@@ -1,5 +1,0 @@
-#BlueJ class context
-comment0.params=bee
-comment0.target=void\ handleCrash(Bee)
-comment0.text=\r\n\ Reagiert\ auf\ eine\ eingetretene\ Kollision.\r\n\ @param\ bee\ Bee,\ der\ mit\ diesem\ Objekt\ kollidiert.\r\n
-numComments=1

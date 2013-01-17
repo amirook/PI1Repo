@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.params=actor\ depth
-comment0.target=boolean\ overTheTop(greenfoot.Actor,\ int)
-comment0.text=\ gibt\ an\ ob\ sich\ der\ Aktor\ \u00FCber\ der\ Wasseroberfl\u00E4che\ befindet\r\n\ \ @actor\ der\ gepr\u00FCft\ wird,\r\n\ \ @Tiefe\ hin\ oder\ weck\ von\ der\ Oberfl\u00E4che\ ab\ der\ diese\ Mthode\ anschl\u00E4gt(varianz\ f\u00FCr\ Objektgr\u00F6\u00DFen)\r\n
-comment1.params=
-comment1.target=WorldManager()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ WorldManager.\r\n\ \r\n
-numComments=2

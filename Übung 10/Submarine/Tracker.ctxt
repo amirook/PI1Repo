@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Tracker()
+comment0.text=\n\ @Anfangswinkel\ mit\ dem\ der\ Tracker\ in\ die\ Welt\ gesetzt\ wird\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\n\ \u00FCberpr\u00FCft\ das\ Umfeld\ auf\ die\ Gegenwart\ eines\ Spielers\n\ stellt\ schaltet\ sich\ bei\ gr\u00F6\u00DFerer\ Distanz\ aktiv\n\ verfolgt\ den\ Spieler\ wenn\ dieser\ einen\ Grenzbereich\ \u00FCberschreitet\n\ schaltet\ sich\ aus\ und\ h\u00F6rt\ auf\ zu\ jagen\ wenn\ der\ spieler\ au\u00DFer\ Reichweite\ ist\n
+comment2.params=
+comment2.target=void\ huntMode()
+comment3.params=imagestring
+comment3.target=void\ setImageDependingOnRotation(java.lang.String)
+comment4.params=
+comment4.target=void\ bite()
+comment4.text=\n\ animation\ des\ Torpedos\ bei\ Verfolgung\ eines\ Zieles\ (\u00F6ffnen\ und\ schlie\u00DFen\ des\ piranha\ mauls)\n
+numComments=5

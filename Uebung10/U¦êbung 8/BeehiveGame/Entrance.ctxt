@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.params=x\ y\ worldClass
-comment0.target=Entrance(int,\ int,\ java.lang.Class)
-comment0.text=\r\n\ Konstruktor\ von\ Entrance.\ Die\ Klasse\ der\ neuen\ Welt\ und\ die\ neuen\ Koordinaten\ der\r\n\ Biene\ werden\ initialisiert.\r\n\ @param\ x\ x-Koordinate,\ an\ der\ die\ Biene\ in\ der\ neuen\ Welt\ positioniert\ werden\ soll.\r\n\ @param\ y\ y-Koordinate,\ an\ der\ die\ Biene\ in\ der\ neuen\ Welt\ positioniert\ werden\ soll.\r\n\ @param\ worldClass\ Die\ Klasse\ der\ Welt,\ in\ die\ das\ Entrance\ f\u00FChrt.\r\n
-comment1.params=bee
-comment1.target=void\ handleCrash(Bee)
-comment1.text=\r\n\ Entrance\ wird\ genutzt\ um\ in\ die\ n\u00E4chste\ Welt\ zu\ gelangen\r\n\ \r\n\ @param\ bee\ Die\ Biene\r\n
-numComments=2

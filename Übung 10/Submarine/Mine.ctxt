@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=shrapnelspeed
+comment0.target=Mine(int)
+comment0.text=\n\ Konstruktor\ speichert\ die\ geschwindigkeit\ der\ sp\u00E4ter\ erzeugten\ Shrapnel\ Splitter\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\n\ testet\ auf\ kollision\ mit\ passenden\ Aktoren\ (hier\ submarine\ und\ shrapnels)\n
+comment2.params=
+comment2.target=void\ blink()
+comment2.text=\n\ kurze\ \u00C4nderung\ der\ Image\ datei\ (darstellung\ einer\ aufblinkenden\ Lampe\ an\ der\ Mine)\n
+comment3.params=
+comment3.target=void\ detonate()
+comment3.text=\n\ entfernt\ die\ Mine\ und\ erzeugt\ 8\ Splitter\ die\ in\ alle\ Richtungen\ fliegen\n\ soll\ sp\u00E4ter\ zus\u00E4tzlich\ sound\ abspielen\ und\ explosion\ darstellen\n
+comment4.params=
+comment4.target=void\ finte()
+comment4.text=\n\ entfernt\ die\ Mine\ und\ erzeugt\ 8\ Bubbles\ statt\ Shrapnels\ (kein\ schaden)\n\ dient\ der\ Teuchung\ des\ spielers\n
+numComments=5

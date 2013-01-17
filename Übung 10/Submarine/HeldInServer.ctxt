@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.params=
+comment0.target=HeldInServer()
+comment1.params=world
+comment1.target=void\ setWorld(greenfoot.World)
+comment2.params=actor
+comment2.target=void\ removeObject(greenfoot.Actor)
+comment3.params=actor\ x\ y
+comment3.target=void\ setLocation(greenfoot.Actor,\ int,\ int)
+comment4.params=actor\ rotation
+comment4.target=void\ setRotation(greenfoot.Actor,\ int)
+comment5.params=actor\ filename
+comment5.target=void\ setImage(greenfoot.Actor,\ java.lang.String)
+comment6.params=actor\ text
+comment6.target=void\ setText(greenfoot.Actor,\ java.lang.String)
+comment7.params=filename
+comment7.target=void\ setBackground(java.lang.String)
+comment8.params=key
+comment8.target=boolean\ isKeyDown(java.lang.String)
+comment9.params=filename
+comment9.target=void\ playSound(java.lang.String)
+numComments=10
