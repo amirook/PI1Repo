@@ -13,5 +13,6 @@ public class ServerActor extends Actor
 {
     public void setLocation(int x, int y){
         System.out.println(this);
+        super.setLocation(x, y);
     }  
 }
