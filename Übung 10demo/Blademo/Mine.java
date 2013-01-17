@@ -35,7 +35,7 @@ public class Mine extends Enemy
     {
         //ersetze diesen test später durch collidingwith()
         //test auf auslösung
-        if (getCollidingObject(Bee.class)!=null || getCollidingObject(Shrapnel.class)!=null )
+        if (getOneIntersectingObject(Submarine.class)!=null || getOneIntersectingObject(Shrapnel.class)!=null)
         {
             //Test ob die Mine eine Finte ist
             if(shrapnelspeed == 0){finte();}

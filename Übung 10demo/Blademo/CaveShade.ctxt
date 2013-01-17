@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=degreeOfVisibility
+comment0.target=CaveShade(int)
+comment0.text=\ \r\n\ jeder\ Grad\ vermindert\ die\ Sichtbarkeit\ der\ Umgebung\r\n\ erschafft\ bei\ pr\u00E4senz\ einer\ Lampe\ einen\ Lichtpegel\r\n\ @integer\ (0\ bis\ 255)\=\ Sichtbarkeit\ der\ Umgebung\ \r\n\ (f\u00FCr\ 100%\ sicht\ 255\ eingeben\ oder\ Klasse\ nicht\ verwenden)\r\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Rock\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.params=
+comment2.target=void\ setPropertys()
+comment2.text=\r\n\ die\ Methode\ welche\ das\ Bild\ der\ Overlayer\ anpasst\r\n
+comment3.params=sub
+comment3.target=void\ centerOnObject(greenfoot.Actor)
+comment4.params=
+comment4.target=greenfoot.Actor\ getCurrentLampholder()
+comment4.text=\r\n\ liefert\ einen\ Spieler\ in\ der\ Welt\ zur\u00FCck\ der\ eine\ lampe\ im\ Inventar\ hat\r\n\ existieren\ hierbei\ mehrere\ Spieler\ mit\ lampen\r\n\ so\ liefert\ er\ immer\ einen\ der\ grade\ nicht\ als\ "lampholder"\ definiert\ ist\r\n\ \!\!\!\!\!\!\!soll\ sp\u00E4ter\ inventarinhalt\ \u00FCberpr\u00FCfen\!\!\!\!\!\!\!\!\!\!\r\n
+numComments=5
