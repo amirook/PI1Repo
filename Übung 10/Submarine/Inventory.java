@@ -10,72 +10,157 @@ import java.util.*;
  */
 public class Inventory extends ServerActor
 {
-    
     /**
-     * Objekt, welches sich im Inventar befindet.
+     * enthält die Objekte, welche sich im Inventar befinden
+     * die größe des Arrays kann beliebig verändert werden (momentan 4 slots
      */
-    private Actor collectable;
+    private Actor collectables[]=new Actor [4];
     
     /**
-     * Fügt einen Actor zum Inventar hinzu, entfernt hinzugefügtes Objekt auch aus der Welt.
+     * der Index der Anzeige mit welcher der Spieler seine Items auswählt
+     */
+    private int selectedSlot=0;
+    
+    /** 
+     * die instanz des auswahl cursors
+     */
+    private GreenfootImage selection= new GreenfootImage("selection.png");
+    
+    /**
+     * Fügt einen Actor auf den ersten freien Platz insInventar hinzu,
+     * es entfernt dabei das hinzugefügte Objekt auch aus der Welt.
      * 
      * @param collectable Das, im Inventar zu speichernde Objekt.
      */
-    public void pushToInventory(Actor collectable){
-        this.collectable = collectable;
-        getWorld().removeObject(collectable);
-        this.getImage().drawImage(collectable.getImage(), 10, 0);
-        Greenfoot.playSound("pop.wav");
+    public void pushToInventory(Actor actor)
+    {
+        int index =0;//zähler zum bestimmen der collectable Position
+        //muss mit while erfolgen da  das item sonst auf jeden freien slot gesetzt wird
+        while (collectables[index]!=null && index<=collectables.length) {
+            index++;
+        }
+        if (collectables[index]==null) {
+                collectables[index]=actor;
+                getWorld().removeObject(actor);
+                resetImage();
+                Greenfoot.playSound("pop.wav");
+        }
     }
     
     /**
-     * Entfernt das Objekt aus dem Inventar und setzt es wieder in die Welt.
+     * Entfernt das Objekt aus dem Inventar vom "selectedSlot" und setzt es wieder in die Welt.
      * 
      * @param xPos x-Position des Flappers, an die das Objekt zurück gesetzt wird
      * @param yPos y-Position des Flappers, an die das Objekt zurück gesetzt wird
      */
     public void removeFromInventory(int xPos, int yPos)
     {
-        getWorld().addObject(collectable, xPos, yPos);
-        collectable = null;
-        resetImage();
-        Greenfoot.playSound("shutter.wav");
+        if (collectables[selectedSlot]!=null){
+            getWorld().addObject(collectables[selectedSlot], xPos, yPos);
+            clearSlot(selectedSlot);
+            Greenfoot.playSound("shutter.wav");
+        }
     }
     
     /**
-     * Leert das Inventar.
+     * Leert den passenden Slot des Inventar.
      */
-    public void clearInventory()
+    public void clearSlot(int index)
     {
-        collectable = null;
+        collectables[index] = null;
         resetImage();
     }
     
     /**
-     * Liefert das im Inventar befindene Objekt zurück.
+     * Liefert den Slot der eine Instanz der angegebenen Klasse enthält.
      * 
-     * @return Das Werkzeug, das sich im Inventar bedindet.
+     * @return de Slot auf dem die Instanz liegt.
+     * es muss hier bereits garantiert sein dass ein derartiges item im Inventar existiert
      */
-    public Actor getInventory()
+    public int findSlot(Class cls)
     {
-        return collectable;
+        int index =0;//zähler für den Index des Slots
+        for(Actor slot : collectables) {
+            if (slot.getClass()==cls) {
+                return index;
+            }
+            index++;
+        }
+        return-1;
+    }
+    
+    /**
+     * Liefert zurück ob sich irgendwo im Inventar ein Objekt der gesuchten Klasse befindet.
+     * 
+     * @return true wenn es gefunden wurde.
+     */
+    public Boolean Contains(Class cls)
+    {
+        for(Actor slot : collectables) {
+            if (slot.getClass() == cls) {
+                return true;
+            }
+        }
+        return false;
     }
     
     /**
      * Prüft, ob das Inventar leer ist.
      * 
-     * @return true, wenn das Inventar leer ist, andernfalls false.
+     * @return true, wenn das gesamte Inventar leer ist, andernfalls false.
      */
     public boolean isEmpty()
     {
-        return collectable == null;
+        for(Actor slot : collectables) {
+            if (slot!=null) {
+                return false;
+            }
+        }
+        return true;
     }
     
     /**
-     * Zeichnet das Hintergrundbild des Inventars neu.
+     * Prüft, ob das Inventar noch freie Plätze hat.
+     * 
+     * @return true, wenn das inventar freie Slots besitzt, andernfalls false.
      */
-    private void resetImage()
+    public boolean hasSpace()
     {
-        this.setImage("inventar_bg.png");
+        for(Actor slot : collectables) {
+            if (slot==null) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * is used to move the selection between the item Slots
+     * the input is the direction the Slot will move in
+     */
+    public void setSelection(int moveselection)
+    {
+        if(selectedSlot+moveselection>=0 && selectedSlot+moveselection<collectables.length) {
+            selectedSlot = selectedSlot+moveselection;
+        }
+        resetImage();
+    }
+    
+    /**
+     * Zeichnet das Hintergrundbild des Inventars neu. 
+     * zeichnet die Items die im Inventar vorhanden sind
+     */
+    public void resetImage()
+    {
+        int index = 0; // dient zum setzen der x coordinate des Bildes(abhängig von der Slotnummer
+        this.setImage("inventar2.png");
+        for (Actor actor: collectables) {
+            if(actor!=null) {
+                //zeichnet den Inhalt des Inventares in dessen Bild
+                this.getImage().drawImage(actor.getImage(), 10+50*index, 0);
+            }
+            index++;
+        }
+        this.getImage().drawImage(selection,50*selectedSlot, 0);
     }
 }

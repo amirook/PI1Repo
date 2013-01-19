@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=topic\ startmessage\ windowStartsOpen
+comment0.target=Talker(java.lang.String,\ java.lang.String,\ boolean)
+comment1.params=
+comment1.target=void\ openWindow()
+comment2.params=message
+comment2.target=void\ addDia(java.lang.String)
+comment3.params=
+comment3.target=void\ act()
+comment3.text=\r\n\ Act\ -\ do\ whatever\ the\ Talker\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment4.params=
+comment4.target=boolean\ nextDia()
+comment4.text=\r\n\ \u00FCberpr\u00FCft\ ob\ ein\ Wechsel\ des\ dialogs\ m\u00F6glich\ ist\r\n
+comment5.params=
+comment5.target=void\ closeDialog()
+numComments=6

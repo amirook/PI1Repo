@@ -14,6 +14,15 @@ import java.util.*;
 public class Submarine extends Collider
 {    
     /**
+     * erlauben einmaliges Auslösen bestimmter tastenbefehle 
+     * z.B.(itemaufnahme, Auswahl)
+     */
+    private boolean keydown1=false;
+    private boolean keydown2=false;
+    private boolean keydown3=false;
+    private boolean keydown4=false;
+    
+    /**
      * Instanz der Klasse Pose, in der die Position des U-Bootes hinterlegt wird
      */
     public Pose pose;
@@ -27,7 +36,6 @@ public class Submarine extends Collider
      * Das ScoreBoard des U-Bootes
      */
     private ScoreBoard scoreBoard;
-
     /**
      * RingBuffer für die X Position
      */
@@ -136,15 +144,44 @@ public class Submarine extends Collider
             bufferSubmarine();
             turn(2);
         }
-        // getKey() verhindert Timing-Probleme von isKeyDown() in dem Fall, dass mehrere Objekte im Inventar gespeichert sind. (Für spätere Versionen.)
-        if (Greenfoot.getKey() == "space") {
-            takeOrFreeCollectable();
-        }
         
+        // boolean keydown verhindert Timing-Probleme von isKeyDown() in dem Falls die methode mehr als einmal ausgelöst werden würde
+        
+        //pick item up
+        if (Greenfoot.isKeyDown("e")&& !keydown1) {
+            takeCollectable();
+            keydown1=true;
+            //System.out.println("e");
+        }
+        if(!Greenfoot.isKeyDown("e")){keydown1=false;}
+        
+        //drop item
+        if (Greenfoot.isKeyDown("q")&& !keydown2) {
+            FreeCollectable();
+            keydown2=true;
+            //System.out.println("q");
+        }
+        if(!Greenfoot.isKeyDown("q")){keydown2=false;}
+        
+        //select between itemSlot
+        
+        //selection-1
+        if (Greenfoot.isKeyDown("1")&& !keydown3) {
+            myInventory.setSelection(-1);//slotselection-1
+            keydown3=true;
+            //System.out.println("-1");
+        }
+        if(!Greenfoot.isKeyDown("1")){keydown3=false;}
+        //selection+1
+        if (Greenfoot.isKeyDown("2")&& !keydown4) {
+            myInventory.setSelection(1);//slotselection+1
+            keydown4=true;
+            //System.out.println("+1");
+        }
+        if(!Greenfoot.isKeyDown("2")){keydown4=false;}
         
         // auf Hindernis prüfen
         checkCollisions();
-
     }
     
     /**
@@ -171,15 +208,27 @@ public class Submarine extends Collider
 
     /**
      * Wenn ein Collectable in der Nähe und das Inventar leer ist, wird das Collectable eingesammelt.
-     * Beindet sich ein Actor im Inventar, wird dieser an der aktuellen Position des U-Bootes in die
+     * Befindet sich ein Actor im Inventar, wird dieser an der aktuellen Position des U-Bootes in die
      * Welt gesetzt. Andernfalls wird der Fehlerton abgespielt.
      */
-    private void takeOrFreeCollectable()
+    private void takeCollectable()
     {
-        if (newCollisionWith(Collectable.class) && myInventory.isEmpty() ){
+        if (newCollisionWith(Collectable.class) && myInventory.hasSpace()){
             Collectable collectable = (Collectable) getCollidingObject(Collectable.class);
             myInventory.pushToInventory(collectable);
-        } else if (!myInventory.isEmpty()){
+            getWorld().removeObject(collectable);
+        } else {
+            Greenfoot.playSound("out.wav");
+        }
+    }
+    
+    /**
+     * legt das Item aus dem Inventar ab das momentan durch "selectedSlot" ausgewählt ist
+     * dies ist der Fall wenn das Inventar nicht leer ist und q gedrückt wurde,
+     */
+    private void FreeCollectable()
+    {
+        if (!myInventory.isEmpty()){
             myInventory.removeFromInventory(this.getX(), this.getY());
         } else {
             Greenfoot.playSound("out.wav");
