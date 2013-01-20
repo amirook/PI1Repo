@@ -7,7 +7,7 @@ import java.lang.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class CaveShade extends ServerActor
+public class CaveShade extends Actor
 {
     /**bestimmt ob es eine Lichtquelle im Level gibt*/
     private boolean lighted=true;//testweise auf true soll später durch getLampHolder gesetzt werden
@@ -67,9 +67,10 @@ public class CaveShade extends ServerActor
      */
     private Actor getLightHolder()
     {
+        
         List<Actor> subs = getWorld().getObjects(Submarine.class);
         for(Actor sub : subs) {
-            if (sub!=null) //&& submarine.myInventory.getInventory()==Lamp.class)
+            if (sub!=null) //&& bee.myInventory.getInventory()==Lamp.class)
             {
                 lighted=true;
                 return sub;

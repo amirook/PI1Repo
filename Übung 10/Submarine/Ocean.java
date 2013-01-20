@@ -39,7 +39,7 @@ public class Ocean extends ServerWorld
         submarine.setScoreBoard(scoreBoard);
 
         // Der Eingang um zum nächsten Level zu gelangen
-        Entrance entrance = new Entrance(56, 159, 0,Beehive.class);
+        Entrance entrance = new Entrance(56, 159, Beehive.class);
         addObject(entrance, 548, 47);
 
         // Alle weiteren Hindernisse, Werkzeuge und weitere sammelbare Objekte werden erzeugt und 

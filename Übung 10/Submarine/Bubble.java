@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Bubble extends ServerActor
+public class Bubble extends Actor
 {
     /** time-delay before this bubble pops **/
     private int lifetime;

@@ -45,11 +45,10 @@ public class Obstacle extends Crashable
      * @param bee Die Biene übergibt sich selbst
      */
     public void handleCrash(Submarine submarine){
-        if (submarine.myInventory.Contains(isBeatenBy) )
+        if (!submarine.myInventory.isEmpty() && submarine.myInventory.getInventory().getClass() == isBeatenBy)
         {
             getWorld().removeObject(this);
-            int beatenslot =submarine.myInventory.findSlot(isBeatenBy);
-            submarine.myInventory.clearSlot(beatenslot);
+            submarine.myInventory.clearInventory();
             Greenfoot.playSound(beatenSound);
         }
         else
