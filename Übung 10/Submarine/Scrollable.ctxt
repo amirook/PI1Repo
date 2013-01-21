@@ -4,4 +4,6 @@ comment0.target=void\ act()
 comment0.text=\r\n\ Act\ -\ Tue\ was\ immer\ Scrollable\ tun\ m\u00F6chte.\ Diese\ Methode\ wird\ aufgerufen,\r\n\ wenn\ die\ 'Act'-\ oder\ 'Run'-Kn\u00F6pfe\ in\ der\ Umgebung\ gedr\u00FCckt\ werden.\r\n
 comment1.params=direction
 comment1.target=void\ scroll(int)
-numComments=2
+comment2.params=
+comment2.target=void\ removeIfExitingWorld()
+numComments=3

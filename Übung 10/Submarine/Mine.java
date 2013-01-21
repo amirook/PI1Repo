@@ -7,8 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 
-//ist später Unterklasse von obstacle
-public class Mine extends Enemy
+public class Mine extends Creature
 {
     /**Geschwindigkeit der bei Detonation erzeugten Splitter
      * ist der input 0 so ist die Mine eine finte und detoniert schadenlos mit blasen statt Shrapnels
@@ -27,22 +26,22 @@ public class Mine extends Enemy
     {
         this.shrapnelspeed = shrapnelspeed;
     }    
-
+    
     /**
     * testet auf kollision mit passenden Aktoren (hier submarine und shrapnels)
     */
-   public void act()
-   {
-       //ersetze diesen test später durch collidingwith()
-       //test auf auslösung
-       if (getCollidingObject(Submarine.class)!=null || getCollidingObject(Shrapnel.class)!=null)
-       {
-           //Test ob die Mine eine Finte ist
-           if(shrapnelspeed == 0){finte();}
-           else{detonate();}
-       }
-       blink();
-   }
+    public void act()
+    {
+        //ersetze diesen test später durch collidingwith()
+        //test auf auslösung
+        if (collidesWith(Submarine.class)|| collidesWith(Shrapnel.class)||hit())
+        {
+            //Test ob die Mine eine Finte ist
+            if(shrapnelspeed == 0){finte();}
+            else{detonate();}
+        }
+        blink();
+    }
     
     /**
      * kurze Änderung der Image datei (darstellung einer aufblinkenden Lampe an der Mine)

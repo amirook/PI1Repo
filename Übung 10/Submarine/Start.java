@@ -31,20 +31,31 @@ public class Start extends ServerWorld
 
         // Weise U-Boot sein Inventar zu.
         Inventory submarinesInventory = new Inventory();
-        addObject(submarinesInventory, 75, 25);
+        addObject(submarinesInventory, 98, 25);
         submarine.setInventory(submarinesInventory);
 
         // Das ScoreBoard wird erzeugt und dem U-Boot zugeordnet
         ScoreBoard scoreBoard = new ScoreBoard();
-        addObject(scoreBoard, 200, 25);
+        addObject(scoreBoard, 41, 78);
         submarine.setScoreBoard(scoreBoard);
 
         // Der Eingang um zum nächsten Level zu gelangen
         Entrance entrance = new Entrance(91,466,0,Ocean1.class);
         addObject(entrance,1000,460);
 
-        // Alle weiteren Hindernisse, Werkzeuge und weitere sammelbare Objekte werden erzeugt und 
-        //positioniert
+        // Alle weiteren Hindernisse, Werkzeuge und weitere sammelbare Objekte werden erzeugt und positionoert
+        Bomb bomb1=new Bomb();
+        addObject(bomb1,510,425);
+        
+        Bomb bomb2=new Bomb();
+        addObject(bomb2,530,450);
+        
+        Lamp lamp=new Lamp();
+        addObject(lamp,447,324);
+        
+        // Alle weiteren Hindernisse,
+        Mine mine1=new Mine(9);
+        addObject(mine1,870,419);
         this.setPaintOrder(Submarine.class, Crashable.class);
     }
 }

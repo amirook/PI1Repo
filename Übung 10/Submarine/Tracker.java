@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Tracker extends Enemy
+public class Tracker extends Creature
 {
     /**Zeitdauer vor Bildwechseln*/
     private int imagetimer = 6; //relative Zeit die jedes Bild dargestellt wird
@@ -15,7 +15,6 @@ public class Tracker extends Enemy
     /**Jagtmodus und Ziel von Tracker*/
     private boolean hunting = false;
     private Actor target = null;
-    
     
     /**
      * @Anfangswinkel mit dem der Tracker in die Welt gesetzt wird
@@ -32,6 +31,10 @@ public class Tracker extends Enemy
      */
     public void act() 
     {
+        if (collidesWith (Submarine.class)) {
+            WorldManager.gameOver = true;
+        }
+        
         //reichweite zur visuellen aktivierung des Trackers
         Actor scanresult = (Actor) getObjectInRange(200,Submarine.class);
         if(scanresult!=null && !hunting){

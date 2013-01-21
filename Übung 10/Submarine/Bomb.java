@@ -9,12 +9,46 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
  */
 public class Bomb extends Collectable
 {
+    
     /**
-     * Konstruktor von Bomb. Die Klasse der Objekte, die dieses Hindernis
-     * übwerwinden können, werden dem Konstruktor der Superklasse Obstacle
-     * übergeben. Die Sounddatei wird gesetzt, die abgespielt wird, wenn
-     * das Hindernis überwunden wird.
+     * der Benutzer des Topedos
      */
-    public Bomb(){
+    private boolean arcset=false;
+    
+    /**
+     * setzt dieses Item aufnehmbar oder aktiviert in die Welt
+     * aufnehmbar = false
+     * aktiviert = true
+     * und setzt den Spieler von dem er den Abschusswinkel bezieht
+     */
+    public Bomb()
+    {
+        stack = 15;
+        usable=true;
+        fired = false;
+    }
+    
+    /**
+     * entfernt die Mine und erzeugt 8 Splitter die in alle Richtungen fliegen
+     * soll später zusätzlich sound abspielen und explosion darstellen
+     */
+    public void detonate()
+    {
+        Greenfoot.playSound("explosion.wav");
+        getWorld().removeObject(this);
+    }
+    
+    /**
+     * setzt einmalig den Rotationswinkel und bewegt den Torpedo
+     */
+    public void act()
+    {
+        if(user!=null && !arcset) {
+            arcset=true;
+        }
+        if(fired) {
+            move(4);
+            removeIfExitingWorld();
+        }
     }
 }
