@@ -9,5 +9,10 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
  */
 public class Scissor extends Collectable
 {
-  
+    public Scissor()
+    {
+        stack = 0;
+        usable= false;
+        fired = false;
+    }
 }

@@ -9,6 +9,12 @@ import java.util.List;
 public class Creature extends Collider
 {
     /**
+     * gibt an ob die jeweilige instanz von einer Spielerwaffe getroffen wurde
+     * wenn player!=null kann dem Spieler ein Punktebonus erteilt werden
+     */
+    public Submarine hitByPlayer=null;
+
+    /**
      * Act - do whatever the Creatures wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
@@ -26,19 +32,6 @@ public class Creature extends Collider
             }
         }
         return null;
-    }
-    
-    /**
-     * reaktion auf zusammentreffen mit einer Bombe
-     */
-    protected boolean hit()
-    {
-        Bomb bomb = (Bomb)getCollidingObject(Bomb.class);
-        if(bomb!=null) {
-            bomb.detonate();
-            return true;
-        }
-        else{return false;}
     }
     
     /**

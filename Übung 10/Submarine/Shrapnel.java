@@ -31,6 +31,8 @@ public class Shrapnel extends Crashable
     public void act() 
     {
         move(movementspeed);
-        removeIfExitingWorld();
+        if(exitingWorld()) {
+            getWorld().removeObject(this);
+        }
     }    
 }

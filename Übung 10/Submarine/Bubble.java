@@ -29,14 +29,14 @@ public class Bubble extends ServerActor
     public void act() 
     {
         //links rechts varianz von (X+-1) während der Bewegung der Blase
-        int nextX = this.getX()+ Greenfoot.getRandomNumber(4)-2;
+        int nextX = this.getX()+ Greenfoot.getRandomNumber(5)-2;
         
         //bewegt die Blase
         this.setLocation(nextX,this.getY()-1);
         
         lifetime--;
         
-        if (lifetime<=0 || WorldManager.overTheTop(this,0)){
+        if (lifetime<=0 || WorldManager.overTheTop(this)){
             getWorld().removeObject(this);
         }
     }    

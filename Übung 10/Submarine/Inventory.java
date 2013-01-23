@@ -61,6 +61,7 @@ public class Inventory extends ServerActor
         int slotnumber = findSlot(collectable.getClass());
         collectables[slotnumber].stack = collectables[slotnumber].stack + collectable.stack;
         resetImage();
+        Greenfoot.playSound("pop.wav");
     }
     
     /**
@@ -175,9 +176,10 @@ public class Inventory extends ServerActor
             Collectable item= collectables[selectedSlot];
             item.stack--;
             
-            if(item instanceof Bomb) {
-                Bomb bomb=new Bomb();
+            if(item instanceof Torpedo) {
+                Torpedo bomb=new Torpedo();
                 bomb.fired=true;
+                bomb.user=user;
                 bomb.setRotation(user.getRotation());
                 getWorld().addObject(bomb,user.getX(),user.getY());
             }
@@ -201,18 +203,21 @@ public class Inventory extends ServerActor
         this.setImage("inventar2.png");
         for (Collectable collectable: collectables) {
             if(collectable!=null) {
-                //zeichnet den Inhalt des Inventares in dessen Bild
-                this.getImage().drawImage(collectable.getImage(), 50*index,
-                collectable.getImage().getHeight()/4);//relative Höhe im Inventar
+                //relativer Zeichenkoordinaten des items
+                //ermittelt die Koordinaten so dass das item später in der mitte des Rahmens sitzt
+                int itemx= 2+50*index;
+                int itemy= this.getImage().getHeight()/2 - collectable.getImage().getHeight()/2;
                 
-                //zeichnet die Itemzahl bei Usables
+                //zeichnet den Inhalt des Inventares in dessen Bild
+                this.getImage().drawImage(collectable.getImage(),itemx,itemy);
+                
+                //zeichnet die Itemzahle bei Usables
                 if(collectable.usable)
                 {
                     this.getImage().setFont(new Font("Monospaced",Font.BOLD,20));
                     this.getImage().setColor(java.awt.Color.RED);
-                    this.getImage().drawString(" "+collectable.stack,
-                        2+50*index,
-                        selection.getHeight()/2);
+                    
+                    this.getImage().drawString(" "+collectable.stack,itemx,22);
                 }
             }
             index++;

@@ -17,13 +17,6 @@ public class Tracker extends Creature
     private Actor target = null;
     
     /**
-     * @Anfangswinkel mit dem der Tracker in die Welt gesetzt wird
-     */
-    public Tracker()
-    {
-    }
-    
-    /**
      * überprüft das Umfeld auf die Gegenwart eines Spielers
      * stellt schaltet sich bei größerer Distanz aktiv
      * verfolgt den Spieler wenn dieser einen Grenzbereich überschreitet
@@ -31,10 +24,24 @@ public class Tracker extends Creature
      */
     public void act() 
     {
+        //Test ob die instanz mit einer Spielerwaffen kollidiert ist
+        
         if (collidesWith (Submarine.class)) {
             WorldManager.gameOver = true;
         }
         
+        behavior();
+        
+        if(hitByPlayer!=null) {
+            killAndScore();
+        }
+    }  
+    
+    /**
+     * das Verhaltensverfahren des trackers an der Oberfläche und im Wasser
+     */
+    private void behavior()
+    {
         //reichweite zur visuellen aktivierung des Trackers
         Actor scanresult = (Actor) getObjectInRange(200,Submarine.class);
         if(scanresult!=null && !hunting){
@@ -54,18 +61,31 @@ public class Tracker extends Creature
             setImageDependingOnRotation("trackerO");//visuelle deaktivierung des Torpedos
         }
         
-        //verhalten bei Durchbrechen der Oberfläche gilt als override fürs normale Jagdverhalten
-        if(WorldManager.overTheTop(this,90)){
-            WorldManager.reactToSurface(this);
+        //verhalten bei Durchbrechen der Oberfläche (override fürs normale Jagdverhalten)
+        if(WorldManager.overTheTop(this)){
+            WorldManager.reactToSurface(this,3,1);
             bite();
-        }
-        //Verhalten im Jagdmodus unterwasser
+        }//Verhalten im Jagdmodus unterwasser
         else if(hunting){
             huntMode();
         }
-    }  
+    }
     
-    //Jagdverhalten unterwasser
+    /**
+     * Zerstörung den Trackers sollte dieser von einem Submarine getroffen worden sein
+     */
+    private void  killAndScore()
+    {
+        hitByPlayer.getScoreBoard().updateScore(8);
+        this.setImage("explosion.gif");
+        Greenfoot.playSound("explosion.wav");
+        Greenfoot.delay(3);
+        getWorld().removeObject(this);
+    }
+    
+    /** 
+     * Jagdverhalten des Trackers
+     */
     private void huntMode(){
         //Jagdverhalten unterwasser
         //zufällige Anpeilung bei Chance 1/20
@@ -91,7 +111,7 @@ public class Tracker extends Creature
     }
     
      /**
-     * animation des Torpedos bei Verfolgung eines Zieles (öffnen und schließen des piranha mauls)
+     * animation des Trackers bei Verfolgung eines Zieles (öffnen und schließen des piranha mauls)
      */
     private void bite()
     { 

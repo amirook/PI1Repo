@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.params=
-comment0.target=Cave5()
-comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Cave5.\r\n\ \r\n
+comment0.target=Cave3()
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Cave4.\r\n\ \r\n
 comment1.params=
 comment1.target=void\ prepare()
 comment1.text=\r\n\ Bereitet\ die\ Welt\ vor.\ Ben\u00F6tigte\ Actors\ werden\ instanziert\ und\ \r\n\ in\ die\ Welt\ gesetzt.\r\n

@@ -5,5 +5,5 @@ comment0.text=\r\n\ Act\ -\ Tue\ was\ immer\ Scrollable\ tun\ m\u00F6chte.\ Dies
 comment1.params=direction
 comment1.target=void\ scroll(int)
 comment2.params=
-comment2.target=void\ removeIfExitingWorld()
+comment2.target=boolean\ exitingWorld()
 numComments=3

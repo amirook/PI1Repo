@@ -15,7 +15,7 @@ public class Entrance extends Crashable
      */
     private Class nextWorldClass;
     
-    /**
+    /**w
      * x-Koordinate, an der die Biene in der neuen Welt positioniert werden soll.
      */
     private int xInNewWorld;
@@ -42,22 +42,26 @@ public class Entrance extends Crashable
      * @param y y-Koordinate, an der die Biene in der neuen Welt positioniert werden soll.
      * @param worldClass Die Klasse der Welt, in die das Entrance führt.
      */
-    public Entrance(int x, int y,int arc, Class worldClass)
+    public Entrance(int x, int y,int arc, Class worldClass,String imagename)
     {
         xInNewWorld = x;
         yInNewWorld = y;
         arcInNewWorld = arc;
         nextWorldClass = worldClass;
+        this.setImage(imagename);
     }
     
     /**
      * Entrance wird genutzt um in die nächste Welt zu gelangen
+     * 
+     * hierbei wird außerdem die Position der Wasseroberfläche der neuen Weltzu setzen
      * 
      * @param bee Die Biene
      */
     public void handleCrash(Submarine submarine)
     {
         World nextWorld = WorldManager.getWorldReference(nextWorldClass);
+        int nextSurfaceY = WorldManager.getNextSurface(nextWorldClass);
         World currentWorld = getWorld();
         // NUR wenn eine nächste Welt gefunden wird.
         if (nextWorld != null){
@@ -76,6 +80,7 @@ public class Entrance extends Crashable
             nextWorld.addObject(submarine, xInNewWorld, yInNewWorld);
             submarine.setRotation(arcInNewWorld);
             Greenfoot.setWorld(nextWorld);
+            WorldManager.surfaceY = nextSurfaceY;
         }
     }
 }

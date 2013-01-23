@@ -40,22 +40,23 @@ public class Start extends ServerWorld
         submarine.setScoreBoard(scoreBoard);
 
         // Der Eingang um zum nächsten Level zu gelangen
-        Entrance entrance = new Entrance(91,466,0,Ocean1.class);
+        Entrance entrance = new Entrance(91,466,0,Ocean1.class,"exitvert.png");
         addObject(entrance,1000,460);
+        // Eine Abkürzung zu Cave3
+        Entrance entrance2 = new Entrance(91,466,0,Cave3.class,"exitcirc100x100.png");
+        addObject(entrance2,216,632);
 
         // Alle weiteren Hindernisse, Werkzeuge und weitere sammelbare Objekte werden erzeugt und positionoert
-        Bomb bomb1=new Bomb();
+        Torpedo bomb1=new Torpedo();
         addObject(bomb1,510,425);
         
-        Bomb bomb2=new Bomb();
+        Torpedo bomb2=new Torpedo();
         addObject(bomb2,530,450);
         
         Lamp lamp=new Lamp();
         addObject(lamp,447,324);
         
         // Alle weiteren Hindernisse,
-        Mine mine1=new Mine(9);
-        addObject(mine1,870,419);
         this.setPaintOrder(Submarine.class, Crashable.class);
     }
 }

@@ -34,7 +34,7 @@ public class Mine extends Creature
     {
         //ersetze diesen test später durch collidingwith()
         //test auf auslösung
-        if (collidesWith(Submarine.class)|| collidesWith(Shrapnel.class)||hit())
+        if (collidesWith(Submarine.class)|| collidesWith(Shrapnel.class)|| hitByPlayer!=null)
         {
             //Test ob die Mine eine Finte ist
             if(shrapnelspeed == 0){finte();}
@@ -81,7 +81,7 @@ public class Mine extends Creature
         }
         this.setImage("explosion.gif");
         Greenfoot.playSound("explosion.wav");
-        Greenfoot.delay(10);
+        Greenfoot.delay(3);
         getWorld().removeObject(this);
     }
     

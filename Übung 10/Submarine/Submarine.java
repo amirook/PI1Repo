@@ -113,8 +113,15 @@ public class Submarine extends Collider
             } else {
                 Greenfoot.stop();
             }
-        } else {
-            processKeys();
+        } else{
+            if(WorldManager.overTheTop(this)) {
+               WorldManager.reactToSurface(this,4,2);
+               bufferSubmarine();
+            }
+            else {
+                processKeys();
+                bufferSubmarine();
+            }
         }
     }    
 
@@ -130,19 +137,15 @@ public class Submarine extends Collider
         
         // Cursor-Tasten abfragen
         if(Greenfoot.isKeyDown("w")) {//up
-            bufferSubmarine();
             move(3);
         }
         if(Greenfoot.isKeyDown("s")) {//down
-            bufferSubmarine();
             move(-2);
         }
         if(Greenfoot.isKeyDown("a")) {//left
-            bufferSubmarine();
             turn(-2);
         }
         if(Greenfoot.isKeyDown("d")) {//right
-            bufferSubmarine();
             turn(2);
         }
         
@@ -252,10 +255,10 @@ public class Submarine extends Collider
     {
         int arc = this.getRotation();
         if (arc >90&& arc <270){
-            this.setImage("sub2.png");
+            this.setImage("2sub2.png");
         }
         else{
-            this.setImage("sub.png");
+            this.setImage("2sub.png");
         }
     }
     
@@ -264,9 +267,9 @@ public class Submarine extends Collider
     */
     public void randomlyBlowBubbles()
     {
-        if(Greenfoot.getRandomNumber(85)==1){
-            //new bubble with lifespan 40 and a scale between(5-35)pixels
-            Bubble bubble = new Bubble(100,Greenfoot.getRandomNumber(30)+5);
+        if(Greenfoot.getRandomNumber(78)==1){
+            //new bubble with an infinite lifespan and a scale between(5-25)pixels
+            Bubble bubble = new Bubble(0,Greenfoot.getRandomNumber(20)+5);
             getWorld().addObject(bubble,this.getX(),this.getY());
         }
     }

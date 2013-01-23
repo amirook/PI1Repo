@@ -22,18 +22,23 @@ public class Ocean1 extends ServerWorld
      * Bereitet die Welt vor. Benötigte Actors werden instanziert und 
      * in die Welt gesetzt.
      */
-    public void prepare()
+    private void prepare()
     {
         // Der Weg um zum vorherigen Level zu gelangen
-        Entrance entrance1 = new Entrance(905, 459,180,Start.class);
-        addObject(entrance1,0,460);
+        Entrance entrance1 = new Entrance(905, 459,180,Start.class,"exitvert.png");
+        addObject(entrance1,0,350);
 
         // Der Weg um zum nächsten Level zu gelangen
-        Entrance entrance2 = new Entrance(91,466, 0,Ocean2.class);
-        addObject(entrance2,1000,460);
+        Entrance entrance2 = new Entrance(91,466, 0,Ocean2.class,"exitvert.png");
+        addObject(entrance2,1000,350);
 
         // Alle weiteren Hindernisse, Werkzeuge und weitere sammelbare Objekte werden erzeugt und 
         //positioniert
+        Rock rock1=new Rock();
+        addObject(rock1,451,656);
+        
+        Mine mine1=new Mine(9);
+        addObject(mine1,809,373);
         
         this.setPaintOrder(Submarine.class, Crashable.class);
     }
