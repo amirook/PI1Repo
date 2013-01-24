@@ -1,9 +1,4 @@
 #BlueJ class context
 comment0.params=
-comment0.target=void\ act()
-comment0.text=\r\n\ Act\ -\ Tue\ was\ immer\ Scrollable\ tun\ m\u00F6chte.\ Diese\ Methode\ wird\ aufgerufen,\r\n\ wenn\ die\ 'Act'-\ oder\ 'Run'-Kn\u00F6pfe\ in\ der\ Umgebung\ gedr\u00FCckt\ werden.\r\n
-comment1.params=direction
-comment1.target=void\ scroll(int)
-comment2.params=
-comment2.target=boolean\ exitingWorld()
-numComments=3
+comment0.target=boolean\ exitingWorld()
+numComments=1

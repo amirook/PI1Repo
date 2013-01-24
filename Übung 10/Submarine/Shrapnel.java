@@ -22,6 +22,7 @@ public class Shrapnel extends Crashable
     {
         this.setRotation(arc);
         this.movementspeed = movementspeed;
+        //Reaktion bei durchbrechen der Wasseroberfläche
     } 
     
     /**
@@ -31,6 +32,11 @@ public class Shrapnel extends Crashable
     public void act() 
     {
         move(movementspeed);
+         //Reaktion bei durchbrechen der Wasseroberfläche
+        if(WorldManager.overTheTop(this)) {
+           WorldManager.reactToSurface(this,4,3);
+        }
+        
         if(exitingWorld()) {
             getWorld().removeObject(this);
         }

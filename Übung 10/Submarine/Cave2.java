@@ -33,14 +33,17 @@ public class Cave2 extends ServerWorld
         addObject(entrance,  1000, 474);
         
         // Der Dunkelheitslevel in der Hölle
-        CaveShade caveshade= new CaveShade(150);
+        CaveShade caveshade= new CaveShade(170);
         addObject(caveshade,500,350);
 
-        // Alle weiteren Hindernisse werden erzeugt und positioniert
+        // Alle weiteren Hindernisse, Werkzeuge und weitere sammelbare Objekte werden erzeugt und 
+        //positioniert
+        
+        //Obstacles
         InvCircle5 circle1= new InvCircle5();
         addObject(circle1,900,0);
         
-        //Alle Feinde werden platziert
+        //Creatures
         Mine mine1 = new Mine(9);
         addObject(mine1,762,513);
         

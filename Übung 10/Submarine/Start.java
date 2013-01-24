@@ -47,14 +47,13 @@ public class Start extends ServerWorld
         addObject(entrance2,216,632);
 
         // Alle weiteren Hindernisse, Werkzeuge und weitere sammelbare Objekte werden erzeugt und positionoert
+        
+        //Collectables
         Torpedo bomb1=new Torpedo();
-        addObject(bomb1,510,425);
+        addObject(bomb1,712,372);
         
         Torpedo bomb2=new Torpedo();
-        addObject(bomb2,530,450);
-        
-        Lamp lamp=new Lamp();
-        addObject(lamp,447,324);
+        addObject(bomb2,725,417);
         
         // Alle weiteren Hindernisse,
         this.setPaintOrder(Submarine.class, Crashable.class);

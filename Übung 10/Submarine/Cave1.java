@@ -33,12 +33,18 @@ public class Cave1 extends ServerWorld
         addObject(entrance2,1000,460);
         
         // Der Dunkelheitslevel in der Hölle
-        CaveShade caveshade= new CaveShade(110);
+        CaveShade caveshade= new CaveShade(140);
         addObject(caveshade,500,350);
 
         // Alle weiteren Hindernisse,werden erzeugt und positioniert
+        
+        //Obstacles
         InvWall wall1= new InvWall();
         addObject(wall1,175,368);
+        
+        //Collectables
+        Lamp lamp=new Lamp();
+        addObject(lamp,668,280);
         
         this.setPaintOrder(Submarine.class, Cave2.class);
     }

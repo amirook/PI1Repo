@@ -1,4 +1,10 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Lamp()
-numComments=1
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ standart\ Bewegung\ der\ Lampe\r\n\ kreisf\u00F6rmige\ schwimmbewegung\r\n
+comment2.params=
+comment2.target=void\ setImageDependingOnRotation()
+comment2.text=\r\n\ erfasst\ den\ momentanen\ winkel\ dieses\ Aktors\ und\ setzt\ dazu\ das\ passende\ Bild\r\n\ (verhindert\ dass\ der\ Fisch\ auf\ dem\ Kopf\ schwimmt)\r\n\ \r\n
+numComments=3

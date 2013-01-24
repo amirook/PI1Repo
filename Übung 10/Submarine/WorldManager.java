@@ -105,7 +105,6 @@ public class WorldManager extends World
      */ 
     public static boolean overTheTop(Actor actor)
     {
-        boolean onAir=true;
         if(actor.getY()<surfaceY) {
             return true;
         }
@@ -123,18 +122,12 @@ public class WorldManager extends World
     public static void reactToSurface(Actor actor, int movementspeed, int turnspeed)
     {
         int arc = actor.getRotation();
-        if(arc< 270 && arc >=90){
+        if(arc<= 270 && arc >=90){
             actor.turn(-turnspeed);
-            actor.move(movementspeed);
         }
         else{
             actor.turn(turnspeed);
-            actor.move(movementspeed);
         }
-        if(arc == 270)
-        {
-            actor.move(movementspeed+1);
-        }
+        actor.move(movementspeed);
     }
-    
 }

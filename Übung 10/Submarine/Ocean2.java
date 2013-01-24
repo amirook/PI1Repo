@@ -32,8 +32,10 @@ public class Ocean2 extends ServerWorld
 
         // Alle weiteren Hindernisse, Werkzeuge und weitere sammelbare Objekte werden erzeugt und 
         //positioniert
+        
+        //Obstacles
         Rock2 rock1=new Rock2();
-        addObject(rock1,634,649);
+        addObject(rock1,631,665);
         
         this.setPaintOrder(Submarine.class, Crashable.class);
     }

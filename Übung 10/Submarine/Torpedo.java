@@ -29,12 +29,14 @@ public class Torpedo extends Collectable
     {
         if(fired) {
             blowsmallBubbles();
+            
+            //Reaktion bei durchbrechen der Wasseroberfläche
             if(WorldManager.overTheTop(this)) {
                WorldManager.reactToSurface(this,4,3);
             }
             move(4);
             
-            if(exitingWorld()||hitTarget()||this.getOneIntersectingObject(Obstacle.class)!=null) {
+            if(exitingWorld()||hitTarget()||this.collidesWith(Obstacle.class)) {
                 this.detonate();
             }
         }
@@ -71,8 +73,10 @@ public class Torpedo extends Collectable
      */
     private boolean hitTarget()
     {
-        Creature creature = (Creature) getOneIntersectingObject(Creature.class);
-        if(creature !=null && user instanceof Submarine) {
+        
+        Creature creature = (Creature) getCollidingObject(Creature.class);
+        if(collidesWith(Creature.class) && user instanceof Submarine) {
+            //setzt der Kreatur wer sie mit der waffe angegriffen hat
             creature.hitByPlayer = (Submarine)user;
             return true;
         }

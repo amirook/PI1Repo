@@ -34,9 +34,12 @@ public class Ocean1 extends ServerWorld
 
         // Alle weiteren Hindernisse, Werkzeuge und weitere sammelbare Objekte werden erzeugt und 
         //positioniert
+        
+        //Obstacles
         Rock rock1=new Rock();
         addObject(rock1,451,656);
         
+        //Creatures
         Mine mine1=new Mine(9);
         addObject(mine1,809,373);
         

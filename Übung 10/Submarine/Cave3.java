@@ -25,7 +25,7 @@ public class Cave3 extends ServerWorld
     private void prepare()
     {
         // Der Weg um zum vorherigen Level zu gelangen
-        Entrance entrance1 = new Entrance(905, 459,180,Cave2.class,"exitvert.png");
+        Entrance entrance1 = new Entrance(905, 411,180,Cave2.class,"exitvert.png");
         addObject(entrance1,0,460);
 
         // Der Eingang um zum nächsten Level zu gelangen
@@ -33,11 +33,13 @@ public class Cave3 extends ServerWorld
         addObject(entrance, 950,62);
         
         // Der Dunkelheitslevel in der Hölle
-        CaveShade caveshade= new CaveShade(175);
+        CaveShade caveshade= new CaveShade(200);
         addObject(caveshade,500,350);
 
-        // Alle Gegner werden erzeugt und 
+        // Alle weiteren Hindernisse, Werkzeuge und weitere sammelbare Objekte werden erzeugt und 
         //positioniert
+        
+        // Creatures
         Tracker tracker1= new Tracker();
         addObject(tracker1,531,470);
         tracker1.setRotation(90);

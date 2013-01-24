@@ -115,8 +115,7 @@ public class Submarine extends Collider
             }
         } else{
             if(WorldManager.overTheTop(this)) {
-               WorldManager.reactToSurface(this,4,2);
-               bufferSubmarine();
+               surfaceBehavior();
             }
             else {
                 processKeys();
@@ -124,6 +123,18 @@ public class Submarine extends Collider
             }
         }
     }    
+    
+    private void surfaceBehavior()
+    {
+        WorldManager.reactToSurface(this,4,2);
+        bufferSubmarine();
+        if(this.collidesWith(Obstacle.class)) {
+            this.setRotation(this.getRotation()+180);
+            while(this.collidesWith(Obstacle.class)) {
+                this.move(10);
+            }
+        }
+    }
 
     /**
      * Prüft, ob Tasten gedrückt werden und reagiert entsprechend.

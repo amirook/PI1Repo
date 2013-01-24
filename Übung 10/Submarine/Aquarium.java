@@ -20,10 +20,14 @@ public class Aquarium extends ServerWorld
     
     private void prepare()
     {
+        //Obstacles
         InvWall wall1=new InvWall();
         addObject(wall1,281,300);
         
         InvWall wall2=new InvWall();
         addObject(wall2,780,300);
+        
+        InvSealing sealing= new InvSealing();
+        addObject(sealing,519,174);
     }
 }

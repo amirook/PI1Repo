@@ -25,17 +25,22 @@ public class Ocean3 extends ServerWorld
     private void prepare()
     {
         // Der Weg um zum vorherigen Level zu gelangen
-        Entrance entrance1 = new Entrance(132, 368, 180,Ocean2.class,"exitvert2.png");
+        Entrance entrance1 = new Entrance(905, 459,180,Ocean2.class,"exitvert.png");
         addObject(entrance1,0,460);
 
         // Der Weg um zum nächsten Level zu gelangen
-        Entrance entrance2 = new Entrance(382,373, 5,Cave1.class,"exitcirc100x1002.png");
-        addObject(entrance2,800,644);
+        Entrance entrance2 = new Entrance(382,373, 5,Cave1.class,"exitcirc100x100.png");
+        addObject(entrance2,867,644);
 
         // Alle weiteren Hindernisse, Werkzeuge und weitere sammelbare Objekte werden erzeugt und 
         //positioniert
+        
+        //Obstacles
         Rockwall rock1=new Rockwall();
-        addObject(rock1,885,552);
+        addObject(rock1,943,552);
+        
+        Rock2 rock2=new Rock2();
+        addObject(rock2,556,687);
         
         this.setPaintOrder(Submarine.class, Cave1.class);
     }

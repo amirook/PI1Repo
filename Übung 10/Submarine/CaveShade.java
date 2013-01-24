@@ -66,9 +66,9 @@ public class CaveShade extends ServerActor
      */
     private Actor getLightHolder()
     {
-        List<Actor> subs = getWorld().getObjects(Submarine.class);
-        for(Actor sub : subs) {
-            if ((sub!=null))// && sub.getInventory().contains(Lamp.class))
+        List<Submarine> subs = getWorld().getObjects(Submarine.class);
+        for(Submarine sub : subs) {
+            if (sub!=null && sub.getInventory().contains(Lamp.class))
             {
                 lighted=true;
                 return sub;

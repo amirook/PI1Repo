@@ -7,7 +7,7 @@ import java.awt.Color;
  * @author (Ihr Name) 
  * @version (Eine Versionsnummer oder ein Datum)
  */
-public class Collider extends ServerActor
+public class Collider extends Scrollable
 {
     /**
      * Eine HashMap um unsere Kollisionen zu protokolieren.
