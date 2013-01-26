@@ -47,10 +47,10 @@ public class Obstacle extends Crashable
     public void handleCrash(Submarine submarine){
         if (submarine.myInventory.contains(isBeatenBy) )
         {
-            getWorld().removeObject(this);
-            int beatenslot =submarine.myInventory.findSlot(isBeatenBy);
+            int beatenslot = submarine.myInventory.findSlot(isBeatenBy);
             submarine.myInventory.clearSlot(beatenslot);
             Greenfoot.playSound(beatenSound);
+            getWorld().removeObject(this);
         }
         else
         {

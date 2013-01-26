@@ -55,13 +55,17 @@ public class Inventory extends ServerActor
     
     /**
      * erhöht den stack des im Inventar vorhandenen Items um den Stack des gelieferten
+     * ist kein erwähntes Item im Inventar vorhanden, so endet diese Methode im leeren
      */
     public void stackStack(Collectable collectable)
     {
-        int slotnumber = findSlot(collectable.getClass());
-        collectables[slotnumber].stack = collectables[slotnumber].stack + collectable.stack;
-        resetImage();
-        Greenfoot.playSound("pop.wav");
+        int slotnumber = findSlot (collectable.getClass());
+        //sicherheitswert "-1" sollte kein item der genannten klasse im inventar sein
+        if(slotnumber!=-1){
+            collectables[slotnumber].stack = collectables[slotnumber].stack + collectable.stack;
+            resetImage();
+            Greenfoot.playSound("pop.wav");
+        }
     }
     
     /**
@@ -96,14 +100,14 @@ public class Inventory extends ServerActor
      */
     public int findSlot(Class cls)
     {
-        int index =0;//zähler für den Index des Slots
-        for(Actor slot : collectables) {
-            if (slot.getClass()==cls) {
+        int index = 0;
+        for(Collectable slot : collectables) {
+            if (slot!=null && slot.getClass()== cls) {
                 return index;
             }
             index++;
         }
-        return 0;
+        return -1;
     }
     
     /**

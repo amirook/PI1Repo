@@ -41,7 +41,5 @@ public class Ocean3 extends ServerWorld
         
         Rock2 rock2=new Rock2();
         addObject(rock2,556,687);
-        
-        this.setPaintOrder(Submarine.class, Cave1.class);
     }
 }

@@ -229,7 +229,7 @@ public class Submarine extends Collider
     {
         Collectable collectable = (Collectable) getCollidingObject(Collectable.class);
         if (newCollisionWith(Collectable.class) && myInventory.hasSpace() && !collectable.fired){
-            // testet ob das Object gestackt werden kann
+            // testet ob das Object gestackt werden kann und im inventar vorhanden ist
             if(!myInventory.isEmpty() &&
                 myInventory.contains(collectable.getClass()) &&
                 collectable.usable) {

@@ -34,8 +34,21 @@ public class Ocean2 extends ServerWorld
         //positioniert
         
         //Obstacles
+        Kelp kelp1 = new Kelp("seetang23.png");
+        addObject(kelp1,767,458);
+        
+        Kelp kelp2 = new Kelp("seetang3.png");
+        addObject(kelp2,767,458);
+        
         Rock2 rock1=new Rock2();
-        addObject(rock1,631,665);
+        addObject(rock1,619,674);
+        
+        Kelp kelp3 = new Kelp("seetang3.png");
+        addObject(kelp3,651,486);
+        
+        //Collectables
+        Scissor scissor=new Scissor();
+        addObject(scissor,363,427);
         
         this.setPaintOrder(Submarine.class, Crashable.class);
     }

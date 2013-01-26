@@ -1,5 +1,12 @@
 #BlueJ class context
-comment0.params=
-comment0.target=Fish()
-comment0.text=\r\n\ Konstruktor\ initialisiert\ die\ Anfangswerte\ f\u00FCr\ die\ Sound\ Datei\ und\ dem\ Punktewert\ f\u00FCr\ Fish.\r\n
-numComments=1
+comment0.params=imageleft\ imageright
+comment0.target=void\ Fish(java.lang.String,\ java.lang.String)
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ Konstruktor\ initialisiert\ die\ Anfangswerte\ f\u00FCr\ die\ Sound\ Datei\ und\ dem\ Punktewert\ f\u00FCr\ Fish.\r\n
+comment2.params=
+comment2.target=void\ reactToObstacles()
+comment3.params=fish\ imageleft\ imageright
+comment3.target=void\ setImageDependingOnRotation(Fish,\ java.lang.String,\ java.lang.String)
+comment3.text=\r\n\ erfasst\ den\ momentanen\ winkel\ dieses\ Aktors\ und\ setzt\ dazu\ das\ passende\ Bild\r\n\ (verhindert\ dass\ der\ Fisch\ auf\ dem\ Kopf\ schwimmt)\r\n\ \r\n
+numComments=4

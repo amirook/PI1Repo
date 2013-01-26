@@ -25,6 +25,7 @@ public class Mine extends Creature
     public Mine(int shrapnelspeed) 
     {
         this.shrapnelspeed = shrapnelspeed;
+        blinktimer = Greenfoot.getRandomNumber(80);
     }    
     
     /**

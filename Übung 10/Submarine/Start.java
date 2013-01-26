@@ -27,7 +27,7 @@ public class Start extends ServerWorld
     {
         // HeldIn U-Boot wird kreiert
         Submarine submarine = new Submarine();
-        addObject(submarine, 156, 359);
+        addObject(submarine, 464,421);
 
         // Weise U-Boot sein Inventar zu.
         Inventory submarinesInventory = new Inventory();
@@ -44,7 +44,7 @@ public class Start extends ServerWorld
         addObject(entrance,1000,460);
         // Eine Abkürzung zu Cave3
         Entrance entrance2 = new Entrance(91,466,0,Cave3.class,"exitcirc100x100.png");
-        addObject(entrance2,216,632);
+        addObject(entrance2,208,645);
 
         // Alle weiteren Hindernisse, Werkzeuge und weitere sammelbare Objekte werden erzeugt und positionoert
         
@@ -55,7 +55,16 @@ public class Start extends ServerWorld
         Torpedo bomb2=new Torpedo();
         addObject(bomb2,725,417);
         
-        // Alle weiteren Hindernisse,
+        // Obstacle
+        Boje boje1=new Boje();
+        addObject(boje1,870,239);
+        
+        Kelp kelp1= new Kelp("seetang23.png");
+        addObject(kelp1,208,623);
+        
+        Kelp kelp2= new Kelp("seetang3.png");
+        addObject(kelp2,185,557);
+        
         this.setPaintOrder(Submarine.class, Crashable.class);
     }
 }

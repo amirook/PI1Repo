@@ -41,8 +41,22 @@ public class Ocean1 extends ServerWorld
         
         //Creatures
         Mine mine1=new Mine(9);
-        addObject(mine1,809,373);
+        addObject(mine1,330,391);
         
-        this.setPaintOrder(Submarine.class, Crashable.class);
+        Mine mine2=new Mine(9);
+        addObject(mine2,615,563);
+        
+        Mine mine3=new Mine(9);
+        addObject(mine3,784,628);
+        
+        Mine mine4=new Mine(9);
+        addObject(mine4,809,373);
+        
+        //Collectables
+        Scissor scissor1 = new Scissor();
+        addObject(scissor1,416,318);
+        
+        Scissor scissor2 = new Scissor();
+        addObject(scissor2,681,642);
     }
 }

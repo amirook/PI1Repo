@@ -43,10 +43,10 @@ public class WorldManager extends World
         Greenfoot.setWorld(myWorlds.get(0));
         
         mySurfaces = new ArrayList<Integer>();
-        mySurfaces.add(270);//start1
-        mySurfaces.add(270);//Ocean1
-        mySurfaces.add(270);//Ocean2
-        mySurfaces.add(270);//Ocean3
+        mySurfaces.add(260);//start1
+        mySurfaces.add(260);//Ocean1
+        mySurfaces.add(260);//Ocean2
+        mySurfaces.add(260);//Ocean3
         mySurfaces.add(1);//Cave1
         mySurfaces.add(1);//Cave2
         mySurfaces.add(1);//Cave3
