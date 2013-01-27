@@ -1,10 +1,10 @@
 #BlueJ class context
 comment0.params=
 comment0.target=void\ act()
-comment0.text=\r\n\ Act\ -\ do\ whatever\ the\ Creatures\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment0.text=\n\ Act\ -\ do\ whatever\ the\ Creatures\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 comment1.params=range\ cls
 comment1.target=java.lang.Object\ getObjectInRange(int,\ java.lang.Class)
 comment2.params=actor\ zusatzarc
 comment2.target=void\ turnTowardsObject(greenfoot.Actor,\ int)
-comment2.text=\r\n\ dreht\ den\ Gegner\ in\ richtung\ des\ spezifizierten\ actors\r\n\ ein\ spezifizierter\ Zusatzwinkel\ kann\ hier\ auf\ die\ erstellte\ Rotation\ addiert\ werden(z.B.random)\r\n
+comment2.text=\n\ dreht\ den\ Gegner\ in\ richtung\ des\ spezifizierten\ actors\n\ ein\ spezifizierter\ Zusatzwinkel\ kann\ hier\ auf\ die\ erstellte\ Rotation\ addiert\ werden(z.B.random)\n
 numComments=3

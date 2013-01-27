@@ -1,5 +1,9 @@
 #BlueJ class context
 comment0.params=
 comment0.target=ServerWorld()
-comment0.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ ServerWorld.\r\n
-numComments=1
+comment0.text=\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ ServerWorld.\n
+comment1.params=actor
+comment1.target=void\ removeObject(greenfoot.Actor)
+comment2.params=actor\ x\ y
+comment2.target=void\ addObject(greenfoot.Actor,\ int,\ int)
+numComments=3

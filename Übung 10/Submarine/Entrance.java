@@ -79,7 +79,9 @@ public class Entrance extends Crashable
             currentWorld.removeObject(submarine);
             nextWorld.addObject(submarine, xInNewWorld, yInNewWorld);
             submarine.setRotation(arcInNewWorld);
-            Greenfoot.setWorld(nextWorld);
+            
+            WorldManager.currentWorld = nextWorldClass;
+            setWorld(nextWorld);
             WorldManager.surfaceY = nextSurfaceY;
         }
     }

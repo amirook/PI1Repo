@@ -55,12 +55,7 @@ public abstract class Server
      * @param actor Der Actor auf Server-Seite, den der Avatar repräsentiert.
      * @param image Das Bild.
      */
-    public final void setImage(Actor actor, GreenfootImage image)
-    {
-        String description = image.toString();
-        int endIndex = description.indexOf("  ");
-        setImage(actor, endIndex > 17 ? description.substring(17, endIndex) : null);
-    }
+    public abstract void setImage(Actor actor, GreenfootImage image);  
 
     /**
      * Setzt das Bild eines Avatars.
@@ -70,7 +65,7 @@ public abstract class Server
      *                 werden.
      */
     public abstract void setImage(Actor actor, String filename);
-
+    
     /**
      * Schreibt einen Text in das Bild eines Avatars. Wo und wie geschrieben wird,
      * bestimmt der Klient. Wenn Bedarf besteht, könnte die Signatur dieser Methode
@@ -78,7 +73,7 @@ public abstract class Server
      * @param actor Der Actor auf Server-Seite, den der Avatar repräsentiert.
      * @param text Der Text, der geschrieben werden soll.
      */
-    public abstract void setText(Actor actor, String text);
+    public abstract void setText(Actor actor, String text, int x, int y);
 
     /**
      * Setzt das Hintergrundbild der Welt in der Anzeige.

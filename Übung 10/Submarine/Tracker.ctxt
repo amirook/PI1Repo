@@ -1,19 +1,19 @@
 #BlueJ class context
 comment0.params=
 comment0.target=void\ act()
-comment0.text=\r\n\ \u00FCberpr\u00FCft\ das\ Umfeld\ auf\ die\ Gegenwart\ eines\ Spielers\r\n\ stellt\ schaltet\ sich\ bei\ gr\u00F6\u00DFerer\ Distanz\ aktiv\r\n\ verfolgt\ den\ Spieler\ wenn\ dieser\ einen\ Grenzbereich\ \u00FCberschreitet\r\n\ schaltet\ sich\ aus\ und\ h\u00F6rt\ auf\ zu\ jagen\ wenn\ der\ spieler\ au\u00DFer\ Reichweite\ ist\r\n
+comment0.text=\n\ \u00FCberpr\u00FCft\ das\ Umfeld\ auf\ die\ Gegenwart\ eines\ Spielers\n\ stellt\ schaltet\ sich\ bei\ gr\u00F6\u00DFerer\ Distanz\ aktiv\n\ verfolgt\ den\ Spieler\ wenn\ dieser\ einen\ Grenzbereich\ \u00FCberschreitet\n\ schaltet\ sich\ aus\ und\ h\u00F6rt\ auf\ zu\ jagen\ wenn\ der\ spieler\ au\u00DFer\ Reichweite\ ist\n
 comment1.params=
 comment1.target=void\ behavior()
-comment1.text=\r\n\ das\ Verhaltensverfahren\ des\ trackers\ an\ der\ Oberfl\u00E4che\ und\ im\ Wasser\r\n
+comment1.text=\n\ das\ Verhaltensverfahren\ des\ trackers\ an\ der\ Oberfl\u00E4che\ und\ im\ Wasser\n
 comment2.params=
 comment2.target=void\ killAndScore()
-comment2.text=\r\n\ Zerst\u00F6rung\ den\ Trackers\ sollte\ dieser\ von\ einem\ Submarine\ getroffen\ worden\ sein\r\n
+comment2.text=\n\ Zerst\u00F6rung\ den\ Trackers\ sollte\ dieser\ von\ einem\ Submarine\ getroffen\ worden\ sein\n
 comment3.params=
 comment3.target=void\ huntMode()
-comment3.text=\ \r\n\ Jagdverhalten\ des\ Trackers\r\n
+comment3.text=\ \n\ Jagdverhalten\ des\ Trackers\n
 comment4.params=imagestring
 comment4.target=void\ setImageDependingOnRotation(java.lang.String)
 comment5.params=
 comment5.target=void\ bite()
-comment5.text=\r\n\ animation\ des\ Trackers\ bei\ Verfolgung\ eines\ Zieles\ (\u00F6ffnen\ und\ schlie\u00DFen\ des\ piranha\ mauls)\r\n
+comment5.text=\n\ animation\ des\ Trackers\ bei\ Verfolgung\ eines\ Zieles\ (\u00F6ffnen\ und\ schlie\u00DFen\ des\ piranha\ mauls)\n
 numComments=6

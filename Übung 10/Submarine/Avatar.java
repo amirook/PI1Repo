@@ -1,4 +1,5 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
+import java.awt.*;
 
 /**
  * Beschreiben Sie hier die Klasse Avatar.
@@ -15,5 +16,13 @@ public class Avatar extends Actor
     public void act() 
     {
         // Fügen Sie Ihren Aktions-Code hier ein.
-    }    
+    } 
+    
+    public void setText(String text, int x, int y)
+    {
+        GreenfootImage image = getImage();
+        image.setColor(Color.WHITE);
+        image.setFont(new Font("Monospaced", Font.PLAIN, 20));
+        image.drawString(text, x, y);
+    }
 }

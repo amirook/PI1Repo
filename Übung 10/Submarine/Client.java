@@ -46,7 +46,7 @@ public interface Client
      * @param id Die eindeutige Identifikationsnummer des Avatars.
      * @param text Der Text, der geschrieben werden soll.
      */
-    void setText(int id, String text);
+    void setText(int id, String text, int x, int y);
     
     /**
      * Setzt das Hintergrundbild der Welt in der Anzeige.

@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.params=x\ y\ arc\ worldClass\ imagename
 comment0.target=Entrance(int,\ int,\ int,\ java.lang.Class,\ java.lang.String)
-comment0.text=\r\n\ Konstruktor\ von\ Entrance.\ Die\ Klasse\ der\ neuen\ Welt\ und\ die\ neuen\ Koordinaten\ der\r\n\ Biene\ werden\ initialisiert.\r\n\ @param\ x\ x-Koordinate,\ an\ der\ die\ Biene\ in\ der\ neuen\ Welt\ positioniert\ werden\ soll.\r\n\ @param\ y\ y-Koordinate,\ an\ der\ die\ Biene\ in\ der\ neuen\ Welt\ positioniert\ werden\ soll.\r\n\ @param\ worldClass\ Die\ Klasse\ der\ Welt,\ in\ die\ das\ Entrance\ f\u00FChrt.\r\n
+comment0.text=\n\ Konstruktor\ von\ Entrance.\ Die\ Klasse\ der\ neuen\ Welt\ und\ die\ neuen\ Koordinaten\ der\n\ Biene\ werden\ initialisiert.\n\ @param\ x\ x-Koordinate,\ an\ der\ die\ Biene\ in\ der\ neuen\ Welt\ positioniert\ werden\ soll.\n\ @param\ y\ y-Koordinate,\ an\ der\ die\ Biene\ in\ der\ neuen\ Welt\ positioniert\ werden\ soll.\n\ @param\ worldClass\ Die\ Klasse\ der\ Welt,\ in\ die\ das\ Entrance\ f\u00FChrt.\n
 comment1.params=submarine
 comment1.target=void\ handleCrash(Submarine)
-comment1.text=\r\n\ Entrance\ wird\ genutzt\ um\ in\ die\ n\u00E4chste\ Welt\ zu\ gelangen\r\n\ \r\n\ hierbei\ wird\ au\u00DFerdem\ die\ Position\ der\ Wasseroberfl\u00E4che\ der\ neuen\ Weltzu\ setzen\r\n\ \r\n\ @param\ bee\ Die\ Biene\r\n
+comment1.text=\n\ Entrance\ wird\ genutzt\ um\ in\ die\ n\u00E4chste\ Welt\ zu\ gelangen\n\ \n\ hierbei\ wird\ au\u00DFerdem\ die\ Position\ der\ Wasseroberfl\u00E4che\ der\ neuen\ Weltzu\ setzen\n\ \n\ @param\ bee\ Die\ Biene\n
 numComments=2

@@ -11,50 +11,67 @@ public class WorldManager extends World
 {
     /**Liste, in der die Referenzen auf die Welten gespeichert werden*/
     public static List<World> myWorlds;
-    
+
     /**Liste, in der die Wasserpegel der Welten gespeichert werden*/
     public static List<Integer> mySurfaces;
-    
+
     /**Variable, um auf das Spielende zu prüfen*/
     public static boolean gameOver;
-    
+
     /**Wasserpegel der Aktuellen Welt*/
     public static int surfaceY=0;
-    
+
+    public static HeldInServer heldInServer;
+
+    public static LocalClient localClient;
+
+    public Submarine submarine;
+
+    public static Class currentWorld;
+
     /**
      * Konstruktor für Objekte der Klasse WorldManager. Hier werden alle gebrauchten Welten
      * instanziert und zur Weltenliste myWorlds hinzugefügt. Beginnende Welt wird gesetzt.
      */
     public WorldManager()
     {    
-        super(600,400,1);
+        super(1000,700,1);
+
+        localClient = new LocalClient(this);
+        heldInServer = new HeldInServer(localClient);
+
+        currentWorld = Start.class;
+
         
         myWorlds = new ArrayList<World>();
-        
+
         myWorlds.add(new Start());
         myWorlds.add(new Ocean1());
-        myWorlds.add(new Ocean2());
-        myWorlds.add(new Ocean3());
-        myWorlds.add(new Cave1());
-        myWorlds.add(new Cave2());
-        myWorlds.add(new Cave3());
-        myWorlds.add(new Cave4());
+        //         myWorlds.add(new Ocean2());
+        //         myWorlds.add(new Ocean3());
+        //         myWorlds.add(new Cave1());
+        //         myWorlds.add(new Cave2());
+        //         myWorlds.add(new Cave3());
+        //         myWorlds.add(new Cave4());
         myWorlds.add(new Aquarium());
-        Greenfoot.setWorld(myWorlds.get(0));
-        
+
         mySurfaces = new ArrayList<Integer>();
         mySurfaces.add(260);//start1
         mySurfaces.add(260);//Ocean1
-        mySurfaces.add(260);//Ocean2
-        mySurfaces.add(260);//Ocean3
-        mySurfaces.add(1);//Cave1
-        mySurfaces.add(1);//Cave2
-        mySurfaces.add(1);//Cave3
-        mySurfaces.add(1);//Cave4
-        mySurfaces.add(255);//Aquarium
+        //         mySurfaces.add(260);//Ocean2
+        //         mySurfaces.add(260);//Ocean3
+        //         mySurfaces.add(1);//Cave1
+        //         mySurfaces.add(1);//Cave2
+        //         mySurfaces.add(1);//Cave3
+        //         mySurfaces.add(1);//Cave4
+        //         mySurfaces.add(255);//Aquarium
         surfaceY =(mySurfaces.get(0));
+
+        localClient.setBackground(myWorlds.get(0).getBackground());
+
+        Greenfoot.setWorld(localClient);
     }
-    
+
     /**
      * Liefert die Referenz auf die Welt zurück, die als Nächstes verwendet werden muss.
      * 
@@ -69,7 +86,7 @@ public class WorldManager extends World
         }
         return null;
     }
-    
+
     /**
      * liefert die Wasseroberfläche für die übergebene Welt zurück
      * 
@@ -87,7 +104,7 @@ public class WorldManager extends World
         }
         return 0;
     }
-    
+
     /**
      * Hilfsmethode um Instanzen auf Ihre Klasse zu prüfen.
      * 
@@ -98,8 +115,7 @@ public class WorldManager extends World
     public static boolean isOfClass(World w, Class c) {
         return w.getClass() == c;
     }
-    
-    
+
     /**gibt an ob sich der Aktor über der Wasseroberfläche befindet
      * @actor der geprüft wird
      */ 
@@ -112,7 +128,16 @@ public class WorldManager extends World
             return false;
         }
     }
-    
+
+    public void act(){
+        for(World w : myWorlds){
+            List<Actor> actors = w.getObjects(null);
+            for (Actor actor : actors){
+                actor.act();
+            }
+        }
+    }
+
     /**
      * verfahren welches für Aktoren einen visuellen Sprung zurück ins wasser simuliert
      * wenn diese die Oberfläche durchschreiten

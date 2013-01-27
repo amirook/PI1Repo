@@ -8,44 +8,72 @@ import java.util.*;
  */
 public class LocalClient extends World implements Client
 {
-    private HashMap<Integer, Avatar> avatarMap;
-    int idCounter;
+    public HashMap<Integer, Avatar> avatarMap;
+    private WorldManager worldManager;
     
     /**
      * Konstruktor für Objekte der Klasse LocalClient.
      */
-    public LocalClient()
+    public LocalClient(WorldManager worldManager)
     {    
         // Erzeuge eine neue Welt mit 600x400 Zellen und einer Zellgröße von 1x1 Pixeln.
-        super(600, 400, 1);
+        super(1000, 700, 1);
         avatarMap = new HashMap();
+        this.worldManager = worldManager;
+        //this.setBackground(Game.getWorld(Level1.class).getBackground());
+    }
+    
+    private void ensureMapContains(int id, int x, int y){
+        if(!avatarMap.containsKey(id)){
+            avatarMap.put(id, new Avatar());
+            //super.addObject(avatarMap.get(id), x, y);
+        }
+    }
+    
+    public void act(){
+        worldManager.act();
     }
     
     public void playSound(String filename){
-        //super.playSound(str);
+        //super.playSound(filename);
     }
     
     public boolean isKeyDown(String key){
-        return false;
+        return this.isKeyDown(key);
     }
     
-    public void setText(int id, String text){
-        //super.setText(i, str);
+    public void setText(int id, String text, int x, int y){
+        ensureMapContains(id, 0, 0);
+        avatarMap.get(id).setText(text, x, y);
     }
     
     public void setImage(int id, String filename){
-        //super.setImage(i, str);
+        ensureMapContains(id, 0, 0);
+        avatarMap.get(id).setImage(filename);
+    }
+    
+    public void setImage(int id, GreenfootImage image){
+        ensureMapContains(id, 0, 0);
+        avatarMap.get(id).setImage(image);
     }
     
     public void setRotation(int id, int rotation){
-        //super.setRotation(i,j);
+        ensureMapContains(id,0,0);
+        avatarMap.get(id).setRotation(rotation);
     }
     
     public void setLocation(int id, int x, int y){
-        
+        ensureMapContains(id, x, y);
+        avatarMap.get(id).setLocation(x, y);
     }
     
     public void removeObject(int id){
-        
+        ensureMapContains(id,0,0);
+        removeObject(avatarMap.get(id));
+    }
+    
+    public void addObject(int id, int x, int y){
+        ensureMapContains(id, x, y);
+        addObject(avatarMap.get(id), x, y);
     }
 }

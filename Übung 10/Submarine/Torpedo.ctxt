@@ -1,17 +1,17 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Torpedo()
-comment0.text=\r\n\ setzt\ dieses\ Item\ aufnehmbar\ oder\ aktiviert\ in\ die\ Welt\r\n\ aufnehmbar\ \=\ false\r\n\ aktiviert\ \=\ true\r\n\ und\ setzt\ den\ Spieler\ von\ dem\ er\ den\ Abschusswinkel\ bezieht\r\n
+comment0.text=\n\ setzt\ dieses\ Item\ aufnehmbar\ oder\ aktiviert\ in\ die\ Welt\n\ aufnehmbar\ \=\ false\n\ aktiviert\ \=\ true\n\ und\ setzt\ den\ Spieler\ von\ dem\ er\ den\ Abschusswinkel\ bezieht\n
 comment1.params=
 comment1.target=void\ act()
-comment1.text=\r\n\ setzt\ einmalig\ den\ Rotationswinkel\ und\ bewegt\ den\ Torpedo\r\n
+comment1.text=\n\ setzt\ einmalig\ den\ Rotationswinkel\ und\ bewegt\ den\ Torpedo\n
 comment2.params=
 comment2.target=void\ detonate()
-comment2.text=\r\n\ entfernt\ die\ Mine\ und\ erzeugt\ 8\ Splitter\ die\ in\ alle\ Richtungen\ fliegen\r\n\ soll\ sp\u00E4ter\ zus\u00E4tzlich\ sound\ abspielen\ und\ explosion\ darstellen\r\n
+comment2.text=\n\ entfernt\ die\ Mine\ und\ erzeugt\ 8\ Splitter\ die\ in\ alle\ Richtungen\ fliegen\n\ soll\ sp\u00E4ter\ zus\u00E4tzlich\ sound\ abspielen\ und\ explosion\ darstellen\n
 comment3.params=
 comment3.target=void\ blowsmallBubbles()
-comment3.text=\r\n\ Der\ Torpedo\ erzeugt\ wenn\ abgefeuert\ in\ kleinenintervallen\ Luftblasen\r\n
+comment3.text=\n\ Der\ Torpedo\ erzeugt\ wenn\ abgefeuert\ in\ kleinenintervallen\ Luftblasen\n
 comment4.params=
 comment4.target=boolean\ hitTarget()
-comment4.text=\r\n\ reaktion\ auf\ das\ treffen\ einer\ instanz\ der\ Klasse\ Creature\r\n\ gibt\ der\ getroffenen\ klasse\ den\ Spieler\ weiter\ der\ sie\ getroffen\ hat\r\n\ und\ entfernt\ anschlie\u00DFend\ den\ Torpedo\r\n
+comment4.text=\n\ reaktion\ auf\ das\ treffen\ einer\ instanz\ der\ Klasse\ Creature\n\ gibt\ der\ getroffenen\ klasse\ den\ Spieler\ weiter\ der\ sie\ getroffen\ hat\n\ und\ entfernt\ anschlie\u00DFend\ den\ Torpedo\n
 numComments=5
