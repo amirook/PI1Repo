@@ -21,12 +21,19 @@ public class WorldManager extends World
     /**Wasserpegel der Aktuellen Welt*/
     public static int surfaceY=0;
 
+    /**
+     * Server
+     */
     public static HeldInServer heldInServer;
 
+    /**
+     * Client
+     */
     public static LocalClient localClient;
 
-    public Submarine submarine;
-
+    /**
+     * Aktuelle Welt
+     */
     public static Class currentWorld;
 
     /**
@@ -36,35 +43,31 @@ public class WorldManager extends World
     public WorldManager()
     {    
         super(1000,700,1);
-
         localClient = new LocalClient(this);
         heldInServer = new HeldInServer(localClient);
-
         currentWorld = Start.class;
-
-        
         myWorlds = new ArrayList<World>();
 
         myWorlds.add(new Start());
         myWorlds.add(new Ocean1());
-        //         myWorlds.add(new Ocean2());
-        //         myWorlds.add(new Ocean3());
-        //         myWorlds.add(new Cave1());
-        //         myWorlds.add(new Cave2());
-        //         myWorlds.add(new Cave3());
-        //         myWorlds.add(new Cave4());
+//         myWorlds.add(new Ocean2());
+//         myWorlds.add(new Ocean3());
+//         myWorlds.add(new Cave1());
+//         myWorlds.add(new Cave2());
+//         myWorlds.add(new Cave3());
+//         myWorlds.add(new Cave4());
         myWorlds.add(new Aquarium());
 
         mySurfaces = new ArrayList<Integer>();
         mySurfaces.add(260);//start1
         mySurfaces.add(260);//Ocean1
-        //         mySurfaces.add(260);//Ocean2
-        //         mySurfaces.add(260);//Ocean3
-        //         mySurfaces.add(1);//Cave1
-        //         mySurfaces.add(1);//Cave2
-        //         mySurfaces.add(1);//Cave3
-        //         mySurfaces.add(1);//Cave4
-        //         mySurfaces.add(255);//Aquarium
+//         mySurfaces.add(260);//Ocean2
+//         mySurfaces.add(260);//Ocean3
+//         mySurfaces.add(1);//Cave1
+//         mySurfaces.add(1);//Cave2
+//         mySurfaces.add(1);//Cave3
+//         mySurfaces.add(1);//Cave4
+        mySurfaces.add(255);//Aquarium
         surfaceY =(mySurfaces.get(0));
 
         localClient.setBackground(myWorlds.get(0).getBackground());

@@ -20,26 +20,26 @@ public class LocalClient extends World implements Client
         super(1000, 700, 1);
         avatarMap = new HashMap();
         this.worldManager = worldManager;
-        //this.setBackground(Game.getWorld(Level1.class).getBackground());
     }
     
+    /**
+     * Stellt sicher, dass ein Eintrag mit zu der id bereits in der HashMap existiert.
+     */
     private void ensureMapContains(int id, int x, int y){
         if(!avatarMap.containsKey(id)){
             avatarMap.put(id, new Avatar());
-            //super.addObject(avatarMap.get(id), x, y);
         }
     }
     
+    /**
+     * Führt im worldManager act() auf, um die act() Methoden aller Actors aller Welten auszuführen.
+     */
     public void act(){
         worldManager.act();
     }
     
-    public void playSound(String filename){
-        //super.playSound(filename);
-    }
-    
     public boolean isKeyDown(String key){
-        return this.isKeyDown(key);
+        return Greenfoot.isKeyDown(key);
     }
     
     public void setText(int id, String text, int x, int y){

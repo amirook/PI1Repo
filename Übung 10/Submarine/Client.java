@@ -62,10 +62,4 @@ public interface Client
      * @param key Der Name der Taste, wie in der Klasse Greenfoot definiert.
      */
     boolean isKeyDown(String key);
-    
-    /**
-     * Spielt einen Sound ab.
-     * @param filename Der Name der Sound-Datei.
-     */
-    void playSound(String filename);
 }

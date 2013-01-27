@@ -17,6 +17,9 @@ public class HeldInServer extends Server
         this.client = client;
     }
     
+    /**
+     * Stellt sicher, dass ein Eintrag mit zu der id bereits in der HashMap existiert.
+     */
     private void ensureMapContains(Actor actor){
         if(!actorMap.containsKey(actor)){
             actorMap.put(actor, idCounter);
@@ -24,6 +27,10 @@ public class HeldInServer extends Server
         }
     }
     
+    /**
+     * Die Avatare werden aus dem Client entfernt
+     * Anschließend werden neue Avatare nach dem Vorbild der neuen Welt erschaffen.
+     */
     public void setWorld(World world){
         List<Actor> actors = client.getObjects(null);
         for (Actor a : actors){
@@ -80,6 +87,6 @@ public class HeldInServer extends Server
     }
     
     public void playSound(String filename){
-    
+        Greenfoot.playSound(filename);
     }
 }

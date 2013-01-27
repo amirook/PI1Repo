@@ -11,7 +11,289 @@
 		{Beate Ruffer}{Mohamadreza Khostevan}{Leopold Schulz-Hanke}
 % Beginn des eigentlichen Textes
 
+\section{Single Player (30\%)}
+Um das Visuelle von der Berechnung zu trennen, haben wir diese Aufgabe nach genau dem selben Schema umgesetzt, wie es im Aufgabenblatt vorgeschlagen wurde. Unsere Klasse \texttt{LocalClient} ist von nun an unsere einzige angezeigte Welt.\\
+Da wir vom Client und vom Server, jeweils nur eine Instanz benötigen, diese aber von überall erreichbar sein muss, können wir diese im Weltenverwalter als \texttt{static} deklarieren.
 
+\begin{lstlisting}[caption={}, firstnumber=24, language=Java]
+/**
+     * Server
+     */
+    public static HeldInServer heldInServer;
+
+    /**
+     * Client
+     */
+    public static LocalClient localClient;
+
+    /**
+     * Aktuelle Welt
+     */
+    public static Class currentWorld;
+
+    /**
+     * Konstruktor für Objekte der Klasse WorldManager. Hier werden alle gebrauchten Welten
+     * instanziert und zur Weltenliste myWorlds hinzugefügt. Beginnende Welt wird gesetzt.
+     */
+    public WorldManager()
+    {    
+        super(1000,700,1);
+        localClient = new LocalClient(this);
+        heldInServer = new HeldInServer(localClient);
+        currentWorld = Start.class;
+        myWorlds = new ArrayList<World>();
+
+        myWorlds.add(new Start());
+        myWorlds.add(new Ocean1());
+        myWorlds.add(new Ocean2());
+        myWorlds.add(new Ocean3());
+        myWorlds.add(new Cave1());
+        myWorlds.add(new Cave2());
+        myWorlds.add(new Cave3());
+        myWorlds.add(new Cave4());
+        myWorlds.add(new Aquarium());
+
+        mySurfaces = new ArrayList<Integer>();
+        mySurfaces.add(260);//start1
+        mySurfaces.add(260);//Ocean1
+        mySurfaces.add(260);//Ocean2
+        mySurfaces.add(260);//Ocean3
+        mySurfaces.add(1);//Cave1
+        mySurfaces.add(1);//Cave2
+        mySurfaces.add(1);//Cave3
+        mySurfaces.add(1);//Cave4
+        mySurfaces.add(255);//Aquarium
+        surfaceY =(mySurfaces.get(0));
+
+        localClient.setBackground(myWorlds.get(0).getBackground());
+
+        Greenfoot.setWorld(localClient);
+    }
+\end{lstlisting}
+Im Konstrkutor werden die Instanzen von Client und Server erzeugt. Mit Hilfe von \texttt{currentWorld} können wir festlegen, welche die im LocalClient angezeigte Welt sein soll.
+In Zeile 73 setzen wir den Hintergrund der ersten Welt als Hintergrund von LocalClient. Zeile 75 setzt LocalClient zur aktuellen Welt. Dies wird sich im Spielverlauf nicht mehr ändern.
+Der Weltenverwalter, bekommt eine act() Methode, die von der act() Methode des LocalClients aufgerufen wird. Da die einzige angezeigte Welt, LocalClient ist - und nur Avatare enthält, werden die act() Methoden in den realen Welten nicht mehr aufgerufen. Diese act Methode, geht nun alle Welten durch, und führt für jeden Actor in ihnen die act() Methode manuell aus.
+
+\begin{lstlisting}[caption={}, firstnumber=135, language=Java]
+public void act(){
+        for(World w : myWorlds){
+            List<Actor> actors = w.getObjects(null);
+            for (Actor actor : actors){
+                actor.act();
+            }
+        }
+    }
+\end{lstlisting}
+
+Zunächst brauchen wir eine Möglichkeit, einige Methoden unserer Actors "'mitzuhören"'. Alle Actors haben die Superklasse \texttt{ServerActor}. In dieser Klasse werden alle "'mitzuhörenden"' Methoden überschrieben. \\
+Die Klasse ist \emph{abstract} Definiert - wir sichern also zu, dass wir keine Instanzen der Klasse erzeugen werden.
+
+\begin{lstlisting}[caption={}, firstnumber=12, language=Java]
+public abstract class ServerActor extends Actor
+{
+    public void setLocation(int x, int y){
+        WorldManager.heldInServer.setLocation(this, x, y);
+        super.setLocation(x, y);
+    }
+    
+    public void setImage(String filename){
+        WorldManager.heldInServer.setImage(this, filename);
+        super.setImage(filename);
+    }
+    
+    public void setImage(GreenfootImage image){
+        WorldManager.heldInServer.setImage(this, image);
+        super.setImage(image);
+    }
+    
+    public void setRotation(int rotation){
+        WorldManager.heldInServer.setRotation(this, rotation);
+        super.setRotation(rotation);
+    }
+    
+    public void setText(String string, int x, int y){
+        WorldManager.heldInServer.setText(this, string, x, y);
+    }
+    
+    public void setWorld(World world){
+        WorldManager.heldInServer.setWorld(world);
+    }
+}
+
+\end{lstlisting}
+Jedes der Methoden, ruft die dazugehörige Methode im Server auf um diesen von der Aktion zu "'berichten"'. Anschließend wird die (ursprüngliche) Methode der Superklasse aufgerufen, damit die Aktion auch durchgeführt wird. Bei \emph{setText()} haben wir darauf verzichtet, da grafische Änderungen in der Berechnungswelt uns sowieso nicht sichtbar werden.
+\\
+Der Server seinerseits verfügt über eine HashMap Actors als Key und Integers als Value um den Actors eine ID zuweisen zu können. Anhand dieser ID können die passenden Avatare im Client angesprochen werden.
+
+\begin{lstlisting}[caption={}, firstnumber=9, language=Java]
+public class HeldInServer extends Server
+{
+    private HashMap<Actor, Integer> actorMap;
+    private LocalClient client;
+    private int idCounter = 0;
+    
+    public HeldInServer(LocalClient client){
+        actorMap = new HashMap();
+        this.client = client;
+    }
+    
+    /**
+     * Stellt sicher, dass ein Eintrag mit zu der id bereits in der HashMap existiert.
+     */
+    private void ensureMapContains(Actor actor){
+        if(!actorMap.containsKey(actor)){
+            actorMap.put(actor, idCounter);
+            idCounter++;
+        }
+    }
+    
+    /**
+     * Die Avatare werden aus dem Client entfernt
+     * Anschließend werden neue Avatare nach dem Vorbild der neuen Welt erschaffen.
+     */
+    public void setWorld(World world){
+        List<Actor> actors = client.getObjects(null);
+        for (Actor a : actors){
+            client.removeObject(a);
+        }
+        client.setBackground(world.getBackground());
+        actors = world.getObjects(null);
+        for (Actor a : actors){
+            client.addObject(actorMap.get(a), a.getX(), a.getY());
+        }
+    }
+    
+    public void removeObject(Actor actor){
+        ensureMapContains(actor);
+        client.removeObject(actorMap.get(actor));
+    }
+    
+    public void addObject(Actor actor, int x, int y){
+        ensureMapContains(actor);
+        client.addObject(actorMap.get(actor), x, y);
+    }
+    
+    public void setLocation(Actor actor, int x, int y){
+        ensureMapContains(actor);
+        client.setLocation(actorMap.get(actor), x, y);
+    }
+    
+    public void setRotation(Actor actor, int rotation){
+        ensureMapContains(actor);
+        client.setRotation(actorMap.get(actor), rotation);
+    }
+    
+    public void setImage(Actor actor, String filename){
+        ensureMapContains(actor);
+        client.setImage(actorMap.get(actor), filename);
+    }
+    
+    public void setImage(Actor actor, GreenfootImage image){
+        ensureMapContains(actor);
+        client.setImage(actorMap.get(actor), image);
+    }
+    
+    public void setText(Actor actor, String text, int x, int y){
+        ensureMapContains(actor);
+        client.setText(actorMap.get(actor), text, x, y);
+    }
+    
+    public void setBackground(String filename){
+        client.setBackground(filename);
+    }
+    
+    public boolean isKeyDown(String key){
+        return client.isKeyDown(key);
+    }
+    
+    public void playSound(String filename){
+        Greenfoot.playSound(filename);
+    }
+}
+\end{lstlisting}
+
+Mit \texttt{ensureMapContains()} wird immer sichergestellt, dass ein entsprechender Eintrag schon existiert. Der Client wird in jeder Methode über die jeweilige Aktion informiert.\\
+Auch der Client hat seinerseits eine HashMap. Diese allerdings mit der ID als Key und einem Avatar als Value.
+
+\begin{lstlisting}[caption={}, firstnumber=9, language=Java]
+public class LocalClient extends World implements Client
+{
+    public HashMap<Integer, Avatar> avatarMap;
+    private WorldManager worldManager;
+    
+    /**
+     * Konstruktor für Objekte der Klasse LocalClient.
+     */
+    public LocalClient(WorldManager worldManager)
+    {    
+        // Erzeuge eine neue Welt mit 600x400 Zellen und einer Zellgröße von 1x1 Pixeln.
+        super(1000, 700, 1);
+        avatarMap = new HashMap();
+        this.worldManager = worldManager;
+    }
+    
+    /**
+     * Stellt sicher, dass ein Eintrag mit zu der id bereits in der HashMap existiert.
+     */
+    private void ensureMapContains(int id, int x, int y){
+        if(!avatarMap.containsKey(id)){
+            avatarMap.put(id, new Avatar());
+        }
+    }
+    
+    /**
+     * Führt im worldManager act() auf, um die act() Methoden aller Actors aller Welten auszuführen.
+     */
+    public void act(){
+        worldManager.act();
+    }
+    
+    public boolean isKeyDown(String key){
+        return Greenfoot.isKeyDown(key);
+    }
+    
+    public void setText(int id, String text, int x, int y){
+        ensureMapContains(id, 0, 0);
+        avatarMap.get(id).setText(text, x, y);
+    }
+    
+    public void setImage(int id, String filename){
+        ensureMapContains(id, 0, 0);
+        avatarMap.get(id).setImage(filename);
+    }
+    
+    public void setImage(int id, GreenfootImage image){
+        ensureMapContains(id, 0, 0);
+        avatarMap.get(id).setImage(image);
+    }
+    
+    public void setRotation(int id, int rotation){
+        ensureMapContains(id,0,0);
+        avatarMap.get(id).setRotation(rotation);
+    }
+    
+    public void setLocation(int id, int x, int y){
+        ensureMapContains(id, x, y);
+        avatarMap.get(id).setLocation(x, y);
+    }
+    
+    public void removeObject(int id){
+        ensureMapContains(id,0,0);
+        removeObject(avatarMap.get(id));
+    }
+    
+    public void addObject(int id, int x, int y){
+        ensureMapContains(id, x, y);
+        addObject(avatarMap.get(id), x, y);
+    }
+}
+\end{lstlisting}
+Hier werden nun alle "'mitgehörten"' Aktionen im LocalClient - also in der sichtbaren Welt - durchgeführt. Auch hier wird immer mit \texttt{ensureMapContains()} vorher sichergestellt, dass ein entsprechender Eintrag existiert.
+
+\paragraph{Tests}
+Zunächst sollte sich das Spiel komplett so verhalten, wie vor dieser Implementierung - was sie auch tut. Man kann das U-Boot steuern, bleibt vor Hindernissen stehen, kann Objekte ins Inventar legen und wieder ablegen. Auch ein Weltenwechsel ist möglich.\\
+Um den Erfolg der Implementierung zu testen muss haben wir das Spiel begonnen, dann pausiert. Nun können wir auf der Welt und den einzelnen Objekte mit der rechten Maustaste \emph{Inspizieren} ausführen. Uns wird nun angezeigt, dass die Welt eine Instanz von LocalClient ist und die Objekte Instanzen von Avatar. Auch nach einem Weltenwechsel sind keine Instanzen einer anderen Klasse zu sehen.\\
+Desweiteren haben wir unseren Helden manuell mit der Maustaste verschoben. Wenn wir nun das Spiel weiterführen, springt das Uboot an seine ursprüngliche stelle, da dieser in der Berechnungswelt ja nicht verschoben wurde. 
 
 \end{document}
 
